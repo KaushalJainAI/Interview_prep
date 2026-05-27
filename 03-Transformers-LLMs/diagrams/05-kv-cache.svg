@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950 620" font-family="Arial, sans-serif" font-size="13">
+  <style>
+    .box { fill:#fff; stroke:#222; stroke-width:2; }
+    .lbl { fill:#222; text-anchor:middle; }
+    .small { font-size:11px; fill:#444; text-anchor:middle; }
+    .title { font-size:18px; font-weight:bold; text-anchor:middle; }
+    .cached { fill:#d4edda; stroke:#198754; stroke-width:1.5; }
+    .new { fill:#f8d7da; stroke:#d32f2f; stroke-width:2; }
+    .arrow { stroke:#222; stroke-width:1.8; fill:none; marker-end:url(#a); }
+    .recompute { fill:#fff3cd; stroke:#222; }
+  </style>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10z" fill="#222"/></marker>
+  </defs>
+
+  <text x="475" y="30" class="title">KV Cache — Why LLM Inference Is Fast After Token 1</text>
+
+  <!-- Without cache -->
+  <text x="240" y="70" class="lbl" font-weight="bold">Without KV cache (O(n²) per step)</text>
+  <rect class="recompute box" x="40" y="85" width="400" height="80" rx="6"/>
+  <text x="240" y="110" class="lbl">Generating token t: recompute Q,K,V for ALL t tokens</text>
+  <text x="240" y="130" class="small">Token 1 → 1 step ·  Token 2 → 2 steps ·  …  · Token n → n steps</text>
+  <text x="240" y="150" class="small">Total work: 1+2+…+n = O(n²) FLOPs of redundant K,V computation</text>
+
+  <!-- With cache -->
+  <text x="710" y="70" class="lbl" font-weight="bold">With KV cache (O(n) per step)</text>
+  <rect class="cached box" x="510" y="85" width="400" height="80" rx="6"/>
+  <text x="710" y="110" class="lbl">Cache K,V for past tokens; compute only new token's Q,K,V</text>
+  <text x="710" y="130" class="small">Each step: 1 new Q,K,V + attend over cached K,V</text>
+  <text x="710" y="150" class="small">Total work: O(n) per step, O(n²) for full sequence (same as needed)</text>
+
+  <!-- Step-by-step visual -->
+  <text x="475" y="210" class="lbl" font-weight="bold">Step-by-step generation with KV cache</text>
+
+  <!-- Step 1: prefill -->
+  <text x="100" y="245" class="lbl">Step 1 (prefill)</text>
+  <rect class="new box" x="40" y="255" width="40" height="40" rx="4"/><text x="60" y="280" class="lbl">tok₁</text>
+  <rect class="new box" x="85" y="255" width="40" height="40" rx="4"/><text x="105" y="280" class="lbl">tok₂</text>
+  <rect class="new box" x="130" y="255" width="40" height="40" rx="4"/><text x="150" y="280" class="lbl">tok₃</text>
+  <text x="100" y="320" class="small">Process the prompt in one pass</text>
+  <text x="100" y="335" class="small">Cache K,V for tokens 1-3</text>
+
+  <!-- Step 2 -->
+  <text x="290" y="245" class="lbl">Step 2 (decode)</text>
+  <rect class="cached box" x="220" y="255" width="40" height="40" rx="4"/><text x="240" y="280" class="lbl">K,V₁</text>
+  <rect class="cached box" x="265" y="255" width="40" height="40" rx="4"/><text x="285" y="280" class="lbl">K,V₂</text>
+  <rect class="cached box" x="310" y="255" width="40" height="40" rx="4"/><text x="330" y="280" class="lbl">K,V₃</text>
+  <rect class="new box" x="355" y="255" width="40" height="40" rx="4"/><text x="375" y="280" class="lbl">tok₄</text>
+  <text x="307" y="320" class="small">Compute only tok₄'s Q,K,V</text>
+  <text x="307" y="335" class="small">Attend over cached + new</text>
+
+  <!-- Step 3 -->
+  <text x="510" y="245" class="lbl">Step 3 (decode)</text>
+  <rect class="cached box" x="440" y="255" width="40" height="40" rx="4"/><text x="460" y="280" class="lbl">K,V₁</text>
+  <rect class="cached box" x="485" y="255" width="40" height="40" rx="4"/><text x="505" y="280" class="lbl">K,V₂</text>
+  <rect class="cached box" x="530" y="255" width="40" height="40" rx="4"/><text x="550" y="280" class="lbl">K,V₃</text>
+  <rect class="cached box" x="575" y="255" width="40" height="40" rx="4"/><text x="595" y="280" class="lbl">K,V₄</text>
+  <rect class="new box" x="620" y="255" width="40" height="40" rx="4"/><text x="640" y="280" class="lbl">tok₅</text>
+  <text x="540" y="320" class="small">Cache grows by 1 per step</text>
+
+  <!-- Step n -->
+  <text x="800" y="245" class="lbl">Step n</text>
+  <rect class="cached box" x="720" y="255" width="180" height="40" rx="4"/>
+  <text x="810" y="280" class="lbl">K,V₁…K,V_{n-1}</text>
+  <rect class="new box" x="905" y="255" width="35" height="40" rx="4"/><text x="922" y="280" class="lbl small">tok_n</text>
+  <text x="810" y="320" class="small">Memory = O(n · layers · heads · d_head)</text>
+
+  <!-- Memory math -->
+  <rect class="box" x="40" y="380" width="870" height="100" rx="8" fill="#f8f9fa"/>
+  <text x="475" y="403" class="lbl" font-weight="bold">KV cache memory formula (memorize this for interviews)</text>
+  <text x="475" y="425" class="lbl" font-family="Consolas,monospace" font-size="14">mem = 2 × seq_len × n_layers × n_kv_heads × d_head × dtype_bytes</text>
+  <text x="60" y="448" font-size="12" fill="#333">• Llama-2-70B, bf16, seq=4096:  2 × 4096 × 80 × 8 × 128 × 2  ≈  1.3 GB per sequence (with GQA)</text>
+  <text x="60" y="465" font-size="12" fill="#333">• Without GQA (Llama-1):  ~10× bigger → why GQA was introduced</text>
+
+  <!-- Tricks -->
+  <rect class="box" x="40" y="500" width="870" height="105" rx="8" fill="#fff5f5"/>
+  <text x="475" y="523" class="lbl" font-weight="bold">Production tricks built on top of KV cache</text>
+  <text x="60" y="545" font-size="12" fill="#333">• <tspan font-weight="bold">PagedAttention (vLLM):</tspan> KV cache as virtual-memory pages → near-zero waste, dynamic batching</text>
+  <text x="60" y="562" font-size="12" fill="#333">• <tspan font-weight="bold">Prefix caching:</tspan> shared system prompt cached across requests (huge cost win in chat apps)</text>
+  <text x="60" y="579" font-size="12" fill="#333">• <tspan font-weight="bold">Speculative decoding:</tspan> small draft model proposes k tokens, big model verifies in one pass</text>
+  <text x="60" y="596" font-size="12" fill="#333">• <tspan font-weight="bold">GQA / MQA:</tspan> fewer KV heads than Q heads → 4-8× smaller KV cache, same quality</text>
+</svg>

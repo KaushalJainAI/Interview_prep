@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="520" viewBox="0 0 1100 520">
+  <style>
+    .title{font:700 26px Segoe UI,Arial;fill:#172033}.box{fill:#eef6ff;stroke:#1f6feb;stroke-width:2;rx:10}.box2{fill:#f6f8fa;stroke:#6b7280;stroke-width:1.5;rx:10}.txt{font:600 17px Segoe UI,Arial;fill:#172033}.small{font:13px Segoe UI,Arial;fill:#3b4555}.arrow{stroke:#1f6feb;stroke-width:2.4;fill:none;marker-end:url(#m)}
+  </style>
+  <defs><marker id="m" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#1f6feb"/></marker></defs>
+  <text x="550" y="38" text-anchor="middle" class="title">HLD Interview Flow: Think in Layers, Then Deep Dive</text>
+  <g transform="translate(45,90)">
+    <rect width="150" height="75" class="box"/><text x="75" y="32" text-anchor="middle" class="txt">1. Clarify</text><text x="75" y="55" text-anchor="middle" class="small">users, scope, NFRs</text>
+  </g>
+  <g transform="translate(230,90)">
+    <rect width="150" height="75" class="box"/><text x="75" y="32" text-anchor="middle" class="txt">2. APIs</text><text x="75" y="55" text-anchor="middle" class="small">contracts, errors</text>
+  </g>
+  <g transform="translate(415,90)">
+    <rect width="150" height="75" class="box"/><text x="75" y="32" text-anchor="middle" class="txt">3. Scale</text><text x="75" y="55" text-anchor="middle" class="small">QPS, storage</text>
+  </g>
+  <g transform="translate(600,90)">
+    <rect width="150" height="75" class="box"/><text x="75" y="32" text-anchor="middle" class="txt">4. HLD</text><text x="75" y="55" text-anchor="middle" class="small">boxes + arrows</text>
+  </g>
+  <g transform="translate(785,90)">
+    <rect width="150" height="75" class="box"/><text x="75" y="32" text-anchor="middle" class="txt">5. Data</text><text x="75" y="55" text-anchor="middle" class="small">schema, indexes</text>
+  </g>
+  <path class="arrow" d="M195 128 H230"/><path class="arrow" d="M380 128 H415"/><path class="arrow" d="M565 128 H600"/><path class="arrow" d="M750 128 H785"/>
+  <g transform="translate(160,245)">
+    <rect width="210" height="95" class="box2"/><text x="105" y="33" text-anchor="middle" class="txt">6. Deep Dive</text><text x="105" y="58" text-anchor="middle" class="small">hot path, bottleneck,</text><text x="105" y="76" text-anchor="middle" class="small">index, queue, cache</text>
+  </g>
+  <g transform="translate(445,245)">
+    <rect width="210" height="95" class="box2"/><text x="105" y="33" text-anchor="middle" class="txt">7. Scale 10x</text><text x="105" y="58" text-anchor="middle" class="small">replicas, sharding,</text><text x="105" y="76" text-anchor="middle" class="small">backpressure</text>
+  </g>
+  <g transform="translate(730,245)">
+    <rect width="210" height="95" class="box2"/><text x="105" y="33" text-anchor="middle" class="txt">8. Tradeoffs</text><text x="105" y="58" text-anchor="middle" class="small">latency vs cost,</text><text x="105" y="76" text-anchor="middle" class="small">consistency vs availability</text>
+  </g>
+  <path class="arrow" d="M860 165 C860 210 265 205 265 245"/><path class="arrow" d="M370 292 H445"/><path class="arrow" d="M655 292 H730"/>
+  <text x="550" y="440" text-anchor="middle" class="small">Strong answer = requirements + scale + architecture + one deep component + explicit tradeoffs.</text>
+</svg>
+

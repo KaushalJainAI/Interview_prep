@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 470" width="760" height="470">
+<style>
+  .title { font: bold 16px sans-serif; fill: #1a1a1a; }
+  .label { font: 12px sans-serif; fill: #333; }
+  .small { font: 10px sans-serif; fill: #555; }
+  .mono  { font: 13px 'Consolas','Courier New',monospace; fill: #111; }
+  .box   { fill: #f6f8fa; stroke: #444; stroke-width: 1.2; }
+  .box2  { fill: #e6f0ff; stroke: #1f6feb; stroke-width: 1.5; }
+  .box3  { fill: #fff3cd; stroke: #b58900; stroke-width: 1.5; }
+  .box4  { fill: #d4edda; stroke: #1a7f37; stroke-width: 1.5; }
+  .box5  { fill: #fce7f3; stroke: #be185d; stroke-width: 1.5; }
+  .arrow { stroke: #444; stroke-width: 1.6; fill: none; marker-end: url(#arr); }
+  .arrow2{ stroke: #1f6feb; stroke-width: 2; fill: none; marker-end: url(#arrB); }
+  .arrow3{ stroke: #d33; stroke-width: 2; fill: none; marker-end: url(#arrR); }
+</style>
+<defs>
+  <marker id="arr"  viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#444"/></marker>
+  <marker id="arrB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#1f6feb"/></marker>
+  <marker id="arrR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#d33"/></marker>
+</defs>
+<text x="380" y="22" text-anchor="middle" class="title">System Design — Caching Patterns</text><text x="40" y="60" class="label">Cache patterns</text><rect x="80" y="100" width="160" height="40" class="box2"/><text x="160" y="125" text-anchor="middle" class="mono">Cache-aside</text><text x="260" y="125" class="small">App checks cache; on miss, query DB + populate cache</text><rect x="80" y="160" width="160" height="40" class="box2"/><text x="160" y="185" text-anchor="middle" class="mono">Read-through</text><text x="260" y="185" class="small">Cache layer queries DB itself on miss</text><rect x="80" y="220" width="160" height="40" class="box2"/><text x="160" y="245" text-anchor="middle" class="mono">Write-through</text><text x="260" y="245" class="small">Writes hit cache + DB synchronously</text><rect x="80" y="280" width="160" height="40" class="box2"/><text x="160" y="305" text-anchor="middle" class="mono">Write-behind</text><text x="260" y="305" class="small">Writes hit cache; flushed to DB async (risk of loss)</text><rect x="80" y="340" width="160" height="40" class="box2"/><text x="160" y="365" text-anchor="middle" class="mono">Refresh-ahead</text><text x="260" y="365" class="small">Proactively refresh hot keys before expiry</text><text x="40" y="420" class="mono">Eviction: LRU, LFU, ARC, TTL. Memcached vs Redis (richer types, persistence).</text><text x="40" y="442" class="mono">Cache stampede: lock+single-flight, request coalescing, jittered TTL.</text></svg>

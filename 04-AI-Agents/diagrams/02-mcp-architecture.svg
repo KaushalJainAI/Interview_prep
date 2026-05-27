@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950 580" font-family="Arial, sans-serif" font-size="13">
+  <style>
+    .box { fill:#fff; stroke:#222; stroke-width:2; }
+    .lbl { fill:#222; text-anchor:middle; }
+    .small { font-size:11px; fill:#444; text-anchor:middle; }
+    .title { font-size:18px; font-weight:bold; text-anchor:middle; }
+    .host { fill:#e2d9f3; }
+    .client { fill:#cfe2ff; }
+    .server { fill:#d4edda; }
+    .external { fill:#fff3cd; }
+    .arrow { stroke:#222; stroke-width:1.8; fill:none; marker-end:url(#a); }
+    .biarrow { stroke:#1565c0; stroke-width:1.8; fill:none; marker-end:url(#b); marker-start:url(#bs); }
+  </style>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10z" fill="#222"/></marker>
+    <marker id="b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10z" fill="#1565c0"/></marker>
+    <marker id="bs" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M10,0 L0,5 L10,10z" fill="#1565c0"/></marker>
+  </defs>
+
+  <text x="475" y="30" class="title">MCP — Model Context Protocol Architecture</text>
+  <text x="475" y="50" class="small">Open standard (Anthropic 2024). One client speaks JSON-RPC to many servers. "USB-C for AI tools."</text>
+
+  <!-- Host -->
+  <rect class="box host" x="40" y="80" width="280" height="380" rx="8"/>
+  <text x="180" y="105" class="lbl" font-weight="bold">Host (the AI app)</text>
+  <text x="180" y="122" class="small">Claude Desktop, Cursor, AIAAS, ChatGPT…</text>
+
+  <rect class="box" x="65" y="145" width="230" height="55" rx="6"/>
+  <text x="180" y="170" class="lbl">LLM</text>
+  <text x="180" y="187" class="small">Decides which tool to call</text>
+
+  <!-- Multiple clients inside host -->
+  <rect class="box client" x="65" y="220" width="100" height="60" rx="6"/>
+  <text x="115" y="245" class="lbl">MCP Client 1</text>
+  <text x="115" y="262" class="small">stdio</text>
+
+  <rect class="box client" x="195" y="220" width="100" height="60" rx="6"/>
+  <text x="245" y="245" class="lbl">MCP Client 2</text>
+  <text x="245" y="262" class="small">HTTP/SSE</text>
+
+  <rect class="box client" x="130" y="295" width="100" height="60" rx="6"/>
+  <text x="180" y="320" class="lbl">MCP Client 3</text>
+  <text x="180" y="337" class="small">streamable HTTP</text>
+
+  <text x="180" y="395" class="small">1 client ↔ 1 server (1:1)</text>
+  <text x="180" y="412" class="small">Host orchestrates multiple clients</text>
+  <text x="180" y="429" class="small">Discovers tools/resources/prompts</text>
+  <text x="180" y="446" class="small">via initialize handshake</text>
+
+  <!-- arrows -->
+  <line class="biarrow" x1="320" y1="250" x2="430" y2="200"/>
+  <line class="biarrow" x1="320" y1="250" x2="430" y2="320"/>
+  <line class="biarrow" x1="320" y1="325" x2="430" y2="430"/>
+
+  <!-- Servers -->
+  <rect class="box server" x="430" y="170" width="280" height="80" rx="6"/>
+  <text x="570" y="195" class="lbl" font-weight="bold">MCP Server: filesystem</text>
+  <text x="570" y="215" class="small">Tools: read_file, write_file, list_dir</text>
+  <text x="570" y="232" class="small">Resources: file://… URIs · Prompts: templates</text>
+
+  <rect class="box server" x="430" y="290" width="280" height="80" rx="6"/>
+  <text x="570" y="315" class="lbl" font-weight="bold">MCP Server: github</text>
+  <text x="570" y="335" class="small">Tools: create_pr, list_issues, comment</text>
+  <text x="570" y="352" class="small">Auth: PAT injected via env var</text>
+
+  <rect class="box server" x="430" y="400" width="280" height="80" rx="6"/>
+  <text x="570" y="425" class="lbl" font-weight="bold">MCP Server: your custom service</text>
+  <text x="570" y="445" class="small">Tools: query_db, send_slack, run_workflow</text>
+  <text x="570" y="462" class="small">Run as subprocess (stdio) or HTTP endpoint</text>
+
+  <!-- External resources behind servers -->
+  <line class="arrow" x1="710" y1="210" x2="780" y2="210"/>
+  <line class="arrow" x1="710" y1="330" x2="780" y2="330"/>
+  <line class="arrow" x1="710" y1="440" x2="780" y2="440"/>
+
+  <rect class="box external" x="780" y="185" width="140" height="50" rx="6"/>
+  <text x="850" y="210" class="lbl">Local FS</text>
+  <text x="850" y="227" class="small">/home/…/projects</text>
+
+  <rect class="box external" x="780" y="305" width="140" height="50" rx="6"/>
+  <text x="850" y="330" class="lbl">GitHub API</text>
+  <text x="850" y="347" class="small">api.github.com</text>
+
+  <rect class="box external" x="780" y="415" width="140" height="50" rx="6"/>
+  <text x="850" y="440" class="lbl">Your DB / APIs</text>
+  <text x="850" y="457" class="small">Postgres, internal svc</text>
+
+  <!-- Protocol box -->
+  <rect class="box" x="40" y="495" width="880" height="70" rx="8" fill="#f8f9fa"/>
+  <text x="475" y="518" class="lbl" font-weight="bold">Protocol primitives (JSON-RPC 2.0)</text>
+  <text x="60" y="540" font-size="12" fill="#333">• <tspan font-weight="bold">tools</tspan>: function calls the model can invoke    • <tspan font-weight="bold">resources</tspan>: read-only data (files, URIs) the host can fetch</text>
+  <text x="60" y="557" font-size="12" fill="#333">• <tspan font-weight="bold">prompts</tspan>: server-defined prompt templates    • <tspan font-weight="bold">sampling</tspan>: server asks host's LLM to complete (bidirectional)</text>
+</svg>

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 345" width="780" height="345">
+<style>
+  .title { font: bold 16px sans-serif; fill: #1a1a1a; }
+  .label { font: 12px sans-serif; fill: #333; }
+  .small { font: 10px sans-serif; fill: #555; }
+  .mono  { font: 13px 'Consolas','Courier New',monospace; fill: #111; }
+  .box   { fill: #f6f8fa; stroke: #444; stroke-width: 1.2; }
+  .box2  { fill: #e6f0ff; stroke: #1f6feb; stroke-width: 1.5; }
+  .box3  { fill: #fff3cd; stroke: #b58900; stroke-width: 1.5; }
+  .box4  { fill: #d4edda; stroke: #1a7f37; stroke-width: 1.5; }
+  .box5  { fill: #fce7f3; stroke: #be185d; stroke-width: 1.5; }
+  .arrow { stroke: #444; stroke-width: 1.6; fill: none; marker-end: url(#arr); }
+  .arrow2{ stroke: #1f6feb; stroke-width: 2; fill: none; marker-end: url(#arrB); }
+  .arrow3{ stroke: #d33; stroke-width: 2; fill: none; marker-end: url(#arrR); }
+</style>
+<defs>
+  <marker id="arr"  viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#444"/></marker>
+  <marker id="arrB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#1f6feb"/></marker>
+  <marker id="arrR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#d33"/></marker>
+</defs>
+<text x="390" y="22" text-anchor="middle" class="title">Django REST + JWT Authentication</text><text x="40" y="60" class="label">JWT auth flow (DRF + SimpleJWT)</text><rect x="20" y="78" width="120" height="44" class="box2"/><text x="80" y="105" text-anchor="middle" class="mono">client</text><rect x="180" y="78" width="120" height="44" class="box2"/><text x="240" y="105" text-anchor="middle" class="mono">/login</text><rect x="340" y="78" width="120" height="44" class="box2"/><text x="400" y="105" text-anchor="middle" class="mono">validate user</text><rect x="500" y="78" width="120" height="44" class="box2"/><text x="560" y="105" text-anchor="middle" class="mono">issue access + refresh JWT</text><rect x="20" y="178" width="120" height="44" class="box2"/><text x="80" y="205" text-anchor="middle" class="mono">client stores tokens</text><rect x="180" y="178" width="120" height="44" class="box2"/><text x="240" y="205" text-anchor="middle" class="mono">/api with Bearer access</text><rect x="340" y="178" width="120" height="44" class="box2"/><text x="400" y="205" text-anchor="middle" class="mono">middleware validates JWT</text><rect x="500" y="178" width="120" height="44" class="box2"/><text x="560" y="205" text-anchor="middle" class="mono">view + return data</text><path class="arrow" d="M 140 100 L 180 100"/><path class="arrow" d="M 300 100 L 340 100"/><path class="arrow" d="M 460 100 L 500 100"/><path class="arrow" d="M 140 200 L 180 200"/><path class="arrow" d="M 300 200 L 340 200"/><path class="arrow" d="M 460 200 L 500 200"/><text x="40" y="270" class="mono">When access expires: POST /refresh with refresh JWT → new access</text><text x="40" y="292" class="mono">Logout: blacklist refresh token (DB table)</text><text x="40" y="315" class="small">Access = short (15 min). Refresh = long (7d). Store refresh in HttpOnly cookie if possible.</text></svg>

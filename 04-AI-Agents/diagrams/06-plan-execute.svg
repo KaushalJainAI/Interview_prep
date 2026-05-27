@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 390" width="720" height="390">
+<style>
+  .title { font: bold 16px sans-serif; fill: #1a1a1a; }
+  .label { font: 12px sans-serif; fill: #333; }
+  .small { font: 10px sans-serif; fill: #555; }
+  .mono  { font: 13px 'Consolas','Courier New',monospace; fill: #111; }
+  .box   { fill: #f6f8fa; stroke: #444; stroke-width: 1.2; }
+  .box2  { fill: #e6f0ff; stroke: #1f6feb; stroke-width: 1.5; }
+  .box3  { fill: #fff3cd; stroke: #b58900; stroke-width: 1.5; }
+  .box4  { fill: #d4edda; stroke: #1a7f37; stroke-width: 1.5; }
+  .box5  { fill: #fce7f3; stroke: #be185d; stroke-width: 1.5; }
+  .arrow { stroke: #444; stroke-width: 1.6; fill: none; marker-end: url(#arr); }
+  .arrow2{ stroke: #1f6feb; stroke-width: 2; fill: none; marker-end: url(#arrB); }
+  .arrow3{ stroke: #d33; stroke-width: 2; fill: none; marker-end: url(#arrR); }
+</style>
+<defs>
+  <marker id="arr"  viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#444"/></marker>
+  <marker id="arrB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#1f6feb"/></marker>
+  <marker id="arrR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#d33"/></marker>
+</defs>
+<text x="360" y="22" text-anchor="middle" class="title">Plan-Execute-Critic Agent</text><rect x="280" y="60" width="160" height="44" class="box2"/><text x="360" y="88" text-anchor="middle" class="mono">Planner LLM</text><text x="40" y="86" class="small">user goal →</text><path class="arrow" d="M 110 80 L 280 80"/><rect x="60" y="160" width="120" height="40" class="box3"/><text x="120" y="185" text-anchor="middle" class="mono">step 1</text><rect x="200" y="160" width="120" height="40" class="box3"/><text x="260" y="185" text-anchor="middle" class="mono">step 2</text><rect x="340" y="160" width="120" height="40" class="box3"/><text x="400" y="185" text-anchor="middle" class="mono">step 3</text><rect x="480" y="160" width="120" height="40" class="box3"/><text x="540" y="185" text-anchor="middle" class="mono">step 4</text><path class="arrow" d="M 120 110 L 120 158"/><path class="arrow" d="M 260 110 L 260 158"/><path class="arrow" d="M 400 110 L 400 158"/><path class="arrow" d="M 540 110 L 540 158"/><rect x="280" y="260" width="160" height="44" class="box4"/><text x="360" y="288" text-anchor="middle" class="mono">Executor</text><path class="arrow2" d="M 120 200 L 360 258"/><path class="arrow2" d="M 260 200 L 360 258"/><path class="arrow2" d="M 400 200 L 360 258"/><path class="arrow2" d="M 540 200 L 360 258"/><rect x="510" y="260" width="160" height="44" class="box5"/><text x="590" y="288" text-anchor="middle" class="mono">Critic / Replan</text><path class="arrow3" d="M 510 282 L 440 282"/><text x="40" y="340" class="mono">Plan-Execute-Critique = decompose first, run, replan on failure</text><text x="40" y="362" class="small">Variants: Tree-of-Thought (branch), ReWOO (plan + parallel tool calls), Reflexion (self-critique).</text></svg>

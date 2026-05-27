@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 400" width="760" height="400">
+<style>
+  .title { font: bold 16px sans-serif; fill: #1a1a1a; }
+  .label { font: 12px sans-serif; fill: #333; }
+  .small { font: 10px sans-serif; fill: #555; }
+  .mono  { font: 13px 'Consolas','Courier New',monospace; fill: #111; }
+  .box   { fill: #f6f8fa; stroke: #444; stroke-width: 1.2; }
+  .box2  { fill: #e6f0ff; stroke: #1f6feb; stroke-width: 1.5; }
+  .box3  { fill: #fff3cd; stroke: #b58900; stroke-width: 1.5; }
+  .box4  { fill: #d4edda; stroke: #1a7f37; stroke-width: 1.5; }
+  .box5  { fill: #fce7f3; stroke: #be185d; stroke-width: 1.5; }
+  .arrow { stroke: #444; stroke-width: 1.6; fill: none; marker-end: url(#arr); }
+  .arrow2{ stroke: #1f6feb; stroke-width: 2; fill: none; marker-end: url(#arrB); }
+  .arrow3{ stroke: #d33; stroke-width: 2; fill: none; marker-end: url(#arrR); }
+</style>
+<defs>
+  <marker id="arr"  viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#444"/></marker>
+  <marker id="arrB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#1f6feb"/></marker>
+  <marker id="arrR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#d33"/></marker>
+</defs>
+<text x="380" y="22" text-anchor="middle" class="title">Rendering Strategies</text><text x="40" y="60" class="label">Rendering strategies</text><rect x="60" y="80" width="60" height="40" class="box2"/><text x="90" y="105" text-anchor="middle" class="mono">CSR</text><text x="130" y="105" class="mono">browser fetches JS, renders client-side</text><text x="450" y="105" class="small">Slow first paint, fast nav, simple</text><rect x="60" y="130" width="60" height="40" class="box3"/><text x="90" y="155" text-anchor="middle" class="mono">SSR</text><text x="130" y="155" class="mono">server renders HTML per request</text><text x="450" y="155" class="small">Fast first paint, server load</text><rect x="60" y="180" width="60" height="40" class="box4"/><text x="90" y="205" text-anchor="middle" class="mono">SSG</text><text x="130" y="205" class="mono">build-time static HTML</text><text x="450" y="205" class="small">Fastest, scales, stale risk</text><rect x="60" y="230" width="60" height="40" class="box5"/><text x="90" y="255" text-anchor="middle" class="mono">ISR</text><text x="130" y="255" class="mono">static + revalidate on a schedule</text><text x="450" y="255" class="small">Best of SSG + freshness</text><rect x="60" y="280" width="60" height="40" class="box"/><text x="90" y="305" text-anchor="middle" class="mono">RSC</text><text x="130" y="305" class="mono">React Server Components stream HTML/RSC</text><text x="450" y="305" class="small">Less JS to client; modern Next.js</text><text x="40" y="370" class="small">Next.js app router supports CSR/SSR/SSG/ISR/RSC on a per-route basis.</text></svg>

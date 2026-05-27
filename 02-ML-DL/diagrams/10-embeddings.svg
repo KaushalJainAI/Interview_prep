@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 400" width="680" height="400">
+<style>
+  .title { font: bold 16px sans-serif; fill: #1a1a1a; }
+  .label { font: 12px sans-serif; fill: #333; }
+  .small { font: 10px sans-serif; fill: #555; }
+  .mono  { font: 13px 'Consolas','Courier New',monospace; fill: #111; }
+  .box   { fill: #f6f8fa; stroke: #444; stroke-width: 1.2; }
+  .box2  { fill: #e6f0ff; stroke: #1f6feb; stroke-width: 1.5; }
+  .box3  { fill: #fff3cd; stroke: #b58900; stroke-width: 1.5; }
+  .box4  { fill: #d4edda; stroke: #1a7f37; stroke-width: 1.5; }
+  .box5  { fill: #fce7f3; stroke: #be185d; stroke-width: 1.5; }
+  .arrow { stroke: #444; stroke-width: 1.6; fill: none; marker-end: url(#arr); }
+  .arrow2{ stroke: #1f6feb; stroke-width: 2; fill: none; marker-end: url(#arrB); }
+  .arrow3{ stroke: #d33; stroke-width: 2; fill: none; marker-end: url(#arrR); }
+</style>
+<defs>
+  <marker id="arr"  viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#444"/></marker>
+  <marker id="arrB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#1f6feb"/></marker>
+  <marker id="arrR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#d33"/></marker>
+</defs>
+<text x="340" y="22" text-anchor="middle" class="title">Word Embeddings — Clusters &amp; Analogies</text><line x1="60" y1="320" x2="640" y2="320" stroke="#555"/><line x1="60" y1="60" x2="60" y2="320" stroke="#555"/><text x="635" y="338" class="small">dim 1 (PCA)</text><text x="68" y="55" class="small">dim 2</text><circle cx="480" cy="100" r="4" fill="#1f6feb"/><text x="486" y="104" class="mono">king</text><circle cx="510" cy="120" r="4" fill="#1f6feb"/><text x="516" y="124" class="mono">queen</text><circle cx="440" cy="170" r="4" fill="#1f6feb"/><text x="446" y="174" class="mono">man</text><circle cx="470" cy="190" r="4" fill="#1f6feb"/><text x="476" y="194" class="mono">woman</text><circle cx="160" cy="260" r="4" fill="#1f6feb"/><text x="166" y="264" class="mono">Paris</text><circle cx="180" cy="280" r="4" fill="#1f6feb"/><text x="186" y="284" class="mono">France</text><circle cx="140" cy="210" r="4" fill="#1f6feb"/><text x="146" y="214" class="mono">Tokyo</text><circle cx="160" cy="230" r="4" fill="#1f6feb"/><text x="166" y="234" class="mono">Japan</text><circle cx="260" cy="140" r="4" fill="#1f6feb"/><text x="266" y="144" class="mono">cat</text><circle cx="280" cy="160" r="4" fill="#1f6feb"/><text x="286" y="164" class="mono">dog</text><circle cx="245" cy="155" r="4" fill="#1f6feb"/><text x="251" y="159" class="mono">kitten</text><circle cx="275" cy="180" r="4" fill="#1f6feb"/><text x="281" y="184" class="mono">puppy</text><circle cx="340" cy="260" r="4" fill="#1f6feb"/><text x="346" y="264" class="mono">apple</text><circle cx="360" cy="275" r="4" fill="#1f6feb"/><text x="366" y="279" class="mono">banana</text><circle cx="355" cy="250" r="4" fill="#1f6feb"/><text x="361" y="254" class="mono">orange</text><path class="arrow2" d="M 440 170 L 480 100"/><path class="arrow2" d="M 470 190 L 510 120"/><text x="395" y="135" class="small" fill="#1f6feb">king − man = queen − woman</text><text x="40" y="370" class="small">Similar meanings cluster. Linear relationships encode analogies (Mikolov 2013).</text></svg>

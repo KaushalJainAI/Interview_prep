@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950 540" font-family="Arial, sans-serif" font-size="13">
+  <style>
+    .box { fill:#fff; stroke:#222; stroke-width:2; }
+    .lbl { fill:#222; text-anchor:middle; }
+    .small { font-size:11px; fill:#444; text-anchor:middle; }
+    .title { font-size:18px; font-weight:bold; text-anchor:middle; }
+    .rnn { fill:#f8d7da; }
+    .tx { fill:#cfe2ff; }
+    .arrow { stroke:#222; stroke-width:1.5; fill:none; marker-end:url(#a); }
+  </style>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10z" fill="#222"/></marker>
+  </defs>
+
+  <text x="475" y="30" class="title">Transformer vs RNN — Why the Switch Happened</text>
+
+  <!-- RNN side -->
+  <text x="200" y="70" class="lbl" font-weight="bold" fill="#d32f2f">RNN / LSTM — sequential</text>
+
+  <rect class="box rnn" x="60" y="90" width="60" height="60" rx="6"/>
+  <text x="90" y="120" class="lbl">x₁</text>
+  <line class="arrow" x1="90" y1="150" x2="90" y2="180"/>
+  <rect class="box rnn" x="60" y="180" width="60" height="60" rx="6"/>
+  <text x="90" y="210" class="lbl">RNN</text>
+  <line class="arrow" x1="120" y1="210" x2="160" y2="210"/>
+  <line class="arrow" x1="90" y1="240" x2="90" y2="270"/>
+  <text x="90" y="290" class="lbl">h₁</text>
+
+  <rect class="box rnn" x="160" y="90" width="60" height="60" rx="6"/>
+  <text x="190" y="120" class="lbl">x₂</text>
+  <line class="arrow" x1="190" y1="150" x2="190" y2="180"/>
+  <rect class="box rnn" x="160" y="180" width="60" height="60" rx="6"/>
+  <text x="190" y="210" class="lbl">RNN</text>
+  <line class="arrow" x1="220" y1="210" x2="260" y2="210"/>
+  <line class="arrow" x1="190" y1="240" x2="190" y2="270"/>
+  <text x="190" y="290" class="lbl">h₂</text>
+
+  <rect class="box rnn" x="260" y="90" width="60" height="60" rx="6"/>
+  <text x="290" y="120" class="lbl">x₃</text>
+  <line class="arrow" x1="290" y1="150" x2="290" y2="180"/>
+  <rect class="box rnn" x="260" y="180" width="60" height="60" rx="6"/>
+  <text x="290" y="210" class="lbl">RNN</text>
+  <line class="arrow" x1="290" y1="240" x2="290" y2="270"/>
+  <text x="290" y="290" class="lbl">h₃</text>
+
+  <text x="200" y="340" class="small" fill="#d32f2f">Step 2 must wait for Step 1's h₁ → CANNOT parallelize across time</text>
+  <text x="200" y="360" class="small" fill="#d32f2f">Information from x₁ traverses 2 RNN cells to reach h₃ → vanishing gradient</text>
+
+  <!-- Divider -->
+  <line x1="475" y1="80" x2="475" y2="380" stroke="#888" stroke-width="1" stroke-dasharray="5,5"/>
+
+  <!-- Transformer side -->
+  <text x="730" y="70" class="lbl" font-weight="bold" fill="#1565c0">Transformer — parallel + global attention</text>
+
+  <rect class="box tx" x="540" y="90" width="60" height="60" rx="6"/>
+  <text x="570" y="120" class="lbl">x₁</text>
+  <rect class="box tx" x="640" y="90" width="60" height="60" rx="6"/>
+  <text x="670" y="120" class="lbl">x₂</text>
+  <rect class="box tx" x="740" y="90" width="60" height="60" rx="6"/>
+  <text x="770" y="120" class="lbl">x₃</text>
+  <rect class="box tx" x="840" y="90" width="60" height="60" rx="6"/>
+  <text x="870" y="120" class="lbl">x₄</text>
+
+  <line class="arrow" x1="570" y1="150" x2="570" y2="180"/>
+  <line class="arrow" x1="670" y1="150" x2="670" y2="180"/>
+  <line class="arrow" x1="770" y1="150" x2="770" y2="180"/>
+  <line class="arrow" x1="870" y1="150" x2="870" y2="180"/>
+
+  <rect class="box tx" x="530" y="180" width="380" height="60" rx="6"/>
+  <text x="720" y="205" class="lbl" font-weight="bold">Self-Attention</text>
+  <text x="720" y="225" class="small">every token attends to every other in O(1) hops</text>
+
+  <line class="arrow" x1="570" y1="240" x2="570" y2="270"/>
+  <line class="arrow" x1="670" y1="240" x2="670" y2="270"/>
+  <line class="arrow" x1="770" y1="240" x2="770" y2="270"/>
+  <line class="arrow" x1="870" y1="240" x2="870" y2="270"/>
+
+  <text x="570" y="290" class="lbl">h₁</text>
+  <text x="670" y="290" class="lbl">h₂</text>
+  <text x="770" y="290" class="lbl">h₃</text>
+  <text x="870" y="290" class="lbl">h₄</text>
+
+  <text x="720" y="340" class="small" fill="#1565c0">All tokens processed in parallel → GPU-friendly, fast training</text>
+  <text x="720" y="360" class="small" fill="#1565c0">Constant path length between any two positions → no vanishing gradient</text>
+
+  <!-- Comparison table -->
+  <rect class="box" x="40" y="400" width="880" height="130" rx="8" fill="#f8f9fa"/>
+  <text x="475" y="423" class="lbl" font-weight="bold">When you're asked "why did transformers replace RNNs?"</text>
+  <text x="60" y="445" font-size="12" fill="#333">• <tspan font-weight="bold">Parallelism</tspan>: RNN sequential O(n) wall-clock; transformer O(1) wall-clock per layer (parallel across tokens)</text>
+  <text x="60" y="463" font-size="12" fill="#333">• <tspan font-weight="bold">Long-range dependencies</tspan>: RNN information path = O(n) cells (vanishing). Transformer = O(1) attention (direct).</text>
+  <text x="60" y="481" font-size="12" fill="#333">• <tspan font-weight="bold">Scaling</tspan>: transformers benefit smoothly from more data + params (scaling laws). RNNs plateau.</text>
+  <text x="60" y="499" font-size="12" fill="#333">• <tspan font-weight="bold">Cost</tspan>: transformer attention is O(n²) compute + memory. FlashAttention, sliding-window, MoE, Mamba mitigate this.</text>
+  <text x="60" y="517" font-size="12" fill="#333">• <tspan font-weight="bold">RNNs still used</tspan>: streaming inference, edge devices, very small models, some time-series.</text>
+</svg>

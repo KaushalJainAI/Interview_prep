@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 330" width="620" height="330">
+<style>
+  .title { font: bold 16px sans-serif; fill: #1a1a1a; }
+  .label { font: 12px sans-serif; fill: #333; }
+  .small { font: 10px sans-serif; fill: #555; }
+  .mono  { font: 13px 'Consolas','Courier New',monospace; fill: #111; }
+  .box   { fill: #f6f8fa; stroke: #444; stroke-width: 1.2; }
+  .box2  { fill: #e6f0ff; stroke: #1f6feb; stroke-width: 1.5; }
+  .box3  { fill: #fff3cd; stroke: #b58900; stroke-width: 1.5; }
+  .box4  { fill: #d4edda; stroke: #1a7f37; stroke-width: 1.5; }
+  .arrow { stroke: #444; stroke-width: 1.6; fill: none; marker-end: url(#arr); }
+  .arrow2{ stroke: #1f6feb; stroke-width: 2; fill: none; marker-end: url(#arrB); }
+  .arrow3{ stroke: #d33; stroke-width: 2; fill: none; marker-end: url(#arrR); }
+  .dim   { stroke: #bbb; stroke-width: 1; fill: none; stroke-dasharray: 3 3; }
+</style>
+<defs>
+  <marker id="arr"  viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M0,0 L10,5 L0,10 Z" fill="#444"/></marker>
+  <marker id="arrB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M0,0 L10,5 L0,10 Z" fill="#1f6feb"/></marker>
+  <marker id="arrR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M0,0 L10,5 L0,10 Z" fill="#d33"/></marker>
+</defs>
+<text x="310" y="22" text-anchor="middle" class="title">1-D DP — Recurrence Chain</text><text x="40" y="60" class="label">Climbing Stairs:  dp[i] = dp[i-1] + dp[i-2]</text><rect x="60" y="90" width="58" height="44" class="box2"/><text x="89" y="118" text-anchor="middle" class="mono">1</text><text x="89" y="85" text-anchor="middle" class="small">i=0</text><rect x="130" y="90" width="58" height="44" class="box2"/><text x="159" y="118" text-anchor="middle" class="mono">1</text><text x="159" y="85" text-anchor="middle" class="small">i=1</text><rect x="200" y="90" width="58" height="44" class="box2"/><text x="229" y="118" text-anchor="middle" class="mono">2</text><text x="229" y="85" text-anchor="middle" class="small">i=2</text><rect x="270" y="90" width="58" height="44" class="box2"/><text x="299" y="118" text-anchor="middle" class="mono">3</text><text x="299" y="85" text-anchor="middle" class="small">i=3</text><rect x="340" y="90" width="58" height="44" class="box2"/><text x="369" y="118" text-anchor="middle" class="mono">5</text><text x="369" y="85" text-anchor="middle" class="small">i=4</text><rect x="410" y="90" width="58" height="44" class="box2"/><text x="439" y="118" text-anchor="middle" class="mono">8</text><text x="439" y="85" text-anchor="middle" class="small">i=5</text><rect x="480" y="90" width="58" height="44" class="box2"/><text x="509" y="118" text-anchor="middle" class="mono">13</text><text x="509" y="85" text-anchor="middle" class="small">i=6</text><path class="arrow2" d="M 248 134 C 260 180 320 180 332 134"/><path class="arrow3" d="M 178 134 C 200 200 320 200 332 134"/><text x="240" y="200" class="small">dp[2] + dp[3] = 2 + 3 = 5</text><text x="40" y="245" class="label">Bottom-up: fill left → right. O(n) time, O(1) space (only last two).</text><text x="40" y="280" class="label">Top-down: recursion + memo. Same complexity, easier to derive.</text><text x="40" y="310" class="small">Key: recurrence + base cases + order of evaluation.</text></svg>

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" width="720" height="380">
+<style>
+  .title { font: bold 16px sans-serif; fill: #1a1a1a; }
+  .label { font: 12px sans-serif; fill: #333; }
+  .small { font: 10px sans-serif; fill: #555; }
+  .mono  { font: 13px 'Consolas','Courier New',monospace; fill: #111; }
+  .box   { fill: #f6f8fa; stroke: #444; stroke-width: 1.2; }
+  .box2  { fill: #e6f0ff; stroke: #1f6feb; stroke-width: 1.5; }
+  .box3  { fill: #fff3cd; stroke: #b58900; stroke-width: 1.5; }
+  .box4  { fill: #d4edda; stroke: #1a7f37; stroke-width: 1.5; }
+  .box5  { fill: #fce7f3; stroke: #be185d; stroke-width: 1.5; }
+  .arrow { stroke: #444; stroke-width: 1.6; fill: none; marker-end: url(#arr); }
+  .arrow2{ stroke: #1f6feb; stroke-width: 2; fill: none; marker-end: url(#arrB); }
+  .arrow3{ stroke: #d33; stroke-width: 2; fill: none; marker-end: url(#arrR); }
+</style>
+<defs>
+  <marker id="arr"  viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#444"/></marker>
+  <marker id="arrB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#1f6feb"/></marker>
+  <marker id="arrR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#d33"/></marker>
+</defs>
+<text x="360" y="22" text-anchor="middle" class="title">Tool / Function Calling Flow</text><rect x="60"  y="80" width="160" height="50" class="box2"/><text x="140" y="110" text-anchor="middle" class="mono">LLM</text><path class="arrow2" d="M 220 100 L 280 100"/><text x="250" y="92" text-anchor="middle" class="small">tool_call(args)</text><rect x="280" y="80" width="160" height="50" class="box3"/><text x="360" y="110" text-anchor="middle" class="mono">Runtime / Router</text><path class="arrow" d="M 440 100 L 500 100"/><rect x="500" y="80" width="160" height="50" class="box4"/><text x="580" y="110" text-anchor="middle" class="mono">Tool function</text><path class="arrow3" d="M 500 160 L 280 160"/><text x="390" y="180" text-anchor="middle" class="small">tool_response (JSON)</text><path class="arrow3" d="M 280 160 L 220 160"/><rect x="280" y="240" width="160" height="50" class="box5"/><text x="360" y="270" text-anchor="middle" class="mono">JSON Schema</text><path class="arrow2" d="M 360 130 L 360 238"/><text x="40" y="330" class="mono">LLM emits structured args; runtime validates against schema, executes, returns result.</text><text x="40" y="352" class="small">MCP standardises this protocol (Anthropic, 2024) — tools/resources/prompts as servers.</text></svg>

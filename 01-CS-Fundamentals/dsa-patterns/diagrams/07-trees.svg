@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 350" width="620" height="350">
+<style>
+  .title { font: bold 16px sans-serif; fill: #1a1a1a; }
+  .label { font: 12px sans-serif; fill: #333; }
+  .small { font: 10px sans-serif; fill: #555; }
+  .mono  { font: 13px 'Consolas','Courier New',monospace; fill: #111; }
+  .box   { fill: #f6f8fa; stroke: #444; stroke-width: 1.2; }
+  .box2  { fill: #e6f0ff; stroke: #1f6feb; stroke-width: 1.5; }
+  .box3  { fill: #fff3cd; stroke: #b58900; stroke-width: 1.5; }
+  .box4  { fill: #d4edda; stroke: #1a7f37; stroke-width: 1.5; }
+  .arrow { stroke: #444; stroke-width: 1.6; fill: none; marker-end: url(#arr); }
+  .arrow2{ stroke: #1f6feb; stroke-width: 2; fill: none; marker-end: url(#arrB); }
+  .arrow3{ stroke: #d33; stroke-width: 2; fill: none; marker-end: url(#arrR); }
+  .dim   { stroke: #bbb; stroke-width: 1; fill: none; stroke-dasharray: 3 3; }
+</style>
+<defs>
+  <marker id="arr"  viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M0,0 L10,5 L0,10 Z" fill="#444"/></marker>
+  <marker id="arrB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M0,0 L10,5 L0,10 Z" fill="#1f6feb"/></marker>
+  <marker id="arrR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M0,0 L10,5 L0,10 Z" fill="#d33"/></marker>
+</defs>
+<text x="310" y="22" text-anchor="middle" class="title">Binary Tree — Traversals</text><line x1="280" y1="102" x2="180" y2="128" stroke="#444" stroke-width="1.5"/><line x1="280" y1="102" x2="380" y2="128" stroke="#444" stroke-width="1.5"/><line x1="180" y1="172" x2="120" y2="198" stroke="#444" stroke-width="1.5"/><line x1="180" y1="172" x2="230" y2="198" stroke="#444" stroke-width="1.5"/><line x1="380" y1="172" x2="330" y2="198" stroke="#444" stroke-width="1.5"/><line x1="380" y1="172" x2="430" y2="198" stroke="#444" stroke-width="1.5"/><circle cx="280" cy="80" r="22" class="box2"/><text x="280" y="85" text-anchor="middle" class="mono">1</text><circle cx="180" cy="150" r="22" class="box2"/><text x="180" y="155" text-anchor="middle" class="mono">2</text><circle cx="380" cy="150" r="22" class="box2"/><text x="380" y="155" text-anchor="middle" class="mono">3</text><circle cx="120" cy="220" r="22" class="box2"/><text x="120" y="225" text-anchor="middle" class="mono">4</text><circle cx="230" cy="220" r="22" class="box2"/><text x="230" y="225" text-anchor="middle" class="mono">5</text><circle cx="330" cy="220" r="22" class="box2"/><text x="330" y="225" text-anchor="middle" class="mono">6</text><circle cx="430" cy="220" r="22" class="box2"/><text x="430" y="225" text-anchor="middle" class="mono">7</text><text x="40" y="270" class="label">Inorder  (L,Node,R):  4 2 5 1 6 3 7</text><text x="40" y="290" class="label">Preorder (Node,L,R):  1 2 4 5 3 6 7</text><text x="40" y="310" class="label">Postorder(L,R,Node):  4 5 2 6 7 3 1</text><text x="40" y="330" class="label">Level   (BFS):        1 2 3 4 5 6 7</text></svg>

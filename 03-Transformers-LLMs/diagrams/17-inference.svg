@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" width="720" height="380">
+<style>
+  .title { font: bold 16px sans-serif; fill: #1a1a1a; }
+  .label { font: 12px sans-serif; fill: #333; }
+  .small { font: 10px sans-serif; fill: #555; }
+  .mono  { font: 13px 'Consolas','Courier New',monospace; fill: #111; }
+  .box   { fill: #f6f8fa; stroke: #444; stroke-width: 1.2; }
+  .box2  { fill: #e6f0ff; stroke: #1f6feb; stroke-width: 1.5; }
+  .box3  { fill: #fff3cd; stroke: #b58900; stroke-width: 1.5; }
+  .box4  { fill: #d4edda; stroke: #1a7f37; stroke-width: 1.5; }
+  .box5  { fill: #fce7f3; stroke: #be185d; stroke-width: 1.5; }
+  .arrow { stroke: #444; stroke-width: 1.6; fill: none; marker-end: url(#arr); }
+  .arrow2{ stroke: #1f6feb; stroke-width: 2; fill: none; marker-end: url(#arrB); }
+  .arrow3{ stroke: #d33; stroke-width: 2; fill: none; marker-end: url(#arrR); }
+</style>
+<defs>
+  <marker id="arr"  viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#444"/></marker>
+  <marker id="arrB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#1f6feb"/></marker>
+  <marker id="arrR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#d33"/></marker>
+</defs>
+<text x="360" y="22" text-anchor="middle" class="title">LLM Inference — Prefill vs Decode</text><rect x="60" y="70" width="280" height="80" class="box2"/><text x="200" y="100" text-anchor="middle" class="label">Prefill</text><text x="200" y="125" text-anchor="middle" class="small">process all N input tokens in parallel</text><text x="200" y="142" text-anchor="middle" class="mono">O(N²) attention</text><path class="arrow" d="M 340 110 L 400 110"/><text x="370" y="100" text-anchor="middle" class="small">KV cache</text><rect x="400" y="70" width="280" height="80" class="box3"/><text x="540" y="100" text-anchor="middle" class="label">Decode</text><text x="540" y="125" text-anchor="middle" class="small">one token at a time, reusing KV cache</text><text x="540" y="142" text-anchor="middle" class="mono">O(N) per new token</text><text x="40" y="195" class="label">KV cache memory: 2 · n_layers · n_heads · head_dim · seq_len · batch · dtype</text><text x="60" y="215" class="mono">LLaMA-7B, ctx=4k, bf16:  ~2 GB per request</text><text x="60" y="235" class="mono">LLaMA-70B, ctx=32k, bf16:  ~40 GB per request</text><text x="40" y="270" class="label">Optimisations:</text><text x="60" y="290" class="mono">• PagedAttention (vLLM) — virtual memory for KV</text><text x="60" y="310" class="mono">• Grouped Query Attention — fewer K,V heads</text><text x="60" y="330" class="mono">• FlashAttention — fused kernels, ~2× speedup</text><text x="60" y="350" class="mono">• Speculative decoding — small draft model</text></svg>

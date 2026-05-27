@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 440" width="740" height="440">
+<style>
+  .title { font: bold 16px sans-serif; fill: #1a1a1a; }
+  .label { font: 12px sans-serif; fill: #333; }
+  .small { font: 10px sans-serif; fill: #555; }
+  .mono  { font: 13px 'Consolas','Courier New',monospace; fill: #111; }
+  .box   { fill: #f6f8fa; stroke: #444; stroke-width: 1.2; }
+  .box2  { fill: #e6f0ff; stroke: #1f6feb; stroke-width: 1.5; }
+  .box3  { fill: #fff3cd; stroke: #b58900; stroke-width: 1.5; }
+  .box4  { fill: #d4edda; stroke: #1a7f37; stroke-width: 1.5; }
+  .box5  { fill: #fce7f3; stroke: #be185d; stroke-width: 1.5; }
+  .arrow { stroke: #444; stroke-width: 1.6; fill: none; marker-end: url(#arr); }
+  .arrow2{ stroke: #1f6feb; stroke-width: 2; fill: none; marker-end: url(#arrB); }
+  .arrow3{ stroke: #d33; stroke-width: 2; fill: none; marker-end: url(#arrR); }
+</style>
+<defs>
+  <marker id="arr"  viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#444"/></marker>
+  <marker id="arrB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#1f6feb"/></marker>
+  <marker id="arrR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#d33"/></marker>
+</defs>
+<text x="370" y="22" text-anchor="middle" class="title">Mixture of Experts (MoE) — Sparse Routing</text><rect x="280" y="60" width="160" height="50" class="box2"/><text x="360" y="92" text-anchor="middle" class="mono">router (gate)</text><text x="40" y="92" class="label">token →</text><path class="arrow" d="M 100 85 L 280 85"/><rect x="80" y="180" width="60" height="46" class="box"/><text x="110" y="207" text-anchor="middle" class="mono">E1</text><line x1="360" y1="110" x2="110" y2="180" stroke="#bbb" stroke-width="0.8"/><rect x="152" y="180" width="60" height="46" class="box"/><text x="182" y="207" text-anchor="middle" class="mono">E2</text><line x1="360" y1="110" x2="182" y2="180" stroke="#bbb" stroke-width="0.8"/><rect x="224" y="180" width="60" height="46" class="box4"/><text x="254" y="207" text-anchor="middle" class="mono">E3</text><line x1="360" y1="110" x2="254" y2="180" stroke="#1f6feb" stroke-width="2"/><text x="254" y="170" text-anchor="middle" class="small" fill="#1f6feb">0.6</text><rect x="296" y="180" width="60" height="46" class="box"/><text x="326" y="207" text-anchor="middle" class="mono">E4</text><line x1="360" y1="110" x2="326" y2="180" stroke="#bbb" stroke-width="0.8"/><rect x="368" y="180" width="60" height="46" class="box"/><text x="398" y="207" text-anchor="middle" class="mono">E5</text><line x1="360" y1="110" x2="398" y2="180" stroke="#bbb" stroke-width="0.8"/><rect x="440" y="180" width="60" height="46" class="box4"/><text x="470" y="207" text-anchor="middle" class="mono">E6</text><line x1="360" y1="110" x2="470" y2="180" stroke="#1f6feb" stroke-width="2"/><text x="470" y="170" text-anchor="middle" class="small" fill="#1f6feb">0.6</text><rect x="512" y="180" width="60" height="46" class="box"/><text x="542" y="207" text-anchor="middle" class="mono">E7</text><line x1="360" y1="110" x2="542" y2="180" stroke="#bbb" stroke-width="0.8"/><rect x="584" y="180" width="60" height="46" class="box"/><text x="614" y="207" text-anchor="middle" class="mono">E8</text><line x1="360" y1="110" x2="614" y2="180" stroke="#bbb" stroke-width="0.8"/><rect x="280" y="270" width="160" height="50" class="box3"/><text x="360" y="302" text-anchor="middle" class="mono">weighted sum</text><path class="arrow" d="M 230 226 L 320 270"/><path class="arrow" d="M 500 226 L 400 270"/><text x="40" y="370" class="mono">Top-k routing: token sent only to top-k experts (k=1 or 2).</text><text x="40" y="390" class="small">Total params huge but per-token FLOPs constant. Aux load-balancing loss prevents expert collapse.</text><text x="40" y="410" class="small">Mixtral 8×7B, GPT-4 (rumoured), Switch-Transformer, DeepSeek-MoE.</text></svg>

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="520" viewBox="0 0 1100 520">
+  <style>
+    .title{font:700 26px Segoe UI,Arial;fill:#172033}.box{fill:#eef6ff;stroke:#1f6feb;stroke-width:2;rx:10}.txt{font:600 16px Segoe UI,Arial;fill:#172033}.small{font:13px Segoe UI,Arial;fill:#334155}.arrow{stroke:#1f6feb;stroke-width:2.2;fill:none;marker-end:url(#m)}
+  </style>
+  <defs><marker id="m" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#1f6feb"/></marker></defs>
+  <text x="550" y="38" text-anchor="middle" class="title">LLD Interview Flow: From Requirements to Classes</text>
+  <g transform="translate(50,105)"><rect width="145" height="80" class="box"/><text x="72" y="31" text-anchor="middle" class="txt">1. Scope</text><text x="72" y="55" text-anchor="middle" class="small">features, actors</text></g>
+  <g transform="translate(230,105)"><rect width="145" height="80" class="box"/><text x="72" y="31" text-anchor="middle" class="txt">2. Entities</text><text x="72" y="55" text-anchor="middle" class="small">nouns -> classes</text></g>
+  <g transform="translate(410,105)"><rect width="145" height="80" class="box"/><text x="72" y="31" text-anchor="middle" class="txt">3. Behaviors</text><text x="72" y="55" text-anchor="middle" class="small">verbs -> methods</text></g>
+  <g transform="translate(590,105)"><rect width="145" height="80" class="box"/><text x="72" y="31" text-anchor="middle" class="txt">4. Relations</text><text x="72" y="55" text-anchor="middle" class="small">has-a, is-a</text></g>
+  <g transform="translate(770,105)"><rect width="145" height="80" class="box"/><text x="72" y="31" text-anchor="middle" class="txt">5. Interfaces</text><text x="72" y="55" text-anchor="middle" class="small">extension points</text></g>
+  <path class="arrow" d="M195 145 H230"/><path class="arrow" d="M375 145 H410"/><path class="arrow" d="M555 145 H590"/><path class="arrow" d="M735 145 H770"/>
+  <g transform="translate(230,280)"><rect width="170" height="90" class="box"/><text x="85" y="34" text-anchor="middle" class="txt">6. Edge Cases</text><text x="85" y="58" text-anchor="middle" class="small">invalid states, errors</text></g>
+  <g transform="translate(465,280)"><rect width="170" height="90" class="box"/><text x="85" y="34" text-anchor="middle" class="txt">7. Code</text><text x="85" y="58" text-anchor="middle" class="small">skeleton, enums</text></g>
+  <g transform="translate(700,280)"><rect width="170" height="90" class="box"/><text x="85" y="34" text-anchor="middle" class="txt">8. Extend</text><text x="85" y="58" text-anchor="middle" class="small">new rules/types</text></g>
+  <path class="arrow" d="M842 185 C842 240 315 230 315 280"/><path class="arrow" d="M400 325 H465"/><path class="arrow" d="M635 325 H700"/>
+  <text x="550" y="445" text-anchor="middle" class="small">Strong answer = small responsibilities + interfaces at change points + edge cases + runnable-looking code.</text>
+</svg>
+

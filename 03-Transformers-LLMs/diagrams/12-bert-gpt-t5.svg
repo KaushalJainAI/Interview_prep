@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" width="720" height="360">
+<style>
+  .title { font: bold 16px sans-serif; fill: #1a1a1a; }
+  .label { font: 12px sans-serif; fill: #333; }
+  .small { font: 10px sans-serif; fill: #555; }
+  .mono  { font: 13px 'Consolas','Courier New',monospace; fill: #111; }
+  .box   { fill: #f6f8fa; stroke: #444; stroke-width: 1.2; }
+  .box2  { fill: #e6f0ff; stroke: #1f6feb; stroke-width: 1.5; }
+  .box3  { fill: #fff3cd; stroke: #b58900; stroke-width: 1.5; }
+  .box4  { fill: #d4edda; stroke: #1a7f37; stroke-width: 1.5; }
+  .box5  { fill: #fce7f3; stroke: #be185d; stroke-width: 1.5; }
+  .arrow { stroke: #444; stroke-width: 1.6; fill: none; marker-end: url(#arr); }
+  .arrow2{ stroke: #1f6feb; stroke-width: 2; fill: none; marker-end: url(#arrB); }
+  .arrow3{ stroke: #d33; stroke-width: 2; fill: none; marker-end: url(#arrR); }
+</style>
+<defs>
+  <marker id="arr"  viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#444"/></marker>
+  <marker id="arrB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#1f6feb"/></marker>
+  <marker id="arrR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#d33"/></marker>
+</defs>
+<text x="360" y="22" text-anchor="middle" class="title">Transformer Families — BERT vs GPT vs T5</text><rect x="80" y="60" width="180" height="46" class="box2"/><text x="170" y="88" text-anchor="middle" class="mono">BERT (encoder)</text><rect x="80" y="120" width="180" height="32" class="box"/><text x="90" y="140" class="mono">bidirectional attn</text><rect x="80" y="158" width="180" height="32" class="box"/><text x="90" y="178" class="mono">masked LM + NSP</text><rect x="80" y="196" width="180" height="32" class="box"/><text x="90" y="216" class="mono">[CLS] / [SEP]</text><rect x="80" y="234" width="180" height="32" class="box"/><text x="90" y="254" class="mono">Classify / NER / QA</text><rect x="280" y="60" width="180" height="46" class="box3"/><text x="370" y="88" text-anchor="middle" class="mono">GPT (decoder)</text><rect x="280" y="120" width="180" height="32" class="box"/><text x="290" y="140" class="mono">causal attn</text><rect x="280" y="158" width="180" height="32" class="box"/><text x="290" y="178" class="mono">next-token LM</text><rect x="280" y="196" width="180" height="32" class="box"/><text x="290" y="216" class="mono">auto-regressive</text><rect x="280" y="234" width="180" height="32" class="box"/><text x="290" y="254" class="mono">Generate / chat</text><rect x="480" y="60" width="180" height="46" class="box4"/><text x="570" y="88" text-anchor="middle" class="mono">T5 (enc-dec)</text><rect x="480" y="120" width="180" height="32" class="box"/><text x="490" y="140" class="mono">enc bidi, dec causal</text><rect x="480" y="158" width="180" height="32" class="box"/><text x="490" y="178" class="mono">text-to-text</text><rect x="480" y="196" width="180" height="32" class="box"/><text x="490" y="216" class="mono">span corruption</text><rect x="480" y="234" width="180" height="32" class="box"/><text x="490" y="254" class="mono">Translate / summarise</text><text x="40" y="305" class="mono">All three use the same Transformer block; differences = attention mask + objective + architecture.</text><text x="40" y="330" class="small">2024+: decoder-only dominates (LLaMA, GPT, Claude, Mistral). Encoder-only retains a niche in retrieval/classification.</text></svg>

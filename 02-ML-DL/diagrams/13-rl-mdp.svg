@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" width="720" height="360">
+<style>
+  .title { font: bold 16px sans-serif; fill: #1a1a1a; }
+  .label { font: 12px sans-serif; fill: #333; }
+  .small { font: 10px sans-serif; fill: #555; }
+  .mono  { font: 13px 'Consolas','Courier New',monospace; fill: #111; }
+  .box   { fill: #f6f8fa; stroke: #444; stroke-width: 1.2; }
+  .box2  { fill: #e6f0ff; stroke: #1f6feb; stroke-width: 1.5; }
+  .box3  { fill: #fff3cd; stroke: #b58900; stroke-width: 1.5; }
+  .box4  { fill: #d4edda; stroke: #1a7f37; stroke-width: 1.5; }
+  .box5  { fill: #fce7f3; stroke: #be185d; stroke-width: 1.5; }
+  .arrow { stroke: #444; stroke-width: 1.6; fill: none; marker-end: url(#arr); }
+  .arrow2{ stroke: #1f6feb; stroke-width: 2; fill: none; marker-end: url(#arrB); }
+  .arrow3{ stroke: #d33; stroke-width: 2; fill: none; marker-end: url(#arrR); }
+</style>
+<defs>
+  <marker id="arr"  viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#444"/></marker>
+  <marker id="arrB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#1f6feb"/></marker>
+  <marker id="arrR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#d33"/></marker>
+</defs>
+<text x="360" y="22" text-anchor="middle" class="title">Reinforcement Learning — Agent-Environment Loop</text><rect x="80" y="100" width="180" height="80" class="box2"/><text x="170" y="145" text-anchor="middle" class="label">Agent</text><text x="170" y="165" text-anchor="middle" class="small">policy π(a|s)</text><rect x="440" y="100" width="180" height="80" class="box4"/><text x="530" y="145" text-anchor="middle" class="label">Environment</text><text x="530" y="165" text-anchor="middle" class="small">P(s'|s,a), R(s,a)</text><path class="arrow2" d="M 260 130 L 440 130"/><text x="350" y="120" text-anchor="middle" class="mono">action a_t</text><path class="arrow3" d="M 440 155 L 260 155"/><text x="350" y="180" text-anchor="middle" class="mono">state s_{t+1}, reward r_{t+1}</text><text x="40" y="240" class="mono">Goal: maximise E[Σ γᵗ rₜ]</text><text x="40" y="265" class="mono">Bellman:  V(s) = max_a [R(s,a) + γ Σ P(s'|s,a) V(s')]</text><text x="40" y="295" class="mono">Q-learning: Q(s,a) ← Q(s,a) + α [r + γ max_a' Q(s',a') − Q(s,a)]</text><text x="40" y="330" class="small">Model-free TD update; off-policy because we use max over next actions, not the policy.</text></svg>

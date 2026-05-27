@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 300" width="560" height="300">
+<style>
+  .title { font: bold 16px sans-serif; fill: #1a1a1a; }
+  .label { font: 12px sans-serif; fill: #333; }
+  .small { font: 10px sans-serif; fill: #555; }
+  .mono  { font: 13px 'Consolas','Courier New',monospace; fill: #111; }
+  .box   { fill: #f6f8fa; stroke: #444; stroke-width: 1.2; }
+  .box2  { fill: #e6f0ff; stroke: #1f6feb; stroke-width: 1.5; }
+  .box3  { fill: #fff3cd; stroke: #b58900; stroke-width: 1.5; }
+  .box4  { fill: #d4edda; stroke: #1a7f37; stroke-width: 1.5; }
+  .arrow { stroke: #444; stroke-width: 1.6; fill: none; marker-end: url(#arr); }
+  .arrow2{ stroke: #1f6feb; stroke-width: 2; fill: none; marker-end: url(#arrB); }
+  .arrow3{ stroke: #d33; stroke-width: 2; fill: none; marker-end: url(#arrR); }
+  .dim   { stroke: #bbb; stroke-width: 1; fill: none; stroke-dasharray: 3 3; }
+</style>
+<defs>
+  <marker id="arr"  viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M0,0 L10,5 L0,10 Z" fill="#444"/></marker>
+  <marker id="arrB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M0,0 L10,5 L0,10 Z" fill="#1f6feb"/></marker>
+  <marker id="arrR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M0,0 L10,5 L0,10 Z" fill="#d33"/></marker>
+</defs>
+<text x="280" y="22" text-anchor="middle" class="title">Two-Sum via Hashmap (Arrays &amp; Hashing)</text><text x="40" y="60" class="label">Array (scan once):</text><text x="63" y="72" text-anchor="middle" class="small">0</text><text x="109" y="72" text-anchor="middle" class="small">1</text><text x="155" y="72" text-anchor="middle" class="small">2</text><text x="201" y="72" text-anchor="middle" class="small">3</text><rect x="40" y="85" width="46" height="46" class="box"/><text x="63.0" y="113.0" text-anchor="middle" class="mono">2</text><rect x="86" y="85" width="46" height="46" class="box2"/><text x="109.0" y="113.0" text-anchor="middle" class="mono">7</text><rect x="132" y="85" width="46" height="46" class="box"/><text x="155.0" y="113.0" text-anchor="middle" class="mono">11</text><rect x="178" y="85" width="46" height="46" class="box"/><text x="201.0" y="113.0" text-anchor="middle" class="mono">15</text><path class="arrow2" d="M 130 155 C 130 200 320 200 320 175"/><text x="220" y="195" class="small">look up complement (9-7=2)</text><text x="320" y="70" class="label">Hashmap (seen values → idx):</text><rect x="280" y="85" width="180" height="80" class="box4"/><text x="295" y="115" class="mono">2 → 0  ✓ found!</text><text x="295" y="140" class="mono">target = 9</text><text x="295" y="158" class="mono">return [0, 1]</text><text x="40" y="250" class="label">Idea: trade O(n) space for O(1) lookup; one pass replaces nested loop.</text><text x="40" y="272" class="small">Time O(n) · Space O(n)</text></svg>

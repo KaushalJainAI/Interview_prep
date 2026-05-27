@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 350" width="780" height="350">
+<style>
+  .title { font: bold 16px sans-serif; fill: #1a1a1a; }
+  .label { font: 12px sans-serif; fill: #333; }
+  .small { font: 10px sans-serif; fill: #555; }
+  .mono  { font: 13px 'Consolas','Courier New',monospace; fill: #111; }
+  .box   { fill: #f6f8fa; stroke: #444; stroke-width: 1.2; }
+  .box2  { fill: #e6f0ff; stroke: #1f6feb; stroke-width: 1.5; }
+  .box3  { fill: #fff3cd; stroke: #b58900; stroke-width: 1.5; }
+  .box4  { fill: #d4edda; stroke: #1a7f37; stroke-width: 1.5; }
+  .box5  { fill: #fce7f3; stroke: #be185d; stroke-width: 1.5; }
+  .arrow { stroke: #444; stroke-width: 1.6; fill: none; marker-end: url(#arr); }
+  .arrow2{ stroke: #1f6feb; stroke-width: 2; fill: none; marker-end: url(#arrB); }
+  .arrow3{ stroke: #d33; stroke-width: 2; fill: none; marker-end: url(#arrR); }
+</style>
+<defs>
+  <marker id="arr"  viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#444"/></marker>
+  <marker id="arrB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#1f6feb"/></marker>
+  <marker id="arrR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#d33"/></marker>
+</defs>
+<text x="390" y="22" text-anchor="middle" class="title">CI/CD Pipeline</text><rect x="20" y="78" width="120" height="44" class="box"/><text x="80" y="105" text-anchor="middle" class="mono">commit/PR</text><rect x="160" y="78" width="120" height="44" class="box2"/><text x="220" y="105" text-anchor="middle" class="mono">CI: lint + test</text><rect x="300" y="78" width="120" height="44" class="box3"/><text x="360" y="105" text-anchor="middle" class="mono">Build image</text><rect x="440" y="78" width="120" height="44" class="box3"/><text x="500" y="105" text-anchor="middle" class="mono">Push to registry</text><rect x="580" y="78" width="120" height="44" class="box4"/><text x="640" y="105" text-anchor="middle" class="mono">Deploy staging</text><rect x="20" y="198" width="120" height="44" class="box4"/><text x="80" y="225" text-anchor="middle" class="mono">E2E tests</text><rect x="160" y="198" width="120" height="44" class="box5"/><text x="220" y="225" text-anchor="middle" class="mono">Approve</text><rect x="300" y="198" width="120" height="44" class="box5"/><text x="360" y="225" text-anchor="middle" class="mono">Deploy prod</text><rect x="440" y="198" width="120" height="44" class="box4"/><text x="500" y="225" text-anchor="middle" class="mono">Smoke + monitor</text><rect x="580" y="198" width="120" height="44" class="box"/><text x="640" y="225" text-anchor="middle" class="mono">Rollback?</text><path class="arrow" d="M 140 100 L 160 100"/><path class="arrow" d="M 280 100 L 300 100"/><path class="arrow" d="M 420 100 L 440 100"/><path class="arrow" d="M 560 100 L 580 100"/><path class="arrow" d="M 640 122 L 640 200"/><path class="arrow" d="M 140 220 L 160 220"/><path class="arrow" d="M 280 220 L 300 220"/><path class="arrow" d="M 420 220 L 440 220"/><path class="arrow" d="M 560 220 L 580 220"/><text x="40" y="290" class="mono">Branch protection · required checks · environments + approvals · concurrency locks</text><text x="40" y="312" class="mono">GitHub Actions / GitLab CI / CircleCI · Argo CD for K8s GitOps</text></svg>

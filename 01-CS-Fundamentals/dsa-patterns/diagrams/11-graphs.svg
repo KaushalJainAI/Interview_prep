@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 380" width="660" height="380">
+<style>
+  .title { font: bold 16px sans-serif; fill: #1a1a1a; }
+  .label { font: 12px sans-serif; fill: #333; }
+  .small { font: 10px sans-serif; fill: #555; }
+  .mono  { font: 13px 'Consolas','Courier New',monospace; fill: #111; }
+  .box   { fill: #f6f8fa; stroke: #444; stroke-width: 1.2; }
+  .box2  { fill: #e6f0ff; stroke: #1f6feb; stroke-width: 1.5; }
+  .box3  { fill: #fff3cd; stroke: #b58900; stroke-width: 1.5; }
+  .box4  { fill: #d4edda; stroke: #1a7f37; stroke-width: 1.5; }
+  .arrow { stroke: #444; stroke-width: 1.6; fill: none; marker-end: url(#arr); }
+  .arrow2{ stroke: #1f6feb; stroke-width: 2; fill: none; marker-end: url(#arrB); }
+  .arrow3{ stroke: #d33; stroke-width: 2; fill: none; marker-end: url(#arrR); }
+  .dim   { stroke: #bbb; stroke-width: 1; fill: none; stroke-dasharray: 3 3; }
+</style>
+<defs>
+  <marker id="arr"  viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M0,0 L10,5 L0,10 Z" fill="#444"/></marker>
+  <marker id="arrB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M0,0 L10,5 L0,10 Z" fill="#1f6feb"/></marker>
+  <marker id="arrR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M0,0 L10,5 L0,10 Z" fill="#d33"/></marker>
+</defs>
+<text x="330" y="22" text-anchor="middle" class="title">Graph Traversal — BFS Layers vs DFS</text><line x1="120" y1="100" x2="260" y2="80" stroke="#666" stroke-width="1.4"/><line x1="120" y1="100" x2="180" y2="200" stroke="#666" stroke-width="1.4"/><line x1="260" y1="80" x2="400" y2="100" stroke="#666" stroke-width="1.4"/><line x1="260" y1="80" x2="180" y2="200" stroke="#666" stroke-width="1.4"/><line x1="400" y1="100" x2="340" y2="200" stroke="#666" stroke-width="1.4"/><line x1="180" y1="200" x2="340" y2="200" stroke="#666" stroke-width="1.4"/><line x1="180" y1="200" x2="260" y2="300" stroke="#666" stroke-width="1.4"/><line x1="340" y1="200" x2="260" y2="300" stroke="#666" stroke-width="1.4"/><circle cx="120" cy="100" r="22" fill="white" stroke="#1f6feb" stroke-width="2.4"/><text x="120" y="105" text-anchor="middle" class="mono">A</text><text x="120" y="72" text-anchor="middle" class="small">L0</text><circle cx="260" cy="80" r="22" fill="white" stroke="#1f6feb" stroke-width="2.4"/><text x="260" y="85" text-anchor="middle" class="mono">B</text><text x="260" y="52" text-anchor="middle" class="small">L1</text><circle cx="400" cy="100" r="22" fill="white" stroke="#1a7f37" stroke-width="2.4"/><text x="400" y="105" text-anchor="middle" class="mono">C</text><text x="400" y="72" text-anchor="middle" class="small">L2</text><circle cx="180" cy="200" r="22" fill="white" stroke="#1f6feb" stroke-width="2.4"/><text x="180" y="205" text-anchor="middle" class="mono">D</text><text x="180" y="172" text-anchor="middle" class="small">L1</text><circle cx="340" cy="200" r="22" fill="white" stroke="#1a7f37" stroke-width="2.4"/><text x="340" y="205" text-anchor="middle" class="mono">E</text><text x="340" y="172" text-anchor="middle" class="small">L2</text><circle cx="260" cy="300" r="22" fill="white" stroke="#b58900" stroke-width="2.4"/><text x="260" y="305" text-anchor="middle" class="mono">F</text><text x="260" y="272" text-anchor="middle" class="small">L3</text><text x="460" y="110" class="label">BFS from A:</text><text x="460" y="130" class="mono">L0: A</text><text x="460" y="150" class="mono">L1: B, D</text><text x="460" y="170" class="mono">L2: C, E</text><text x="460" y="190" class="mono">L3: F</text><text x="460" y="225" class="label">DFS preorder:</text><text x="460" y="245" class="mono">A B C E D F</text><text x="40" y="360" class="small">BFS = queue, gives shortest path in unweighted graph. DFS = stack/recursion, gives topo &amp; SCC.</text></svg>

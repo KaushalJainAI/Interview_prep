@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950 540" font-family="Arial, sans-serif" font-size="13">
+  <style>
+    .box { fill:#fff; stroke:#222; stroke-width:2; }
+    .lbl { fill:#222; text-anchor:middle; }
+    .small { font-size:11px; fill:#444; text-anchor:middle; }
+    .title { font-size:18px; font-weight:bold; text-anchor:middle; }
+    .frozen { fill:#eee; stroke:#666; }
+    .trainable { fill:#d4edda; stroke:#198754; stroke-width:2.5; }
+    .out { fill:#cfe2ff; }
+    .arrow { stroke:#222; stroke-width:1.8; fill:none; marker-end:url(#a); }
+  </style>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10z" fill="#222"/></marker>
+  </defs>
+
+  <text x="475" y="30" class="title">LoRA — Low-Rank Adaptation of Frozen Weights</text>
+  <text x="475" y="50" class="small">Train ~0.1-1% of params, get ~full-FT quality, ship tiny adapter files</text>
+
+  <!-- Standard fine-tune side -->
+  <text x="200" y="90" class="lbl" font-weight="bold">Standard fine-tune (update full W)</text>
+
+  <rect class="box trainable" x="60" y="110" width="280" height="100" rx="6"/>
+  <text x="200" y="138" class="lbl" font-weight="bold">W ∈ ℝ^(d × k)</text>
+  <text x="200" y="160" class="small">full weight matrix — all updated</text>
+  <text x="200" y="180" class="small">e.g. Llama-7B has ~7B trainable params</text>
+  <text x="200" y="198" class="small">→ huge memory (gradients + optimizer state)</text>
+
+  <text x="200" y="240" class="small">y = W · x</text>
+
+  <!-- Divider -->
+  <line x1="475" y1="90" x2="475" y2="490" stroke="#888" stroke-dasharray="5,5"/>
+
+  <!-- LoRA side -->
+  <text x="730" y="90" class="lbl" font-weight="bold">LoRA — freeze W, learn low-rank ΔW</text>
+
+  <!-- Frozen W -->
+  <rect class="box frozen" x="540" y="110" width="180" height="100" rx="6"/>
+  <text x="630" y="135" class="lbl" font-weight="bold">W  (FROZEN)</text>
+  <text x="630" y="155" class="small">d × k matrix</text>
+  <text x="630" y="175" class="small">no gradient, no update</text>
+  <text x="630" y="193" class="small">0 trainable params</text>
+
+  <!-- Input x -->
+  <rect class="box" x="500" y="290" width="50" height="40" rx="6"/>
+  <text x="525" y="315" class="lbl">x</text>
+
+  <!-- W path -->
+  <line class="arrow" x1="550" y1="310" x2="600" y2="310"/>
+  <line class="arrow" x1="630" y1="220" x2="630" y2="300"/>
+  <text x="540" y="245" class="small">frozen</text>
+
+  <!-- B and A matrices -->
+  <rect class="box trainable" x="760" y="120" width="60" height="80" rx="6"/>
+  <text x="790" y="155" class="lbl" font-weight="bold">A</text>
+  <text x="790" y="173" class="small">r × k</text>
+  <text x="790" y="190" class="small">init: gaussian</text>
+
+  <rect class="box trainable" x="840" y="120" width="60" height="80" rx="6"/>
+  <text x="870" y="155" class="lbl" font-weight="bold">B</text>
+  <text x="870" y="173" class="small">d × r</text>
+  <text x="870" y="190" class="small">init: zeros</text>
+
+  <text x="830" y="232" class="lbl">ΔW = B · A   (rank r)</text>
+  <text x="830" y="248" class="small">r ∈ {8, 16, 32, 64} typical</text>
+
+  <!-- Adapter path -->
+  <line class="arrow" x1="550" y1="310" x2="760" y2="310"/>
+  <line class="arrow" x1="790" y1="200" x2="790" y2="300"/>
+  <line class="arrow" x1="870" y1="200" x2="870" y2="300"/>
+
+  <!-- Sum -->
+  <circle cx="700" cy="370" r="14" fill="#fff" stroke="#222" stroke-width="2"/>
+  <text x="700" y="375" class="lbl">+</text>
+  <line class="arrow" x1="630" y1="335" x2="688" y2="362"/>
+  <line class="arrow" x1="830" y1="335" x2="712" y2="362"/>
+
+  <line class="arrow" x1="700" y1="384" x2="700" y2="420"/>
+
+  <rect class="box out" x="640" y="420" width="120" height="40" rx="6"/>
+  <text x="700" y="445" class="lbl">y = (W + BA) x</text>
+
+  <!-- Math panel -->
+  <rect class="box" x="40" y="490" width="880" height="35" rx="8" fill="#f8f9fa"/>
+  <text x="60" y="513" font-size="12" fill="#333">y = W·x + B·A·x  ·  Only A,B trained  ·  Llama-7B with r=8 LoRA on Q,V projections ≈ 4M params (0.06% of full)  ·  At inference: merge W ← W+BA, zero added latency</text>
+</svg>

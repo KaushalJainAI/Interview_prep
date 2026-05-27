@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 340" width="560" height="340">
+<style>
+  .title { font: bold 16px sans-serif; fill: #1a1a1a; }
+  .label { font: 12px sans-serif; fill: #333; }
+  .small { font: 10px sans-serif; fill: #555; }
+  .mono  { font: 13px 'Consolas','Courier New',monospace; fill: #111; }
+  .box   { fill: #f6f8fa; stroke: #444; stroke-width: 1.2; }
+  .box2  { fill: #e6f0ff; stroke: #1f6feb; stroke-width: 1.5; }
+  .box3  { fill: #fff3cd; stroke: #b58900; stroke-width: 1.5; }
+  .box4  { fill: #d4edda; stroke: #1a7f37; stroke-width: 1.5; }
+  .arrow { stroke: #444; stroke-width: 1.6; fill: none; marker-end: url(#arr); }
+  .arrow2{ stroke: #1f6feb; stroke-width: 2; fill: none; marker-end: url(#arrB); }
+  .arrow3{ stroke: #d33; stroke-width: 2; fill: none; marker-end: url(#arrR); }
+  .dim   { stroke: #bbb; stroke-width: 1; fill: none; stroke-dasharray: 3 3; }
+</style>
+<defs>
+  <marker id="arr"  viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M0,0 L10,5 L0,10 Z" fill="#444"/></marker>
+  <marker id="arrB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M0,0 L10,5 L0,10 Z" fill="#1f6feb"/></marker>
+  <marker id="arrR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M0,0 L10,5 L0,10 Z" fill="#d33"/></marker>
+</defs>
+<text x="280" y="22" text-anchor="middle" class="title">Two Pointers — Converging on Target</text><text x="40" y="60" class="label">Sorted array · target sum = 7</text><rect x="40" y="80" width="46" height="46" class="box"/><text x="63.0" y="108.0" text-anchor="middle" class="mono">-4</text><rect x="92" y="80" width="46" height="46" class="box2"/><text x="115.0" y="108.0" text-anchor="middle" class="mono">-1</text><rect x="144" y="80" width="46" height="46" class="box"/><text x="167.0" y="108.0" text-anchor="middle" class="mono">0</text><rect x="196" y="80" width="46" height="46" class="box"/><text x="219.0" y="108.0" text-anchor="middle" class="mono">3</text><rect x="248" y="80" width="46" height="46" class="box"/><text x="271.0" y="108.0" text-anchor="middle" class="mono">5</text><rect x="300" y="80" width="46" height="46" class="box3"/><text x="323.0" y="108.0" text-anchor="middle" class="mono">8</text><rect x="352" y="80" width="46" height="46" class="box"/><text x="375.0" y="108.0" text-anchor="middle" class="mono">11</text><text x="63" y="150" text-anchor="middle" class="mono">L</text><path class="arrow2" d="M 63 145 L 63 128"/><text x="323" y="150" text-anchor="middle" class="mono">R</text><path class="arrow3" d="M 323 145 L 323 128"/><text x="40" y="190" class="label">arr[L] + arr[R] = -1 + 8 = 7 ✓</text><text x="40" y="225" class="label">Decision rule:</text><text x="60" y="247" class="mono">sum &lt; target → L++   (need larger)</text><text x="60" y="267" class="mono">sum &gt; target → R--   (need smaller)</text><text x="60" y="287" class="mono">sum = target → record &amp; move</text><text x="40" y="320" class="small">Each step shrinks window by 1 → O(n) total.</text></svg>

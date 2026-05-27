@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 470" width="820" height="470">
+<style>
+  .title { font: bold 16px sans-serif; fill: #1a1a1a; }
+  .label { font: 12px sans-serif; fill: #333; }
+  .small { font: 10px sans-serif; fill: #555; }
+  .mono  { font: 13px 'Consolas','Courier New',monospace; fill: #111; }
+  .box   { fill: #f6f8fa; stroke: #444; stroke-width: 1.2; }
+  .box2  { fill: #e6f0ff; stroke: #1f6feb; stroke-width: 1.5; }
+  .box3  { fill: #fff3cd; stroke: #b58900; stroke-width: 1.5; }
+  .box4  { fill: #d4edda; stroke: #1a7f37; stroke-width: 1.5; }
+  .box5  { fill: #fce7f3; stroke: #be185d; stroke-width: 1.5; }
+  .arrow { stroke: #444; stroke-width: 1.6; fill: none; marker-end: url(#arr); }
+  .arrow2{ stroke: #1f6feb; stroke-width: 2; fill: none; marker-end: url(#arrB); }
+</style>
+<defs>
+  <marker id="arr"  viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#444"/></marker>
+  <marker id="arrB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#1f6feb"/></marker>
+</defs>
+<text x="410" y="22" text-anchor="middle" class="title">Job-Search Funnel — Apps to Offers</text><rect x="80.0" y="58" width="600" height="44" class="box"/><text x="380" y="85" text-anchor="middle" class="mono">Applications sent</text><text x="695.0" y="85" class="mono">≈ 100</text><rect x="160.0" y="118" width="440" height="44" class="box2"/><text x="380" y="145" text-anchor="middle" class="mono">Recruiter calls</text><text x="615.0" y="145" class="mono">≈ 20</text><rect x="220.0" y="178" width="320" height="44" class="box3"/><text x="380" y="205" text-anchor="middle" class="mono">Tech screens</text><text x="555.0" y="205" class="mono">≈ 8</text><rect x="280.0" y="238" width="200" height="44" class="box4"/><text x="380" y="265" text-anchor="middle" class="mono">On-site / final</text><text x="495.0" y="265" class="mono">≈ 3</text><rect x="335.0" y="298" width="90" height="44" class="box5"/><text x="380" y="325" text-anchor="middle" class="mono">Offers</text><text x="440.0" y="325" class="mono">≈ 1</text><text x="40" y="390" class="label">Conversion rates (typical for mid-level AI roles, India 2026):</text><text x="60" y="410" class="mono">app→recruiter ~20%, recruiter→screen ~40%, screen→onsite ~40%, onsite→offer ~30%</text><text x="40" y="438" class="small">Aim for 100+ targeted apps; referrals push conversion well past these baselines.</text></svg>

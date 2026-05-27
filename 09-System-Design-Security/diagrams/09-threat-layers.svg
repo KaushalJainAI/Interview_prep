@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 440" width="720" height="440">
+<style>
+  .title { font: bold 16px sans-serif; fill: #1a1a1a; }
+  .label { font: 12px sans-serif; fill: #333; }
+  .small { font: 10px sans-serif; fill: #555; }
+  .mono  { font: 13px 'Consolas','Courier New',monospace; fill: #111; }
+  .box   { fill: #f6f8fa; stroke: #444; stroke-width: 1.2; }
+  .box2  { fill: #e6f0ff; stroke: #1f6feb; stroke-width: 1.5; }
+  .box3  { fill: #fff3cd; stroke: #b58900; stroke-width: 1.5; }
+  .box4  { fill: #d4edda; stroke: #1a7f37; stroke-width: 1.5; }
+  .box5  { fill: #fce7f3; stroke: #be185d; stroke-width: 1.5; }
+  .arrow { stroke: #444; stroke-width: 1.6; fill: none; marker-end: url(#arr); }
+  .arrow2{ stroke: #1f6feb; stroke-width: 2; fill: none; marker-end: url(#arrB); }
+  .arrow3{ stroke: #d33; stroke-width: 2; fill: none; marker-end: url(#arrR); }
+</style>
+<defs>
+  <marker id="arr"  viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#444"/></marker>
+  <marker id="arrB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#1f6feb"/></marker>
+  <marker id="arrR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#d33"/></marker>
+</defs>
+<text x="360" y="22" text-anchor="middle" class="title">LLM Security -- Defence in Depth</text><rect x="60" y="58" width="220" height="44" class="box2"/><text x="170" y="85" text-anchor="middle" class="mono">Input filters</text><text x="300" y="85" class="small">PII redact, prompt-injection classifier</text><rect x="60" y="108" width="220" height="44" class="box3"/><text x="170" y="135" text-anchor="middle" class="mono">Role separation</text><text x="300" y="135" class="small">untrusted text in user role only; delimit</text><rect x="60" y="158" width="220" height="44" class="box4"/><text x="170" y="185" text-anchor="middle" class="mono">Tool allowlist</text><text x="300" y="185" class="small">scoped auth, validated args, allow only safe ops</text><rect x="60" y="208" width="220" height="44" class="box5"/><text x="170" y="235" text-anchor="middle" class="mono">Output filters</text><text x="300" y="235" class="small">schema validate, PII scrub, safety classifier</text><rect x="60" y="258" width="220" height="44" class="box"/><text x="170" y="285" text-anchor="middle" class="mono">Human approval</text><text x="300" y="285" class="small">gate destructive / costly / cross-tenant</text><rect x="60" y="308" width="220" height="44" class="box2"/><text x="170" y="335" text-anchor="middle" class="mono">Audit + IR</text><text x="300" y="335" class="small">log everything (redacted); rotate on leak</text><text x="40" y="395" class="mono">No single layer is 100%. Defence in depth: assume any one will fail.</text><text x="40" y="415" class="small">Especially for prompt injection -- benchmark bypasses keep climbing year-on-year.</text></svg>

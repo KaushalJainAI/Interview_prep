@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950 540" font-family="Arial, sans-serif" font-size="13">
+  <style>
+    .box { fill:#fff; stroke:#222; stroke-width:2; }
+    .lbl { fill:#222; text-anchor:middle; }
+    .small { font-size:11px; fill:#444; text-anchor:middle; }
+    .title { font-size:18px; font-weight:bold; text-anchor:middle; }
+    .hw { fill:#444; stroke:#222; }
+    .hw-t { fill:#fff; }
+    .os { fill:#cfe2ff; }
+    .docker { fill:#fff3cd; }
+    .vm-os { fill:#f8d7da; }
+    .app { fill:#d4edda; }
+  </style>
+
+  <text x="475" y="30" class="title">Docker (containers) vs Virtual Machines</text>
+  <text x="475" y="50" class="small">Containers share host kernel — fast, lightweight. VMs run full guest OS — strong isolation, heavy.</text>
+
+  <!-- VM side -->
+  <text x="200" y="85" class="lbl" font-weight="bold">Virtual Machines</text>
+
+  <!-- VM hardware -->
+  <rect class="hw box" x="60" y="100" width="280" height="35" rx="4"/>
+  <text x="200" y="123" class="lbl hw-t">Physical Hardware</text>
+
+  <!-- Host OS -->
+  <rect class="os box" x="60" y="140" width="280" height="35" rx="4"/>
+  <text x="200" y="163" class="lbl">Host OS</text>
+
+  <!-- Hypervisor -->
+  <rect class="box" x="60" y="180" width="280" height="35" rx="4" fill="#999"/>
+  <text x="200" y="203" class="lbl">Hypervisor (KVM, VMware, Hyper-V)</text>
+
+  <!-- VM 1 -->
+  <rect class="vm-os box" x="60" y="225" width="130" height="35" rx="4"/>
+  <text x="125" y="248" class="lbl small">Guest OS  (Linux)</text>
+  <rect class="box" x="60" y="265" width="130" height="30" rx="4" fill="#eee"/>
+  <text x="125" y="285" class="lbl small">libs / runtime</text>
+  <rect class="app box" x="60" y="300" width="130" height="35" rx="4"/>
+  <text x="125" y="323" class="lbl small">App A</text>
+
+  <!-- VM 2 -->
+  <rect class="vm-os box" x="210" y="225" width="130" height="35" rx="4"/>
+  <text x="275" y="248" class="lbl small">Guest OS  (Windows)</text>
+  <rect class="box" x="210" y="265" width="130" height="30" rx="4" fill="#eee"/>
+  <text x="275" y="285" class="lbl small">libs / runtime</text>
+  <rect class="app box" x="210" y="300" width="130" height="35" rx="4"/>
+  <text x="275" y="323" class="lbl small">App B</text>
+
+  <text x="200" y="365" class="small">• Each VM = full OS = GB of RAM, minutes to boot</text>
+  <text x="200" y="383" class="small">• Different guest OS possible (Linux on Windows host)</text>
+  <text x="200" y="401" class="small">• Strong isolation (kernel boundary)</text>
+
+  <!-- Docker side -->
+  <text x="750" y="85" class="lbl" font-weight="bold">Docker Containers</text>
+
+  <rect class="hw box" x="610" y="100" width="280" height="35" rx="4"/>
+  <text x="750" y="123" class="lbl hw-t">Physical Hardware</text>
+
+  <rect class="os box" x="610" y="140" width="280" height="35" rx="4"/>
+  <text x="750" y="163" class="lbl">Host OS (Linux kernel)</text>
+
+  <rect class="box" x="610" y="180" width="280" height="35" rx="4" fill="#999"/>
+  <text x="750" y="203" class="lbl">Docker Engine (containerd)</text>
+
+  <!-- Container 1 -->
+  <rect class="docker box" x="610" y="225" width="130" height="35" rx="4"/>
+  <text x="675" y="248" class="lbl small">Container 1</text>
+  <rect class="box" x="610" y="265" width="130" height="30" rx="4" fill="#eee"/>
+  <text x="675" y="285" class="lbl small">libs / runtime</text>
+  <rect class="app box" x="610" y="300" width="130" height="35" rx="4"/>
+  <text x="675" y="323" class="lbl small">App A</text>
+
+  <!-- Container 2 -->
+  <rect class="docker box" x="760" y="225" width="130" height="35" rx="4"/>
+  <text x="825" y="248" class="lbl small">Container 2</text>
+  <rect class="box" x="760" y="265" width="130" height="30" rx="4" fill="#eee"/>
+  <text x="825" y="285" class="lbl small">libs / runtime</text>
+  <rect class="app box" x="760" y="300" width="130" height="35" rx="4"/>
+  <text x="825" y="323" class="lbl small">App B</text>
+
+  <text x="750" y="365" class="small">• No guest OS — share host kernel via namespaces + cgroups</text>
+  <text x="750" y="383" class="small">• Tens of MB, starts in milliseconds</text>
+  <text x="750" y="401" class="small">• Linux containers on Linux only (use VMs for Windows)</text>
+
+  <!-- Comparison -->
+  <rect class="box" x="40" y="430" width="870" height="100" rx="8" fill="#f8f9fa"/>
+  <text x="475" y="453" class="lbl" font-weight="bold">When to use which</text>
+  <text x="55" y="475" font-size="12" fill="#333">• Docker: microservices, CI/CD, dev parity, ephemeral workloads, anything Linux-on-Linux. Same app runs identically anywhere.</text>
+  <text x="55" y="493" font-size="12" fill="#333">• VMs: strong tenant isolation (cloud providers underneath your EC2 IS a VM), running different OS, legacy software.</text>
+  <text x="55" y="511" font-size="12" fill="#333">• Modern reality: containers on top of VMs (your EC2 runs Docker; your EKS pods run on VM nodes). Both layers, optimized for different goals.</text>
+</svg>

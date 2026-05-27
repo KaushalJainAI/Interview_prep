@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 360" width="620" height="360">
+<style>
+  .title { font: bold 16px sans-serif; fill: #1a1a1a; }
+  .label { font: 12px sans-serif; fill: #333; }
+  .small { font: 10px sans-serif; fill: #555; }
+  .mono  { font: 13px 'Consolas','Courier New',monospace; fill: #111; }
+  .box   { fill: #f6f8fa; stroke: #444; stroke-width: 1.2; }
+  .box2  { fill: #e6f0ff; stroke: #1f6feb; stroke-width: 1.5; }
+  .box3  { fill: #fff3cd; stroke: #b58900; stroke-width: 1.5; }
+  .box4  { fill: #d4edda; stroke: #1a7f37; stroke-width: 1.5; }
+  .arrow { stroke: #444; stroke-width: 1.6; fill: none; marker-end: url(#arr); }
+  .arrow2{ stroke: #1f6feb; stroke-width: 2; fill: none; marker-end: url(#arrB); }
+  .arrow3{ stroke: #d33; stroke-width: 2; fill: none; marker-end: url(#arrR); }
+  .dim   { stroke: #bbb; stroke-width: 1; fill: none; stroke-dasharray: 3 3; }
+</style>
+<defs>
+  <marker id="arr"  viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M0,0 L10,5 L0,10 Z" fill="#444"/></marker>
+  <marker id="arrB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M0,0 L10,5 L0,10 Z" fill="#1f6feb"/></marker>
+  <marker id="arrR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M0,0 L10,5 L0,10 Z" fill="#d33"/></marker>
+</defs>
+<text x="310" y="22" text-anchor="middle" class="title">Trie — Prefix Tree</text><circle cx="310" cy="70" r="20" class="box2"/><text x="310" y="75" text-anchor="middle" class="mono">·</text><circle cx="200" cy="140" r="20" class="box2"/><text x="200" y="145" text-anchor="middle" class="mono">c</text><circle cx="420" cy="140" r="20" class="box2"/><text x="420" y="145" text-anchor="middle" class="mono">b</text><line x1="310" y1="90" x2="200" y2="120" stroke="#444"/><line x1="310" y1="90" x2="420" y2="120" stroke="#444"/><circle cx="140" cy="210" r="20" class="box2"/><text x="140" y="215" text-anchor="middle" class="mono">a</text><circle cx="260" cy="210" r="20" class="box2"/><text x="260" y="215" text-anchor="middle" class="mono">o</text><line x1="200" y1="160" x2="140" y2="190" stroke="#444"/><line x1="200" y1="160" x2="260" y2="190" stroke="#444"/><circle cx="100" cy="280" r="20" class="box3"/><text x="100" y="285" text-anchor="middle" class="mono">t</text><circle cx="180" cy="280" r="20" class="box3"/><text x="180" y="285" text-anchor="middle" class="mono">r</text><line x1="140" y1="230" x2="100" y2="260" stroke="#444"/><line x1="140" y1="230" x2="180" y2="260" stroke="#444"/><circle cx="260" cy="280" r="20" class="box3"/><text x="260" y="285" text-anchor="middle" class="mono">w</text><line x1="260" y1="230" x2="260" y2="260" stroke="#444"/><circle cx="420" cy="210" r="20" class="box2"/><text x="420" y="215" text-anchor="middle" class="mono">a</text><line x1="420" y1="160" x2="420" y2="190" stroke="#444"/><circle cx="420" cy="280" r="20" class="box3"/><text x="420" y="285" text-anchor="middle" class="mono">t</text><line x1="420" y1="230" x2="420" y2="260" stroke="#444"/><text x="40" y="320" class="label">Words: cat, car, cow, bat   (yellow = end-of-word)</text><text x="40" y="338" class="small">Shared prefixes compressed. Lookup/insert O(m) where m = word length.</text></svg>

@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" width="720" height="360">
+<style>
+  .title { font: bold 16px sans-serif; fill: #1a1a1a; }
+  .label { font: 12px sans-serif; fill: #333; }
+  .small { font: 10px sans-serif; fill: #555; }
+  .mono  { font: 13px 'Consolas','Courier New',monospace; fill: #111; }
+  .box   { fill: #f6f8fa; stroke: #444; stroke-width: 1.2; }
+  .box2  { fill: #e6f0ff; stroke: #1f6feb; stroke-width: 1.5; }
+  .box3  { fill: #fff3cd; stroke: #b58900; stroke-width: 1.5; }
+  .box4  { fill: #d4edda; stroke: #1a7f37; stroke-width: 1.5; }
+  .arrow { stroke: #444; stroke-width: 1.6; fill: none; marker-end: url(#arr); }
+  .arrow2{ stroke: #1f6feb; stroke-width: 2; fill: none; marker-end: url(#arrB); }
+  .arrow3{ stroke: #d33; stroke-width: 2; fill: none; marker-end: url(#arrR); }
+  .dim   { stroke: #bbb; stroke-width: 1; fill: none; stroke-dasharray: 3 3; }
+</style>
+<defs>
+  <marker id="arr"  viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M0,0 L10,5 L0,10 Z" fill="#444"/></marker>
+  <marker id="arrB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M0,0 L10,5 L0,10 Z" fill="#1f6feb"/></marker>
+  <marker id="arrR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M0,0 L10,5 L0,10 Z" fill="#d33"/></marker>
+</defs>
+<text x="360" y="22" text-anchor="middle" class="title">2-D DP — Grid Recurrence</text><text x="40" y="60" class="label">Unique Paths grid:  dp[i][j] = dp[i-1][j] + dp[i][j-1]</text><rect x="80" y="90" width="56" height="56" class="box"/><text x="108.0" y="123.0" text-anchor="middle" class="mono">1</text><rect x="136" y="90" width="56" height="56" class="box"/><text x="164.0" y="123.0" text-anchor="middle" class="mono">1</text><rect x="192" y="90" width="56" height="56" class="box"/><text x="220.0" y="123.0" text-anchor="middle" class="mono">1</text><rect x="248" y="90" width="56" height="56" class="box"/><text x="276.0" y="123.0" text-anchor="middle" class="mono">1</text><rect x="304" y="90" width="56" height="56" class="box"/><text x="332.0" y="123.0" text-anchor="middle" class="mono">1</text><rect x="80" y="146" width="56" height="56" class="box"/><text x="108.0" y="179.0" text-anchor="middle" class="mono">1</text><rect x="136" y="146" width="56" height="56" class="box"/><text x="164.0" y="179.0" text-anchor="middle" class="mono">2</text><rect x="192" y="146" width="56" height="56" class="box"/><text x="220.0" y="179.0" text-anchor="middle" class="mono">3</text><rect x="248" y="146" width="56" height="56" class="box"/><text x="276.0" y="179.0" text-anchor="middle" class="mono">4</text><rect x="304" y="146" width="56" height="56" class="box"/><text x="332.0" y="179.0" text-anchor="middle" class="mono">5</text><rect x="80" y="202" width="56" height="56" class="box"/><text x="108.0" y="235.0" text-anchor="middle" class="mono">1</text><rect x="136" y="202" width="56" height="56" class="box"/><text x="164.0" y="235.0" text-anchor="middle" class="mono">3</text><rect x="192" y="202" width="56" height="56" class="box"/><text x="220.0" y="235.0" text-anchor="middle" class="mono">6</text><rect x="248" y="202" width="56" height="56" class="box"/><text x="276.0" y="235.0" text-anchor="middle" class="mono">10</text><rect x="304" y="202" width="56" height="56" class="box"/><text x="332.0" y="235.0" text-anchor="middle" class="mono">15</text><rect x="80" y="258" width="56" height="56" class="box"/><text x="108.0" y="291.0" text-anchor="middle" class="mono">1</text><rect x="136" y="258" width="56" height="56" class="box"/><text x="164.0" y="291.0" text-anchor="middle" class="mono">4</text><rect x="192" y="258" width="56" height="56" class="box"/><text x="220.0" y="291.0" text-anchor="middle" class="mono">10</text><rect x="248" y="258" width="56" height="56" class="box"/><text x="276.0" y="291.0" text-anchor="middle" class="mono">20</text><rect x="304" y="258" width="56" height="56" class="box3"/><text x="332.0" y="291.0" text-anchor="middle" class="mono">35</text><path class="arrow2" d="M 248 200 L 276.0 230.0"/><path class="arrow2" d="M 246 230.0 L 276.0 230.0"/><text x="430" y="100" class="label">Each cell depends on:</text><text x="430" y="125" class="mono">↑ top</text><text x="430" y="145" class="mono">← left</text><text x="430" y="180" class="label">Fill order:</text><text x="430" y="200" class="mono">row by row, left to right</text><text x="430" y="230" class="label">Answer = dp[m-1][n-1]</text><text x="40" y="345" class="small">O(m·n) time. Space O(min(m,n)) using rolling row.</text></svg>

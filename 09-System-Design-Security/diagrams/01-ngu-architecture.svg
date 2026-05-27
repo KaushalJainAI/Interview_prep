@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950 620" font-family="Arial, sans-serif" font-size="13">
+  <style>
+    .box { fill:#fff; stroke:#222; stroke-width:2; }
+    .lbl { fill:#222; text-anchor:middle; }
+    .small { font-size:11px; fill:#444; text-anchor:middle; }
+    .title { font-size:18px; font-weight:bold; text-anchor:middle; }
+    .client { fill:#fff5e6; stroke:#d35400; }
+    .cdn { fill:#fff3cd; }
+    .lb { fill:#cfe2ff; }
+    .app { fill:#d4edda; }
+    .cache { fill:#f8d7da; }
+    .db { fill:#e2d9f3; }
+    .ext { fill:#eee; }
+    .arrow { stroke:#222; stroke-width:1.8; fill:none; marker-end:url(#a); }
+    .biarrow { stroke:#1565c0; stroke-width:1.8; fill:none; marker-end:url(#b); marker-start:url(#bs); }
+  </style>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10z" fill="#222"/></marker>
+    <marker id="b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10z" fill="#1565c0"/></marker>
+    <marker id="bs" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M10,0 L0,5 L10,10z" fill="#1565c0"/></marker>
+  </defs>
+
+  <text x="475" y="28" class="title">NGU Spices — Production E-Commerce Architecture (your project, system-design talking point)</text>
+
+  <!-- Clients -->
+  <rect class="box client" x="40" y="70" width="160" height="60" rx="6"/>
+  <text x="120" y="95" class="lbl">React Storefront</text>
+  <text x="120" y="115" class="small">nidhimasala.kaushaljain.com</text>
+
+  <rect class="box client" x="40" y="150" width="160" height="60" rx="6"/>
+  <text x="120" y="175" class="lbl">Admin Panel (React)</text>
+  <text x="120" y="195" class="small">separate SPA</text>
+
+  <!-- CDN -->
+  <line class="arrow" x1="200" y1="100" x2="260" y2="140"/>
+  <line class="arrow" x1="200" y1="180" x2="260" y2="160"/>
+  <rect class="box cdn" x="260" y="130" width="120" height="50" rx="6"/>
+  <text x="320" y="155" class="lbl">CloudFront CDN</text>
+  <text x="320" y="172" class="small">static assets, images</text>
+
+  <line class="arrow" x1="380" y1="155" x2="430" y2="155"/>
+
+  <!-- Nginx -->
+  <rect class="box lb" x="430" y="130" width="120" height="50" rx="6"/>
+  <text x="490" y="155" class="lbl">Nginx</text>
+  <text x="490" y="172" class="small">reverse proxy + SSL</text>
+
+  <line class="arrow" x1="550" y1="155" x2="610" y2="155"/>
+
+  <!-- Django on EC2 -->
+  <rect class="box app" x="610" y="100" width="160" height="120" rx="6"/>
+  <text x="690" y="125" class="lbl" font-weight="bold">Django REST</text>
+  <text x="690" y="143" class="small">on AWS EC2 (Docker)</text>
+  <text x="690" y="162" class="small">• catalog · cart · orders</text>
+  <text x="690" y="178" class="small">• JWT auth</text>
+  <text x="690" y="194" class="small">• AI search endpoint</text>
+  <text x="690" y="210" class="small">• signals → invalidate</text>
+
+  <!-- Redis -->
+  <line class="biarrow" x1="690" y1="220" x2="690" y2="290"/>
+  <rect class="box cache" x="610" y="290" width="160" height="60" rx="6"/>
+  <text x="690" y="315" class="lbl" font-weight="bold">Redis</text>
+  <text x="690" y="333" class="small">namespaced cache keys</text>
+
+  <!-- Postgres -->
+  <line class="biarrow" x1="770" y1="160" x2="830" y2="160"/>
+  <rect class="box db" x="830" y="130" width="100" height="60" rx="6"/>
+  <text x="880" y="155" class="lbl">RDS Postgres</text>
+  <text x="880" y="172" class="small">products, orders</text>
+
+  <!-- S3 -->
+  <line class="biarrow" x1="770" y1="180" x2="830" y2="220"/>
+  <rect class="box db" x="830" y="210" width="100" height="60" rx="6"/>
+  <text x="880" y="235" class="lbl">S3</text>
+  <text x="880" y="252" class="small">product images</text>
+
+  <!-- LLM/embedding for AI search -->
+  <line class="biarrow" x1="690" y1="100" x2="690" y2="60"/>
+  <rect class="box ext" x="610" y="20" width="160" height="50" rx="6"/>
+  <text x="690" y="45" class="lbl">LLM API</text>
+  <text x="690" y="62" class="small">synonym expansion (offline)</text>
+
+  <!-- Cache strategy panel -->
+  <rect class="box" x="40" y="240" width="540" height="200" rx="8" fill="#f8f9fa"/>
+  <text x="310" y="263" class="lbl" font-weight="bold">Cache strategy (your strong talking point)</text>
+  <text x="55" y="285" font-size="12" fill="#333">1.  <tspan font-weight="bold">Read path:</tspan>  request → Django checks Redis by namespaced key (`product:v3:slug`)</text>
+  <text x="55" y="303" font-size="12" fill="#333">2.  HIT  → return JSON                                MISS → query Postgres → set Redis → return</text>
+  <text x="55" y="324" font-size="12" fill="#333">3.  <tspan font-weight="bold">Invalidation</tspan> via Django signals:</text>
+  <text x="55" y="342" font-size="12" fill="#333">    • price change → invalidate `product:*` keys for that SKU</text>
+  <text x="55" y="360" font-size="12" fill="#333">    • category edit → bump category version namespace (lazy invalidation)</text>
+  <text x="55" y="378" font-size="12" fill="#333">    • combo update → invalidate combo + each child product</text>
+  <text x="55" y="396" font-size="12" fill="#333">4.  <tspan font-weight="bold">Namespaced keys</tspan>: bumping the version prefix invalidates a whole class in O(1)</text>
+  <text x="55" y="414" font-size="12" fill="#333">    (no need to SCAN/DEL many keys — they just become unreferenced and expire)</text>
+  <text x="55" y="434" font-size="12" fill="#333">5.  AI search: offline synonym generation cached in Redis; runtime is fuzzy + cached lookup</text>
+
+  <!-- Scaling discussion -->
+  <rect class="box" x="40" y="465" width="880" height="135" rx="8" fill="#fff5f5"/>
+  <text x="475" y="488" class="lbl" font-weight="bold">"How would you scale this to 100× traffic?" — interview answer</text>
+  <text x="55" y="510" font-size="12" fill="#333">• <tspan font-weight="bold">Stateless app servers</tspan> → put EC2 behind an ALB, autoscale by CPU/queue depth</text>
+  <text x="55" y="528" font-size="12" fill="#333">• <tspan font-weight="bold">Read replicas</tspan> on Postgres for product list / search; writes to primary; eventual-consistency OK for catalog</text>
+  <text x="55" y="546" font-size="12" fill="#333">• <tspan font-weight="bold">Redis cluster</tspan> (sharded by key hash) when single node memory or QPS bottlenecks</text>
+  <text x="55" y="564" font-size="12" fill="#333">• <tspan font-weight="bold">Async</tspan> non-critical work (emails, analytics, image processing) → Celery + Redis broker</text>
+  <text x="55" y="582" font-size="12" fill="#333">• <tspan font-weight="bold">CDN</tspan> already caches images; cache product JSON at edge for anonymous users (no auth header)</text>
+</svg>

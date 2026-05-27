@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 450" width="760" height="450">
+<style>
+  .title { font: bold 16px sans-serif; fill: #1a1a1a; }
+  .label { font: 12px sans-serif; fill: #333; }
+  .small { font: 10px sans-serif; fill: #555; }
+  .mono  { font: 13px 'Consolas','Courier New',monospace; fill: #111; }
+  .box   { fill: #f6f8fa; stroke: #444; stroke-width: 1.2; }
+  .box2  { fill: #e6f0ff; stroke: #1f6feb; stroke-width: 1.5; }
+  .box3  { fill: #fff3cd; stroke: #b58900; stroke-width: 1.5; }
+  .box4  { fill: #d4edda; stroke: #1a7f37; stroke-width: 1.5; }
+  .box5  { fill: #fce7f3; stroke: #be185d; stroke-width: 1.5; }
+  .arrow { stroke: #444; stroke-width: 1.6; fill: none; marker-end: url(#arr); }
+  .arrow2{ stroke: #1f6feb; stroke-width: 2; fill: none; marker-end: url(#arrB); }
+  .arrow3{ stroke: #d33; stroke-width: 2; fill: none; marker-end: url(#arrR); }
+</style>
+<defs>
+  <marker id="arr"  viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#444"/></marker>
+  <marker id="arrB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#1f6feb"/></marker>
+  <marker id="arrR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#d33"/></marker>
+</defs>
+<text x="380" y="22" text-anchor="middle" class="title">Docker — Layers &amp; Multi-stage</text><text x="40" y="60" class="label">Image layers (top = newest)</text><rect x="80" y="70" width="280" height="40" class="box5"/><text x="220" y="95" text-anchor="middle" class="mono">CMD ['python','app.py']</text><rect x="80" y="120" width="280" height="40" class="box4"/><text x="220" y="145" text-anchor="middle" class="mono">COPY app.py /app</text><rect x="80" y="170" width="280" height="40" class="box4"/><text x="220" y="195" text-anchor="middle" class="mono">RUN pip install -r req</text><rect x="80" y="220" width="280" height="40" class="box3"/><text x="220" y="245" text-anchor="middle" class="mono">COPY requirements.txt</text><rect x="80" y="270" width="280" height="40" class="box3"/><text x="220" y="295" text-anchor="middle" class="mono">WORKDIR /app</text><rect x="80" y="320" width="280" height="40" class="box2"/><text x="220" y="345" text-anchor="middle" class="mono">FROM python:3.11-slim</text><text x="40" y="400" class="mono">Each line = layer; cached if unchanged. Order matters: COPY app.py late = pip cache reused.</text><text x="430" y="60" class="label">Multi-stage build</text><rect x="430" y="90" width="280" height="100" class="box3"/><text x="440" y="115" class="mono">FROM node:20 AS build</text><text x="440" y="135" class="mono">COPY . . && npm ci && npm run build</text><text x="440" y="175" class="small">(huge build tools, dev deps)</text><rect x="430" y="210" width="280" height="100" class="box4"/><text x="440" y="235" class="mono">FROM nginx:alpine</text><text x="440" y="255" class="mono">COPY --from=build /app/dist /usr/share/nginx/html</text><text x="440" y="295" class="small">(small final image)</text><text x="40" y="425" class="small">.dockerignore reduces context. Healthchecks for orchestrators. Pin tags (not :latest).</text></svg>

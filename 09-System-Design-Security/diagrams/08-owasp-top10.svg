@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 540" width="760" height="540">
+<style>
+  .title { font: bold 16px sans-serif; fill: #1a1a1a; }
+  .label { font: 12px sans-serif; fill: #333; }
+  .small { font: 10px sans-serif; fill: #555; }
+  .mono  { font: 13px 'Consolas','Courier New',monospace; fill: #111; }
+  .box   { fill: #f6f8fa; stroke: #444; stroke-width: 1.2; }
+  .box2  { fill: #e6f0ff; stroke: #1f6feb; stroke-width: 1.5; }
+  .box3  { fill: #fff3cd; stroke: #b58900; stroke-width: 1.5; }
+  .box4  { fill: #d4edda; stroke: #1a7f37; stroke-width: 1.5; }
+  .box5  { fill: #fce7f3; stroke: #be185d; stroke-width: 1.5; }
+  .arrow { stroke: #444; stroke-width: 1.6; fill: none; marker-end: url(#arr); }
+  .arrow2{ stroke: #1f6feb; stroke-width: 2; fill: none; marker-end: url(#arrB); }
+  .arrow3{ stroke: #d33; stroke-width: 2; fill: none; marker-end: url(#arrR); }
+</style>
+<defs>
+  <marker id="arr"  viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#444"/></marker>
+  <marker id="arrB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#1f6feb"/></marker>
+  <marker id="arrR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#d33"/></marker>
+</defs>
+<text x="380" y="22" text-anchor="middle" class="title">OWASP Top 10 (2021)</text><rect x="60" y="74" width="230" height="30" class="box5"/><text x="70" y="95" class="mono">A01 Broken access control</text><text x="310" y="95" class="small">vertical privilege check missing</text><rect x="60" y="114" width="230" height="30" class="box5"/><text x="70" y="135" class="mono">A02 Cryptographic failures</text><text x="310" y="135" class="small">plaintext, weak ciphers, mis-config TLS</text><rect x="60" y="154" width="230" height="30" class="box5"/><text x="70" y="175" class="mono">A03 Injection</text><text x="310" y="175" class="small">SQL/CMD/LDAP via untrusted input</text><rect x="60" y="194" width="230" height="30" class="box5"/><text x="70" y="215" class="mono">A04 Insecure design</text><text x="310" y="215" class="small">missing threat modelling</text><rect x="60" y="234" width="230" height="30" class="box5"/><text x="70" y="255" class="mono">A05 Security mis-config</text><text x="310" y="255" class="small">defaults, verbose errors, open S3</text><rect x="60" y="274" width="230" height="30" class="box5"/><text x="70" y="295" class="mono">A06 Vulnerable components</text><text x="310" y="295" class="small">outdated libs, log4shell-style</text><rect x="60" y="314" width="230" height="30" class="box5"/><text x="70" y="335" class="mono">A07 Identification failures</text><text x="310" y="335" class="small">weak passwords, broken session</text><rect x="60" y="354" width="230" height="30" class="box5"/><text x="70" y="375" class="mono">A08 Software/data integrity</text><text x="310" y="375" class="small">unsigned updates, supply chain</text><rect x="60" y="394" width="230" height="30" class="box5"/><text x="70" y="415" class="mono">A09 Logging/monitoring failures</text><text x="310" y="415" class="small">missed breaches, no audit</text><rect x="60" y="434" width="230" height="30" class="box5"/><text x="70" y="455" class="mono">A10 SSRF</text><text x="310" y="455" class="small">fetch internal URLs via user input</text><text x="40" y="490" class="label">Defence: principle of least privilege, parameterised queries, secrets manager,</text><text x="40" y="510" class="label">security scanners (CodeQL, Snyk), SBOM, audit logs, MFA.</text></svg>

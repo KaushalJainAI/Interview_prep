@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 340" width="560" height="340">
+<style>
+  .title { font: bold 16px sans-serif; fill: #1a1a1a; }
+  .label { font: 12px sans-serif; fill: #333; }
+  .small { font: 10px sans-serif; fill: #555; }
+  .mono  { font: 13px 'Consolas','Courier New',monospace; fill: #111; }
+  .box   { fill: #f6f8fa; stroke: #444; stroke-width: 1.2; }
+  .box2  { fill: #e6f0ff; stroke: #1f6feb; stroke-width: 1.5; }
+  .box3  { fill: #fff3cd; stroke: #b58900; stroke-width: 1.5; }
+  .box4  { fill: #d4edda; stroke: #1a7f37; stroke-width: 1.5; }
+  .arrow { stroke: #444; stroke-width: 1.6; fill: none; marker-end: url(#arr); }
+  .arrow2{ stroke: #1f6feb; stroke-width: 2; fill: none; marker-end: url(#arrB); }
+  .arrow3{ stroke: #d33; stroke-width: 2; fill: none; marker-end: url(#arrR); }
+  .dim   { stroke: #bbb; stroke-width: 1; fill: none; stroke-dasharray: 3 3; }
+</style>
+<defs>
+  <marker id="arr"  viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M0,0 L10,5 L0,10 Z" fill="#444"/></marker>
+  <marker id="arrB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M0,0 L10,5 L0,10 Z" fill="#1f6feb"/></marker>
+  <marker id="arrR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M0,0 L10,5 L0,10 Z" fill="#d33"/></marker>
+</defs>
+<text x="280" y="22" text-anchor="middle" class="title">Binary Search — Halve the Search Space</text><text x="40" y="60" class="label">Sorted array, target = 11</text><text x="63" y="72" text-anchor="middle" class="small">0</text><text x="109" y="72" text-anchor="middle" class="small">1</text><text x="155" y="72" text-anchor="middle" class="small">2</text><text x="201" y="72" text-anchor="middle" class="small">3</text><text x="247" y="72" text-anchor="middle" class="small">4</text><text x="293" y="72" text-anchor="middle" class="small">5</text><text x="339" y="72" text-anchor="middle" class="small">6</text><text x="385" y="72" text-anchor="middle" class="small">7</text><rect x="40" y="85" width="46" height="46" class="box2"/><text x="63.0" y="113.0" text-anchor="middle" class="mono">1</text><rect x="86" y="85" width="46" height="46" class="box"/><text x="109.0" y="113.0" text-anchor="middle" class="mono">3</text><rect x="132" y="85" width="46" height="46" class="box"/><text x="155.0" y="113.0" text-anchor="middle" class="mono">5</text><rect x="178" y="85" width="46" height="46" class="box3"/><text x="201.0" y="113.0" text-anchor="middle" class="mono">7</text><rect x="224" y="85" width="46" height="46" class="box"/><text x="247.0" y="113.0" text-anchor="middle" class="mono">9</text><rect x="270" y="85" width="46" height="46" class="box"/><text x="293.0" y="113.0" text-anchor="middle" class="mono">11</text><rect x="316" y="85" width="46" height="46" class="box"/><text x="339.0" y="113.0" text-anchor="middle" class="mono">13</text><rect x="362" y="85" width="46" height="46" class="box2"/><text x="385.0" y="113.0" text-anchor="middle" class="mono">15</text><text x="63"  y="155" text-anchor="middle" class="mono">lo</text><text x="201" y="155" text-anchor="middle" class="mono">mid</text><text x="385" y="155" text-anchor="middle" class="mono">hi</text><text x="40" y="195" class="label">arr[mid]=7 &lt; 11 → lo = mid+1   (discard left half)</text><text x="40" y="225" class="label">Step 2:</text><rect x="40" y="240" width="46" height="46" class="box" opacity="0.3"/><text x="63" y="269" text-anchor="middle" class="mono" opacity="0.3">1</text><rect x="86" y="240" width="46" height="46" class="box" opacity="0.3"/><text x="109" y="269" text-anchor="middle" class="mono" opacity="0.3">3</text><rect x="132" y="240" width="46" height="46" class="box" opacity="0.3"/><text x="155" y="269" text-anchor="middle" class="mono" opacity="0.3">5</text><rect x="178" y="240" width="46" height="46" class="box" opacity="0.3"/><text x="201" y="269" text-anchor="middle" class="mono" opacity="0.3">7</text><rect x="224" y="240" width="46" height="46" class="box2" opacity="1"/><text x="247" y="269" text-anchor="middle" class="mono" opacity="1">9</text><rect x="270" y="240" width="46" height="46" class="box3" opacity="1"/><text x="293" y="269" text-anchor="middle" class="mono" opacity="1">11</text><rect x="316" y="240" width="46" height="46" class="box" opacity="1"/><text x="339" y="269" text-anchor="middle" class="mono" opacity="1">13</text><rect x="362" y="240" width="46" height="46" class="box2" opacity="1"/><text x="385" y="269" text-anchor="middle" class="mono" opacity="1">15</text><text x="40" y="320" class="small">Search space halves each step → O(log n).</text></svg>

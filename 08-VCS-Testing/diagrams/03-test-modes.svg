@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 290" width="800" height="290">
+<style>
+  .title { font: bold 16px sans-serif; fill: #1a1a1a; }
+  .label { font: 12px sans-serif; fill: #333; }
+  .small { font: 10px sans-serif; fill: #555; }
+  .mono  { font: 13px 'Consolas','Courier New',monospace; fill: #111; }
+  .box   { fill: #f6f8fa; stroke: #444; stroke-width: 1.2; }
+  .box2  { fill: #e6f0ff; stroke: #1f6feb; stroke-width: 1.5; }
+  .box3  { fill: #fff3cd; stroke: #b58900; stroke-width: 1.5; }
+  .box4  { fill: #d4edda; stroke: #1a7f37; stroke-width: 1.5; }
+  .box5  { fill: #fce7f3; stroke: #be185d; stroke-width: 1.5; }
+  .arrow { stroke: #444; stroke-width: 1.6; fill: none; marker-end: url(#arr); }
+  .arrow2{ stroke: #1f6feb; stroke-width: 2; fill: none; marker-end: url(#arrB); }
+  .arrow3{ stroke: #d33; stroke-width: 2; fill: none; marker-end: url(#arrR); }
+</style>
+<defs>
+  <marker id="arr"  viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#444"/></marker>
+  <marker id="arrB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#1f6feb"/></marker>
+  <marker id="arrR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#d33"/></marker>
+</defs>
+<text x="400" y="22" text-anchor="middle" class="title">LLM Test Modes -- Mock to Real</text><rect x="40" y="60" width="160" height="40" class="box4"/><text x="120" y="86" text-anchor="middle" class="mono">Mock</text><rect x="40" y="105" width="160" height="28" class="box"/><text x="120" y="125" text-anchor="middle" class="small">fast, free</text><rect x="40" y="135" width="160" height="28" class="box"/><text x="120" y="155" text-anchor="middle" class="small">deterministic</text><rect x="40" y="165" width="160" height="28" class="box"/><text x="120" y="185" text-anchor="middle" class="small">misses provider drift</text><rect x="220" y="60" width="160" height="40" class="box3"/><text x="300" y="86" text-anchor="middle" class="mono">Recorded</text><rect x="220" y="105" width="160" height="28" class="box"/><text x="300" y="125" text-anchor="middle" class="small">replay cassettes</text><rect x="220" y="135" width="160" height="28" class="box"/><text x="300" y="155" text-anchor="middle" class="small">no API cost</text><rect x="220" y="165" width="160" height="28" class="box"/><text x="300" y="185" text-anchor="middle" class="small">recordings rot</text><rect x="400" y="60" width="160" height="40" class="box2"/><text x="480" y="86" text-anchor="middle" class="mono">Real (cheap)</text><rect x="400" y="105" width="160" height="28" class="box"/><text x="480" y="125" text-anchor="middle" class="small">catches drift</text><rect x="400" y="135" width="160" height="28" class="box"/><text x="480" y="155" text-anchor="middle" class="small">costs $</text><rect x="400" y="165" width="160" height="28" class="box"/><text x="480" y="185" text-anchor="middle" class="small">can flake</text><rect x="580" y="60" width="160" height="40" class="box5"/><text x="660" y="86" text-anchor="middle" class="mono">Real (full)</text><rect x="580" y="105" width="160" height="28" class="box"/><text x="660" y="125" text-anchor="middle" class="small">release gate</text><rect x="580" y="135" width="160" height="28" class="box"/><text x="660" y="155" text-anchor="middle" class="small">most realistic</text><rect x="580" y="165" width="160" height="28" class="box"/><text x="660" y="185" text-anchor="middle" class="small">slow + expensive</text><text x="40" y="240" class="mono">PR CI: mock by default. Nightly: real (cheap). Pre-release: real (full).</text><text x="40" y="262" class="small">Cassettes go in repo (small JSON; large to LFS). Re-record on prompt or SDK change.</text></svg>

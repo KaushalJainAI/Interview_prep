@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 420" width="760" height="420">
+<style>
+  .title { font: bold 16px sans-serif; fill: #1a1a1a; }
+  .label { font: 12px sans-serif; fill: #333; }
+  .small { font: 10px sans-serif; fill: #555; }
+  .mono  { font: 13px 'Consolas','Courier New',monospace; fill: #111; }
+  .box   { fill: #f6f8fa; stroke: #444; stroke-width: 1.2; }
+  .box2  { fill: #e6f0ff; stroke: #1f6feb; stroke-width: 1.5; }
+  .box3  { fill: #fff3cd; stroke: #b58900; stroke-width: 1.5; }
+  .box4  { fill: #d4edda; stroke: #1a7f37; stroke-width: 1.5; }
+  .box5  { fill: #fce7f3; stroke: #be185d; stroke-width: 1.5; }
+  .arrow { stroke: #444; stroke-width: 1.6; fill: none; marker-end: url(#arr); }
+  .arrow2{ stroke: #1f6feb; stroke-width: 2; fill: none; marker-end: url(#arrB); }
+  .arrow3{ stroke: #d33; stroke-width: 2; fill: none; marker-end: url(#arrR); }
+</style>
+<defs>
+  <marker id="arr"  viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#444"/></marker>
+  <marker id="arrB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#1f6feb"/></marker>
+  <marker id="arrR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#d33"/></marker>
+</defs>
+<text x="380" y="22" text-anchor="middle" class="title">React Lifecycle &amp; Hooks Timing</text><text x="40" y="60" class="label">React component lifecycle (functional + hooks)</text><rect x="40" y="84" width="160" height="52" class="box2"/><text x="120" y="108" text-anchor="middle" class="mono">Render</text><text x="120" y="125" text-anchor="middle" class="small">compute JSX</text><rect x="240" y="84" width="160" height="52" class="box3"/><text x="320" y="108" text-anchor="middle" class="mono">Commit</text><text x="320" y="125" text-anchor="middle" class="small">DOM updated</text><rect x="440" y="84" width="160" height="52" class="box5"/><text x="520" y="108" text-anchor="middle" class="mono">useLayoutEffect</text><text x="520" y="125" text-anchor="middle" class="small">sync, before paint</text><rect x="440" y="174" width="160" height="52" class="box4"/><text x="520" y="198" text-anchor="middle" class="mono">useEffect</text><text x="520" y="215" text-anchor="middle" class="small">async, after paint</text><rect x="240" y="264" width="160" height="52" class="box"/><text x="320" y="288" text-anchor="middle" class="mono">Unmount</text><text x="320" y="305" text-anchor="middle" class="small">cleanup runs</text><path class="arrow" d="M 200 110 L 240 110"/><path class="arrow" d="M 400 110 L 440 110"/><path class="arrow" d="M 520 136 L 520 174"/><path class="arrow" d="M 440 200 C 360 240 360 270 320 290"/><text x="40" y="370" class="mono">useEffect deps:  [] = once, [x] = on x change, missing = every render</text><text x="40" y="392" class="mono">return () =&gt; { cleanup }   in effect for unmount / re-effect</text></svg>

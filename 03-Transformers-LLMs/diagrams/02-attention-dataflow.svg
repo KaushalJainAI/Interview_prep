@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 560" font-family="Arial, sans-serif" font-size="13">
+  <style>
+    .box { fill:#fff; stroke:#222; stroke-width:2; }
+    .lbl { fill:#222; text-anchor:middle; }
+    .small { font-size:11px; fill:#444; text-anchor:middle; }
+    .arrow { stroke:#222; stroke-width:1.8; fill:none; marker-end:url(#a); }
+    .title { font-size:18px; font-weight:bold; text-anchor:middle; }
+    .q { fill:#cfe2ff; }
+    .k { fill:#d1e7dd; }
+    .v { fill:#f8d7da; }
+    .s { fill:#fff3cd; }
+    .o { fill:#e2d9f3; }
+  </style>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10z" fill="#222"/></marker>
+  </defs>
+
+  <text x="450" y="28" class="title">Scaled Dot-Product Attention — One Head</text>
+  <text x="450" y="48" class="small">Attention(Q,K,V) = softmax( QKᵀ / √d_k ) · V</text>
+
+  <!-- Input X -->
+  <rect class="box" x="40" y="80" width="120" height="50" rx="6"/>
+  <text x="100" y="105" class="lbl">Input X</text>
+  <text x="100" y="122" class="small">[seq_len × d_model]</text>
+
+  <!-- Linear projections -->
+  <line class="arrow" x1="160" y1="105" x2="220" y2="105"/>
+  <rect class="box q" x="220" y="60" width="100" height="40" rx="6"/>
+  <text x="270" y="85" class="lbl">× W_Q</text>
+  <rect class="box k" x="220" y="110" width="100" height="40" rx="6"/>
+  <text x="270" y="135" class="lbl">× W_K</text>
+  <rect class="box v" x="220" y="160" width="100" height="40" rx="6"/>
+  <text x="270" y="185" class="lbl">× W_V</text>
+
+  <!-- Q, K, V tensors -->
+  <line class="arrow" x1="320" y1="80" x2="380" y2="80"/>
+  <line class="arrow" x1="320" y1="130" x2="380" y2="130"/>
+  <line class="arrow" x1="320" y1="180" x2="380" y2="180"/>
+
+  <rect class="box q" x="380" y="60" width="80" height="40" rx="6"/>
+  <text x="420" y="85" class="lbl">Q</text>
+  <rect class="box k" x="380" y="110" width="80" height="40" rx="6"/>
+  <text x="420" y="135" class="lbl">K</text>
+  <rect class="box v" x="380" y="160" width="80" height="40" rx="6"/>
+  <text x="420" y="185" class="lbl">V</text>
+
+  <!-- QK^T -->
+  <line class="arrow" x1="460" y1="80" x2="520" y2="130"/>
+  <line class="arrow" x1="460" y1="130" x2="520" y2="130"/>
+  <rect class="box s" x="520" y="110" width="120" height="40" rx="6"/>
+  <text x="580" y="135" class="lbl">QKᵀ / √d_k</text>
+
+  <!-- mask -->
+  <rect class="box" x="520" y="160" width="120" height="30" rx="6" fill="#eee"/>
+  <text x="580" y="180" class="lbl small">(+ causal mask)</text>
+  <line class="arrow" x1="580" y1="160" x2="580" y2="160"/>
+
+  <!-- softmax -->
+  <line class="arrow" x1="640" y1="130" x2="700" y2="130"/>
+  <rect class="box s" x="700" y="110" width="120" height="40" rx="6"/>
+  <text x="760" y="135" class="lbl">softmax (row-wise)</text>
+
+  <!-- A * V -->
+  <line class="arrow" x1="760" y1="150" x2="760" y2="240"/>
+  <line class="arrow" x1="460" y1="180" x2="700" y2="240"/>
+  <rect class="box o" x="700" y="240" width="120" height="40" rx="6"/>
+  <text x="760" y="265" class="lbl">A · V</text>
+
+  <line class="arrow" x1="760" y1="280" x2="760" y2="320"/>
+  <rect class="box o" x="700" y="320" width="120" height="50" rx="6"/>
+  <text x="760" y="345" class="lbl">head output</text>
+  <text x="760" y="362" class="small">[seq_len × d_v]</text>
+
+  <!-- Multi-head note -->
+  <rect class="box" x="80" y="420" width="740" height="110" rx="8" fill="#f8f9fa"/>
+  <text x="450" y="445" class="lbl" font-weight="bold">Multi-Head Attention = h heads in parallel</text>
+  <text x="450" y="468" class="small">Each head learns to attend in a different subspace (syntax, coref, position…)</text>
+  <text x="450" y="490" class="small">MHA(X) = Concat(head₁, …, head_h) · W_O</text>
+  <text x="450" y="510" class="small">Llama-70B: 64 query heads, 8 KV heads (GQA) → smaller KV cache</text>
+</svg>

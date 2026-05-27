@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950 600" font-family="Arial, sans-serif" font-size="13">
+  <style>
+    .box { fill:#fff; stroke:#222; stroke-width:2; }
+    .lbl { fill:#222; text-anchor:middle; }
+    .small { font-size:11px; fill:#444; text-anchor:middle; }
+    .title { font-size:18px; font-weight:bold; text-anchor:middle; }
+    .start { fill:#d4edda; }
+    .node { fill:#cfe2ff; }
+    .cond { fill:#fff3cd; }
+    .hitl { fill:#f8d7da; }
+    .end { fill:#e2d9f3; }
+    .arrow { stroke:#222; stroke-width:1.8; fill:none; marker-end:url(#a); }
+    .cedge { stroke:#1565c0; stroke-width:1.8; fill:none; marker-end:url(#b); stroke-dasharray:5,3; }
+    .state { fill:#fff5e6; stroke:#d35400; stroke-width:1.5; stroke-dasharray:4,3; }
+  </style>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10z" fill="#222"/></marker>
+    <marker id="b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10z" fill="#1565c0"/></marker>
+  </defs>
+
+  <text x="475" y="30" class="title">StateGraph / DAG Agent  (LangGraph + AIAAS pattern)</text>
+  <text x="475" y="50" class="small">Nodes mutate a shared state dict. Edges = control flow. Solid = static, dashed blue = conditional.</text>
+
+  <!-- Shared state -->
+  <rect class="state" x="40" y="80" width="870" height="60" rx="8"/>
+  <text x="475" y="103" class="lbl" font-weight="bold">Shared State (Pydantic / TypedDict) — passed through every node</text>
+  <text x="475" y="124" class="small">messages: list · user_query: str · retrieved_docs: list · tool_calls: list · approval_status: enum · cursor: int · errors: list</text>
+
+  <!-- START -->
+  <circle class="start box" cx="80" cy="220" r="28"/>
+  <text x="80" y="225" class="lbl">START</text>
+
+  <line class="arrow" x1="108" y1="220" x2="170" y2="220"/>
+
+  <!-- Plan -->
+  <rect class="node box" x="170" y="195" width="120" height="50" rx="6"/>
+  <text x="230" y="220" class="lbl">plan</text>
+  <text x="230" y="237" class="small">LLM decomposes query</text>
+
+  <line class="arrow" x1="290" y1="220" x2="340" y2="220"/>
+
+  <!-- Retrieve -->
+  <rect class="node box" x="340" y="195" width="120" height="50" rx="6"/>
+  <text x="400" y="220" class="lbl">retrieve</text>
+  <text x="400" y="237" class="small">RAG over docs</text>
+
+  <line class="arrow" x1="460" y1="220" x2="510" y2="220"/>
+
+  <!-- Reason -->
+  <rect class="node box" x="510" y="195" width="120" height="50" rx="6"/>
+  <text x="570" y="220" class="lbl">reason</text>
+  <text x="570" y="237" class="small">LLM picks next action</text>
+
+  <line class="arrow" x1="630" y1="220" x2="680" y2="220"/>
+
+  <!-- Conditional router -->
+  <polygon class="cond box" points="680,220 730,195 780,220 730,245"/>
+  <text x="730" y="225" class="lbl small">router</text>
+
+  <!-- Three branches from router -->
+  <!-- branch 1: write tool → HITL -->
+  <line class="cedge" x1="730" y1="195" x2="730" y2="120"/>
+  <line class="cedge" x1="730" y1="120" x2="500" y2="120"/>
+  <text x="615" y="113" class="small" fill="#1565c0">write action</text>
+
+  <!-- branch 2: read tool -->
+  <line class="cedge" x1="780" y1="220" x2="830" y2="220"/>
+  <text x="805" y="213" class="small" fill="#1565c0">read</text>
+
+  <!-- branch 3: done -->
+  <line class="cedge" x1="730" y1="245" x2="730" y2="320"/>
+  <text x="745" y="285" class="small" fill="#1565c0">done</text>
+
+  <!-- HITL node -->
+  <rect class="hitl box" x="380" y="100" width="240" height="50" rx="6"/>
+  <text x="500" y="125" class="lbl">human approval gate (HITL)</text>
+  <text x="500" y="142" class="small">pause; wait for user; resume on approve</text>
+
+  <!-- approval back to tool exec -->
+  <line class="arrow" x1="380" y1="125" x2="310" y2="125"/>
+  <line class="arrow" x1="310" y1="125" x2="310" y2="305"/>
+  <text x="298" y="220" class="small" transform="rotate(-90,298,220)">approved</text>
+
+  <!-- read tool node -->
+  <rect class="node box" x="830" y="195" width="100" height="50" rx="6"/>
+  <text x="880" y="220" class="lbl">tool_exec</text>
+  <text x="880" y="237" class="small">MCP server</text>
+
+  <!-- write tool node -->
+  <rect class="node box" x="250" y="305" width="120" height="50" rx="6"/>
+  <text x="310" y="330" class="lbl">write_action</text>
+  <text x="310" y="347" class="small">db / api / fs write</text>
+
+  <!-- Loop back to reason -->
+  <line class="arrow" x1="880" y1="245" x2="880" y2="430"/>
+  <line class="arrow" x1="880" y1="430" x2="570" y2="430"/>
+  <line class="arrow" x1="570" y1="430" x2="570" y2="245"/>
+  <text x="740" y="423" class="small">append observation to state, loop</text>
+
+  <line class="arrow" x1="370" y1="330" x2="440" y2="330"/>
+  <line class="arrow" x1="440" y1="330" x2="440" y2="430"/>
+
+  <!-- END -->
+  <circle class="end box" cx="730" cy="350" r="28"/>
+  <text x="730" y="355" class="lbl">END</text>
+
+  <!-- Why LangGraph/AIAAS box -->
+  <rect class="box" x="40" y="475" width="870" height="115" rx="8" fill="#f8f9fa"/>
+  <text x="475" y="498" class="lbl" font-weight="bold">Why this beats a plain while-loop agent (and what AIAAS adds)</text>
+  <text x="60" y="518" font-size="12" fill="#333">• <tspan font-weight="bold">Checkpointing:</tspan> state persisted at each node → pause/resume across days, durable to crashes</text>
+  <text x="60" y="535" font-size="12" fill="#333">• <tspan font-weight="bold">Inspectability:</tspan> every step has a trace; easier to debug "why did the agent do X?"</text>
+  <text x="60" y="552" font-size="12" fill="#333">• <tspan font-weight="bold">Conditional edges:</tspan> branching logic is data, not nested Python (AIAAS compiles ReactFlow JSON → graph)</text>
+  <text x="60" y="569" font-size="12" fill="#333">• <tspan font-weight="bold">HITL native:</tspan> approval gates are just a node with a "wait" semantic + WebSocket update to UI</text>
+  <text x="60" y="586" font-size="12" fill="#333">• <tspan font-weight="bold">DAG validation</tspan> (AIAAS): no cycles where they're forbidden, reachability checks, type-check edge IO</text>
+</svg>

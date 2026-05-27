@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 410" width="760" height="410">
+<style>
+  .title { font: bold 16px sans-serif; fill: #1a1a1a; }
+  .label { font: 12px sans-serif; fill: #333; }
+  .small { font: 10px sans-serif; fill: #555; }
+  .mono  { font: 13px 'Consolas','Courier New',monospace; fill: #111; }
+  .box   { fill: #f6f8fa; stroke: #444; stroke-width: 1.2; }
+  .box2  { fill: #e6f0ff; stroke: #1f6feb; stroke-width: 1.5; }
+  .box3  { fill: #fff3cd; stroke: #b58900; stroke-width: 1.5; }
+  .box4  { fill: #d4edda; stroke: #1a7f37; stroke-width: 1.5; }
+  .box5  { fill: #fce7f3; stroke: #be185d; stroke-width: 1.5; }
+  .arrow { stroke: #444; stroke-width: 1.6; fill: none; marker-end: url(#arr); }
+  .arrow2{ stroke: #1f6feb; stroke-width: 2; fill: none; marker-end: url(#arrB); }
+  .arrow3{ stroke: #d33; stroke-width: 2; fill: none; marker-end: url(#arrR); }
+</style>
+<defs>
+  <marker id="arr"  viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#444"/></marker>
+  <marker id="arrB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#1f6feb"/></marker>
+  <marker id="arrR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#d33"/></marker>
+</defs>
+<text x="380" y="22" text-anchor="middle" class="title">Git Branching Models</text><text x="40" y="55" class="label">Git Flow vs Trunk-based</text><line x1="80" y1="120" x2="700" y2="120" stroke="#1f6feb" stroke-width="2"/><text x="60" y="124" text-anchor="end" class="mono">main</text><line x1="80" y1="180" x2="700" y2="180" stroke="#b58900" stroke-width="2"/><text x="60" y="184" text-anchor="end" class="mono">develop</text><path d="M 200 180 C 210 230 230 230 250 180" fill="none" stroke="#1a7f37" stroke-width="2"/><circle cx="225" cy="225" r="5" fill="#1a7f37"/><text x="225" y="248" text-anchor="middle" class="small">feature</text><path d="M 320 180 C 330 230 350 230 370 180" fill="none" stroke="#1a7f37" stroke-width="2"/><circle cx="345" cy="225" r="5" fill="#1a7f37"/><text x="345" y="248" text-anchor="middle" class="small">feature</text><path d="M 440 180 C 450 230 470 230 490 180" fill="none" stroke="#1a7f37" stroke-width="2"/><circle cx="465" cy="225" r="5" fill="#1a7f37"/><text x="465" y="248" text-anchor="middle" class="small">feature</text><path d="M 540 180 C 540 150 600 130 660 120" fill="none" stroke="#d33" stroke-width="2"/><circle cx="600" cy="148" r="5" fill="#d33"/><text x="600" y="142" text-anchor="middle" class="small">release</text><text x="40" y="300" class="label">Trunk-based:</text><line x1="80" y1="320" x2="700" y2="320" stroke="#1f6feb" stroke-width="2"/><text x="60" y="324" text-anchor="end" class="mono">main</text><path d="M 160 320 C 160 350 190 350 190 320" fill="none" stroke="#1a7f37" stroke-width="2"/><circle cx="175" cy="345" r="3" fill="#1a7f37"/><path d="M 260 320 C 260 350 290 350 290 320" fill="none" stroke="#1a7f37" stroke-width="2"/><circle cx="275" cy="345" r="3" fill="#1a7f37"/><path d="M 360 320 C 360 350 390 350 390 320" fill="none" stroke="#1a7f37" stroke-width="2"/><circle cx="375" cy="345" r="3" fill="#1a7f37"/><path d="M 460 320 C 460 350 490 350 490 320" fill="none" stroke="#1a7f37" stroke-width="2"/><circle cx="475" cy="345" r="3" fill="#1a7f37"/><path d="M 560 320 C 560 350 590 350 590 320" fill="none" stroke="#1a7f37" stroke-width="2"/><circle cx="575" cy="345" r="3" fill="#1a7f37"/><text x="40" y="385" class="small">Trunk: short-lived feature branches, merged to main daily. Behind feature flags.</text></svg>

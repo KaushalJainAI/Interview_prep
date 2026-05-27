@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" font-family="Arial, sans-serif" font-size="13">
+  <style>
+    .box { fill:#fff; stroke:#222; stroke-width:2; }
+    .lbl { fill:#222; text-anchor:middle; }
+    .small { font-size:11px; fill:#444; text-anchor:middle; }
+    .title { font-size:18px; font-weight:bold; text-anchor:middle; }
+    .arrow { stroke:#222; stroke-width:1.8; fill:none; marker-end:url(#a); }
+    .loop { stroke:#1565c0; stroke-width:2; fill:none; marker-end:url(#a); }
+    .llm { fill:#e2d9f3; }
+    .tool { fill:#cfe2ff; }
+    .check { fill:#fff3cd; }
+    .stop { fill:#d4edda; }
+    .danger { fill:#f8d7da; }
+  </style>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10z" fill="#222"/></marker>
+  </defs>
+
+  <text x="450" y="30" class="title">ReAct-style Agent Loop  (the AIAAS / LangGraph pattern)</text>
+  <text x="450" y="50" class="small">Reason → Act → Observe → repeat, until model emits a final answer or max iterations reached</text>
+
+  <!-- User -->
+  <rect class="box" x="40" y="100" width="120" height="50" rx="6"/>
+  <text x="100" y="125" class="lbl">User query</text>
+  <text x="100" y="142" class="small">+ system prompt</text>
+
+  <line class="arrow" x1="160" y1="125" x2="240" y2="125"/>
+
+  <!-- LLM -->
+  <rect class="box llm" x="240" y="80" width="190" height="90" rx="6"/>
+  <text x="335" y="105" class="lbl" font-weight="bold">LLM (with tool schemas)</text>
+  <text x="335" y="125" class="small">Reasons over history</text>
+  <text x="335" y="142" class="small">Emits one of:</text>
+  <text x="335" y="158" class="small">• tool_call(name, args)   • final_answer</text>
+
+  <!-- Branch: tool or final? -->
+  <line class="arrow" x1="430" y1="125" x2="500" y2="125"/>
+  <polygon class="check box" points="500,100 580,125 500,150 420,125" transform="translate(80,0)"/>
+  <text x="580" y="130" class="lbl">tool call?</text>
+
+  <!-- Yes (down to tool exec) -->
+  <line class="arrow" x1="580" y1="150" x2="580" y2="220"/>
+  <text x="595" y="190" class="small" text-anchor="start">yes</text>
+
+  <!-- No (right to final) -->
+  <line class="arrow" x1="660" y1="125" x2="730" y2="125"/>
+  <rect class="box stop" x="730" y="100" width="130" height="50" rx="6"/>
+  <text x="795" y="125" class="lbl">Final answer</text>
+  <text x="795" y="142" class="small">return to user</text>
+  <text x="685" y="115" class="small" text-anchor="start">no</text>
+
+  <!-- Tool registry -->
+  <rect class="box tool" x="430" y="220" width="320" height="100" rx="6"/>
+  <text x="590" y="244" class="lbl" font-weight="bold">Tool Registry  (MCP servers + local)</text>
+  <text x="590" y="263" class="small">search_web · query_db · run_python · send_email · …</text>
+  <text x="590" y="282" class="small">Each tool has: Pydantic input schema, handler fn, timeout, rate limit</text>
+  <text x="590" y="301" class="small">In AIAAS: tools are nodes in the ReactFlow DAG</text>
+
+  <!-- Guardrails -->
+  <rect class="box danger" x="40" y="220" width="370" height="100" rx="6"/>
+  <text x="225" y="244" class="lbl" font-weight="bold">Guardrails (before & after tool call)</text>
+  <text x="225" y="263" class="small">• Input validation against schema</text>
+  <text x="225" y="282" class="small">• Allowlist (only registered tools)</text>
+  <text x="225" y="301" class="small">• HITL approval gate for write actions (AIAAS pattern)</text>
+
+  <line class="arrow" x1="410" y1="270" x2="430" y2="270"/>
+
+  <!-- Tool execution -->
+  <line class="arrow" x1="590" y1="320" x2="590" y2="370"/>
+  <rect class="box tool" x="450" y="370" width="280" height="60" rx="6"/>
+  <text x="590" y="395" class="lbl">Execute tool (in sandbox)</text>
+  <text x="590" y="413" class="small">timeout, retries, exception → return error to LLM</text>
+
+  <!-- Observation back to LLM -->
+  <line class="loop" x1="450" y1="400" x2="120" y2="400"/>
+  <line class="loop" x1="120" y1="400" x2="120" y2="170"/>
+  <line class="loop" x1="120" y1="170" x2="240" y2="170"/>
+  <text x="200" y="395" class="small" fill="#1565c0">append tool result to history → next iteration</text>
+
+  <!-- Stop conditions -->
+  <rect class="box" x="40" y="460" width="820" height="135" rx="8" fill="#f8f9fa"/>
+  <text x="450" y="483" class="lbl" font-weight="bold">Stopping conditions (a real agent loop ALWAYS has all of these)</text>
+  <text x="60" y="503" font-size="12" fill="#333">1.  LLM emits <tspan font-family="Consolas,monospace">final_answer</tspan> instead of tool_call</text>
+  <text x="60" y="520" font-size="12" fill="#333">2.  Max iterations hit (default 10-25). Prevents runaway loops on bad reasoning.</text>
+  <text x="60" y="537" font-size="12" fill="#333">3.  Token budget exhausted (sum of input+output tokens across the loop)</text>
+  <text x="60" y="554" font-size="12" fill="#333">4.  Wall-clock timeout (e.g. 5 min). Long-running → use AIAAS-style heartbeat + WebSocket updates.</text>
+  <text x="60" y="571" font-size="12" fill="#333">5.  User cancellation (pause/resume — store state, allow human-in-the-loop approval, then continue)</text>
+  <text x="60" y="588" font-size="12" fill="#333">6.  Same tool called with identical args N times → likely stuck; break and ask user</text>
+</svg>

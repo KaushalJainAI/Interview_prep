@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950 620" font-family="Arial, sans-serif" font-size="13">
+  <style>
+    .box { fill:#fff; stroke:#222; stroke-width:2; }
+    .lbl { fill:#222; text-anchor:middle; }
+    .small { font-size:11px; fill:#444; text-anchor:middle; }
+    .title { font-size:18px; font-weight:bold; text-anchor:middle; }
+    .client { fill:#fff5e6; stroke:#d35400; }
+    .server { fill:#cfe2ff; }
+    .db { fill:#e2d9f3; }
+    .token { fill:#d4edda; stroke:#198754; stroke-width:1.5; }
+    .arrow { stroke:#222; stroke-width:1.8; fill:none; marker-end:url(#a); }
+    .req { stroke:#198754; stroke-width:2; fill:none; marker-end:url(#g); }
+    .resp { stroke:#1565c0; stroke-width:2; fill:none; marker-end:url(#b); }
+  </style>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10z" fill="#222"/></marker>
+    <marker id="g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10z" fill="#198754"/></marker>
+    <marker id="b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10z" fill="#1565c0"/></marker>
+  </defs>
+
+  <text x="475" y="28" class="title">JWT Authentication Flow (with refresh tokens — NGU pattern)</text>
+
+  <!-- Lanes -->
+  <rect class="box client" x="40" y="60" width="180" height="40" rx="6"/>
+  <text x="130" y="85" class="lbl">Client (React SPA)</text>
+
+  <rect class="box server" x="385" y="60" width="180" height="40" rx="6"/>
+  <text x="475" y="85" class="lbl">API (Django + SimpleJWT)</text>
+
+  <rect class="box db" x="730" y="60" width="180" height="40" rx="6"/>
+  <text x="820" y="85" class="lbl">DB + Redis blacklist</text>
+
+  <line x1="130" y1="100" x2="130" y2="580" stroke="#888" stroke-dasharray="3,3"/>
+  <line x1="475" y1="100" x2="475" y2="580" stroke="#888" stroke-dasharray="3,3"/>
+  <line x1="820" y1="100" x2="820" y2="580" stroke="#888" stroke-dasharray="3,3"/>
+
+  <!-- 1. Login -->
+  <text x="475" y="125" class="lbl" font-weight="bold">1. Login</text>
+  <line class="req" x1="130" y1="140" x2="475" y2="140"/>
+  <text x="300" y="135" class="small">POST /auth/login  { email, password }</text>
+
+  <line class="req" x1="475" y1="160" x2="820" y2="160"/>
+  <text x="640" y="155" class="small">verify user, check argon2 hash</text>
+
+  <line class="resp" x1="820" y1="180" x2="475" y2="180"/>
+  <text x="640" y="175" class="small">ok</text>
+
+  <line class="resp" x1="475" y1="200" x2="130" y2="200"/>
+  <text x="300" y="195" class="small">200  { access (15 min), refresh (7 d) }</text>
+
+  <rect class="token" x="40" y="215" width="180" height="32" rx="4"/>
+  <text x="130" y="236" class="lbl small">stores access (memory) + refresh (httpOnly cookie)</text>
+
+  <!-- 2. Authenticated request -->
+  <text x="475" y="280" class="lbl" font-weight="bold">2. Protected request</text>
+  <line class="req" x1="130" y1="295" x2="475" y2="295"/>
+  <text x="300" y="290" class="small">GET /api/me  · Authorization: Bearer &lt;access&gt;</text>
+
+  <rect class="box" x="385" y="305" width="180" height="50" rx="4" fill="#f8f9fa"/>
+  <text x="475" y="324" class="small">verify signature (HS256/RS256)</text>
+  <text x="475" y="340" class="small">check exp claim</text>
+  <text x="475" y="354" class="small">no DB hit — stateless ✓</text>
+
+  <line class="resp" x1="475" y1="370" x2="130" y2="370"/>
+  <text x="300" y="365" class="small">200  { user data }</text>
+
+  <!-- 3. Access expired -->
+  <text x="475" y="410" class="lbl" font-weight="bold">3. Access token expires (after 15 min)</text>
+
+  <line class="req" x1="130" y1="425" x2="475" y2="425"/>
+  <text x="300" y="420" class="small">GET /api/me  · expired access</text>
+  <line class="resp" x1="475" y1="445" x2="130" y2="445"/>
+  <text x="300" y="440" class="small" fill="#d32f2f">401 Unauthorized</text>
+
+  <line class="req" x1="130" y1="465" x2="475" y2="465"/>
+  <text x="300" y="460" class="small">POST /auth/refresh  · cookie carries refresh</text>
+
+  <line class="req" x1="475" y1="485" x2="820" y2="485"/>
+  <text x="640" y="480" class="small">is refresh in blacklist?</text>
+  <line class="resp" x1="820" y1="505" x2="475" y2="505"/>
+  <text x="640" y="500" class="small">no</text>
+
+  <line class="resp" x1="475" y1="525" x2="130" y2="525"/>
+  <text x="300" y="520" class="small">200  { new access, rotated refresh }</text>
+
+  <!-- Bottom panel -->
+  <rect class="box" x="40" y="555" width="880" height="55" rx="8" fill="#fff5f5"/>
+  <text x="60" y="575" font-size="12" fill="#333">• JWT = base64(header).base64(payload).base64(signature) · payload = user_id, exp, iat, custom claims</text>
+  <text x="60" y="592" font-size="12" fill="#333">• HS256 (shared secret) for monolith · RS256 (public key) for distributed verifiers · NEVER put secrets in payload (it's only base64, not encrypted)</text>
+</svg>

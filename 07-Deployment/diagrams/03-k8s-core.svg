@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 400" width="780" height="400">
+<style>
+  .title { font: bold 16px sans-serif; fill: #1a1a1a; }
+  .label { font: 12px sans-serif; fill: #333; }
+  .small { font: 10px sans-serif; fill: #555; }
+  .mono  { font: 13px 'Consolas','Courier New',monospace; fill: #111; }
+  .box   { fill: #f6f8fa; stroke: #444; stroke-width: 1.2; }
+  .box2  { fill: #e6f0ff; stroke: #1f6feb; stroke-width: 1.5; }
+  .box3  { fill: #fff3cd; stroke: #b58900; stroke-width: 1.5; }
+  .box4  { fill: #d4edda; stroke: #1a7f37; stroke-width: 1.5; }
+  .box5  { fill: #fce7f3; stroke: #be185d; stroke-width: 1.5; }
+  .arrow { stroke: #444; stroke-width: 1.6; fill: none; marker-end: url(#arr); }
+  .arrow2{ stroke: #1f6feb; stroke-width: 2; fill: none; marker-end: url(#arrB); }
+  .arrow3{ stroke: #d33; stroke-width: 2; fill: none; marker-end: url(#arrR); }
+</style>
+<defs>
+  <marker id="arr"  viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#444"/></marker>
+  <marker id="arrB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#1f6feb"/></marker>
+  <marker id="arrR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#d33"/></marker>
+</defs>
+<text x="390" y="22" text-anchor="middle" class="title">Kubernetes Core Objects</text><rect x="60" y="78" width="120" height="44" class="box2"/><text x="120" y="98" text-anchor="middle" class="mono">Deployment</text><text x="120" y="115" text-anchor="middle" class="small">scales pods, rolling update</text><rect x="240" y="78" width="120" height="44" class="box3"/><text x="300" y="98" text-anchor="middle" class="mono">ReplicaSet</text><text x="300" y="115" text-anchor="middle" class="small">ensures N replicas</text><rect x="420" y="78" width="120" height="44" class="box4"/><text x="480" y="98" text-anchor="middle" class="mono">Pod</text><text x="480" y="115" text-anchor="middle" class="small">1+ containers, shared net/vol</text><rect x="580" y="78" width="120" height="44" class="box5"/><text x="640" y="98" text-anchor="middle" class="mono">Container</text><text x="640" y="115" text-anchor="middle" class="small">Docker image</text><rect x="60" y="218" width="120" height="44" class="box2"/><text x="120" y="238" text-anchor="middle" class="mono">Service</text><text x="120" y="255" text-anchor="middle" class="small">stable IP / DNS, load-balance</text><rect x="240" y="218" width="120" height="44" class="box3"/><text x="300" y="238" text-anchor="middle" class="mono">Ingress</text><text x="300" y="255" text-anchor="middle" class="small">HTTP routing + TLS</text><rect x="420" y="218" width="120" height="44" class="box4"/><text x="480" y="238" text-anchor="middle" class="mono">ConfigMap</text><text x="480" y="255" text-anchor="middle" class="small">non-secret env vars</text><rect x="580" y="218" width="120" height="44" class="box5"/><text x="640" y="238" text-anchor="middle" class="mono">Secret</text><text x="640" y="255" text-anchor="middle" class="small">encrypted credentials</text><path class="arrow" d="M 180 100 L 240 100"/><path class="arrow" d="M 360 100 L 420 100"/><path class="arrow" d="M 540 100 L 580 100"/><path class="arrow" d="M 180 240 L 240 240"/><text x="40" y="320" class="mono">Deployment → ReplicaSet → Pod (× N replicas) → Container</text><text x="40" y="342" class="mono">Service exposes Pods by label selector. Ingress routes external traffic.</text><text x="40" y="370" class="small">kubectl rollout undo · kubectl logs · kubectl exec -it &lt;pod&gt; -- sh — top 3 daily commands.</text></svg>

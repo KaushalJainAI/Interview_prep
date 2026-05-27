@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 370" width="760" height="370">
+<style>
+  .title { font: bold 16px sans-serif; fill: #1a1a1a; }
+  .label { font: 12px sans-serif; fill: #333; }
+  .small { font: 10px sans-serif; fill: #555; }
+  .mono  { font: 13px 'Consolas','Courier New',monospace; fill: #111; }
+  .box   { fill: #f6f8fa; stroke: #444; stroke-width: 1.2; }
+  .box2  { fill: #e6f0ff; stroke: #1f6feb; stroke-width: 1.5; }
+  .box3  { fill: #fff3cd; stroke: #b58900; stroke-width: 1.5; }
+  .box4  { fill: #d4edda; stroke: #1a7f37; stroke-width: 1.5; }
+  .box5  { fill: #fce7f3; stroke: #be185d; stroke-width: 1.5; }
+  .arrow { stroke: #444; stroke-width: 1.6; fill: none; marker-end: url(#arr); }
+  .arrow2{ stroke: #1f6feb; stroke-width: 2; fill: none; marker-end: url(#arrB); }
+  .arrow3{ stroke: #d33; stroke-width: 2; fill: none; marker-end: url(#arrR); }
+</style>
+<defs>
+  <marker id="arr"  viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#444"/></marker>
+  <marker id="arrB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#1f6feb"/></marker>
+  <marker id="arrR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#d33"/></marker>
+</defs>
+<text x="380" y="22" text-anchor="middle" class="title">AI System Testing -- CI Pipeline</text><text x="40" y="55" class="label">Per-PR CI (fast, all mocked):</text><rect x="60" y="80" width="170" height="40" class="box4"/><text x="145" y="105" text-anchor="middle" class="mono">unit tests</text><path class="arrow" d="M 230 100 L 260 100"/><rect x="260" y="80" width="170" height="40" class="box4"/><text x="345" y="105" text-anchor="middle" class="mono">format / schema</text><path class="arrow" d="M 430 100 L 460 100"/><rect x="460" y="80" width="170" height="40" class="box4"/><text x="545" y="105" text-anchor="middle" class="mono">golden subset (50)</text><text x="40" y="155" class="label">Nightly (real provider):</text><rect x="60" y="180" width="140" height="40" class="box3"/><text x="130" y="205" text-anchor="middle" class="mono">full golden set</text><path class="arrow" d="M 200 200 L 220 200"/><rect x="220" y="180" width="140" height="40" class="box3"/><text x="290" y="205" text-anchor="middle" class="mono">RAG eval</text><path class="arrow" d="M 360 200 L 380 200"/><rect x="380" y="180" width="140" height="40" class="box3"/><text x="450" y="205" text-anchor="middle" class="mono">red-team / safety</text><path class="arrow" d="M 520 200 L 540 200"/><rect x="540" y="180" width="140" height="40" class="box3"/><text x="610" y="205" text-anchor="middle" class="mono">drift report</text><text x="40" y="250" class="label">Pre-release gates:</text><rect x="60" y="270" width="240" height="40" class="box5"/><text x="180" y="295" text-anchor="middle" class="mono">human review sample (50)</text><rect x="320" y="270" width="240" height="40" class="box5"/><text x="440" y="295" text-anchor="middle" class="mono">load test @ 2x peak QPS</text><text x="40" y="345" class="small">Quarantine flakes (do not silent-retry incorrectness). Track p95 latency + cost-per-request.</text></svg>

@@ -1,0 +1,23 @@
+import subprocess, re
+from pathlib import Path
+from PIL import Image, ImageChops
+EDGE = r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"
+DIAGRAMS = Path(__file__).resolve().parent.parent / "diagrams"
+def parse(t):
+    m = re.search(r'viewBox="0 0 (\d+) (\d+)"', t)
+    return (int(m.group(1)), int(m.group(2))) if m else (1400, 800)
+def trim(im):
+    bg = Image.new(im.mode, im.size, (255,255,255))
+    diff = ImageChops.difference(im, bg); bb = diff.getbbox()
+    if not bb: return im
+    x0,y0,x1,y1 = bb; w,h = im.size
+    return im.crop((max(0,x0-12), max(0,y0-12), min(w,x1+12), min(h,y1+12)))
+for svg in sorted(DIAGRAMS.glob("*.svg")):
+    png = svg.with_suffix(".png")
+    w,h = parse(svg.read_text(encoding="utf-8"))
+    subprocess.run([EDGE,"--headless=new","--disable-gpu",
+                    f"--screenshot={png}",f"--window-size={w*2},{h*2}",
+                    "--force-device-scale-factor=2","--hide-scrollbars",
+                    svg.resolve().as_uri()], check=True, timeout=60)
+    trim(Image.open(png).convert("RGB")).save(png, "PNG", optimize=True)
+    print("png", png.name)

@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 560" font-family="Arial, sans-serif" font-size="13">
+  <style>
+    .box { fill:#fff; stroke:#222; stroke-width:2; }
+    .lbl { fill:#222; text-anchor:middle; }
+    .small { font-size:11px; fill:#444; text-anchor:middle; }
+    .title { font-size:18px; font-weight:bold; text-anchor:middle; }
+    .enc { fill:#cfe2ff; }
+    .bn { fill:#fff3cd; }
+    .dec { fill:#d4edda; }
+    .arrow { stroke:#222; stroke-width:1.8; fill:none; marker-end:url(#a); }
+    .skip { stroke:#d32f2f; stroke-width:2; fill:none; stroke-dasharray:6,4; marker-end:url(#b); }
+  </style>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10z" fill="#222"/></marker>
+    <marker id="b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10z" fill="#d32f2f"/></marker>
+  </defs>
+
+  <text x="450" y="30" class="title">U-Net — Encoder-Decoder with Skip Connections</text>
+  <text x="450" y="50" class="small">Used in: segmentation (Vesuvius ink), medical imaging, the backbone of Stable Diffusion</text>
+
+  <!-- Encoder (left side, going down) -->
+  <text x="120" y="85" class="lbl" font-weight="bold">Encoder (contracting)</text>
+  <rect class="box enc" x="60"  y="100" width="160" height="40" rx="6"/>
+  <text x="140" y="125" class="lbl">Conv → Conv  (64ch)</text>
+  <text x="20"  y="125" class="small" text-anchor="start">512×512</text>
+
+  <line class="arrow" x1="140" y1="140" x2="140" y2="170"/>
+  <text x="160" y="160" class="small" text-anchor="start">↓ MaxPool</text>
+
+  <rect class="box enc" x="60"  y="170" width="160" height="40" rx="6"/>
+  <text x="140" y="195" class="lbl">Conv → Conv (128ch)</text>
+  <text x="20"  y="195" class="small" text-anchor="start">256×256</text>
+
+  <line class="arrow" x1="140" y1="210" x2="140" y2="240"/>
+
+  <rect class="box enc" x="60"  y="240" width="160" height="40" rx="6"/>
+  <text x="140" y="265" class="lbl">Conv → Conv (256ch)</text>
+  <text x="20"  y="265" class="small" text-anchor="start">128×128</text>
+
+  <line class="arrow" x1="140" y1="280" x2="140" y2="310"/>
+
+  <rect class="box enc" x="60"  y="310" width="160" height="40" rx="6"/>
+  <text x="140" y="335" class="lbl">Conv → Conv (512ch)</text>
+  <text x="20"  y="335" class="small" text-anchor="start">64×64</text>
+
+  <line class="arrow" x1="140" y1="350" x2="140" y2="380"/>
+
+  <!-- Bottleneck -->
+  <rect class="box bn" x="350" y="380" width="200" height="50" rx="6"/>
+  <text x="450" y="408" class="lbl">Bottleneck (1024ch)</text>
+  <text x="450" y="425" class="small">32×32 — smallest spatial, richest channels</text>
+
+  <line class="arrow" x1="140" y1="380" x2="350" y2="405"/>
+
+  <!-- Decoder (right side, going up) -->
+  <text x="780" y="85" class="lbl" font-weight="bold">Decoder (expanding)</text>
+  <rect class="box dec" x="680" y="100" width="200" height="40" rx="6"/>
+  <text x="780" y="125" class="lbl">UpConv → Conv (64ch)</text>
+  <text x="900" y="125" class="small" text-anchor="end">512×512</text>
+
+  <rect class="box dec" x="680" y="170" width="200" height="40" rx="6"/>
+  <text x="780" y="195" class="lbl">UpConv → Conv (128ch)</text>
+  <text x="900" y="195" class="small" text-anchor="end">256×256</text>
+
+  <rect class="box dec" x="680" y="240" width="200" height="40" rx="6"/>
+  <text x="780" y="265" class="lbl">UpConv → Conv (256ch)</text>
+  <text x="900" y="265" class="small" text-anchor="end">128×128</text>
+
+  <rect class="box dec" x="680" y="310" width="200" height="40" rx="6"/>
+  <text x="780" y="335" class="lbl">UpConv → Conv (512ch)</text>
+  <text x="900" y="335" class="small" text-anchor="end">64×64</text>
+
+  <line class="arrow" x1="550" y1="405" x2="780" y2="350"/>
+  <line class="arrow" x1="780" y1="310" x2="780" y2="280"/>
+  <line class="arrow" x1="780" y1="240" x2="780" y2="210"/>
+  <line class="arrow" x1="780" y1="170" x2="780" y2="140"/>
+
+  <!-- Skip connections -->
+  <line class="skip" x1="220" y1="120" x2="680" y2="120"/>
+  <line class="skip" x1="220" y1="190" x2="680" y2="190"/>
+  <line class="skip" x1="220" y1="260" x2="680" y2="260"/>
+  <line class="skip" x1="220" y1="330" x2="680" y2="330"/>
+
+  <text x="450" y="170" class="small" fill="#d32f2f">skip (concat) — preserves spatial detail lost to downsampling</text>
+
+  <!-- Output -->
+  <line class="arrow" x1="780" y1="100" x2="780" y2="70"/>
+  <rect class="box" x="700" y="40" width="160" height="30" rx="6" fill="#e2d9f3"/>
+  <text x="780" y="60" class="lbl">1×1 Conv → mask</text>
+
+  <!-- Why-it-works panel -->
+  <rect class="box" x="50" y="450" width="820" height="100" rx="8" fill="#f8f9fa"/>
+  <text x="460" y="473" class="lbl" font-weight="bold">Why U-Net works (interview answer)</text>
+  <text x="60" y="493" font-size="12" fill="#333">• Encoder learns WHAT (semantic features) by progressively downsampling — global context</text>
+  <text x="60" y="510" font-size="12" fill="#333">• Decoder learns WHERE (precise localization) by upsampling — pixel-level output</text>
+  <text x="60" y="527" font-size="12" fill="#333">• Skip connections concatenate high-resolution encoder features into the decoder → recover fine spatial detail lost in pooling</text>
+  <text x="60" y="544" font-size="12" fill="#333">• Same backbone is used by Stable Diffusion to denoise latents — just swap segmentation mask for predicted noise</text>
+</svg>

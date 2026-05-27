@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 900" font-family="Arial, sans-serif" font-size="14">
+  <style>
+    .box { fill:#fff; stroke:#222; stroke-width:2; }
+    .lbl { fill:#222; text-anchor:middle; }
+    .small { font-size:12px; fill:#444; text-anchor:middle; }
+    .resid { stroke:#1565c0; stroke-width:2; fill:none; marker-end:url(#arrow); }
+    .arrow { stroke:#222; stroke-width:2; fill:none; marker-end:url(#arrow); }
+    .title { font-size:18px; font-weight:bold; text-anchor:middle; }
+    .ln { fill:#fff3cd; stroke:#222; }
+    .mha { fill:#cfe2ff; stroke:#222; }
+    .ffn { fill:#d1e7dd; stroke:#222; }
+    .emb { fill:#f8d7da; stroke:#222; }
+    .head { fill:#e2d9f3; stroke:#222; }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#222"/>
+    </marker>
+  </defs>
+
+  <text x="360" y="30" class="title">Transformer Decoder Block (Pre-LN, modern LLM)</text>
+  <text x="360" y="50" class="small">Stacked N times. Llama, Mistral, GPT all share this shape.</text>
+
+  <!-- input -->
+  <rect class="emb box" x="260" y="70" width="200" height="40" rx="6"/>
+  <text x="360" y="95" class="lbl">Token + Positional Embedding</text>
+
+  <line class="arrow" x1="360" y1="110" x2="360" y2="140"/>
+
+  <!-- residual fork start -->
+  <circle cx="360" cy="150" r="6" fill="#222"/>
+  <line x1="360" y1="150" x2="120" y2="150" stroke="#1565c0" stroke-width="2"/>
+  <line x1="120" y1="150" x2="120" y2="370" stroke="#1565c0" stroke-width="2"/>
+
+  <!-- LN1 -->
+  <rect class="ln box" x="260" y="160" width="200" height="40" rx="6"/>
+  <text x="360" y="185" class="lbl">LayerNorm (RMSNorm)</text>
+  <line class="arrow" x1="360" y1="200" x2="360" y2="230"/>
+
+  <!-- MHA -->
+  <rect class="mha box" x="220" y="230" width="280" height="80" rx="6"/>
+  <text x="360" y="255" class="lbl">Masked Multi-Head Self-Attention</text>
+  <text x="360" y="275" class="small">Q,K,V = x W_q,k,v ; softmax(QK^T/√d_k) V</text>
+  <text x="360" y="293" class="small">h heads in parallel; causal mask for generation</text>
+
+  <line class="arrow" x1="360" y1="310" x2="360" y2="350"/>
+
+  <!-- add residual -->
+  <circle cx="360" cy="365" r="14" fill="#fff" stroke="#222" stroke-width="2"/>
+  <text x="360" y="370" class="lbl">+</text>
+  <line x1="120" y1="365" x2="346" y2="365" stroke="#1565c0" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <line class="arrow" x1="360" y1="379" x2="360" y2="410"/>
+
+  <!-- residual fork 2 -->
+  <circle cx="360" cy="420" r="6" fill="#222"/>
+  <line x1="360" y1="420" x2="600" y2="420" stroke="#1565c0" stroke-width="2"/>
+  <line x1="600" y1="420" x2="600" y2="640" stroke="#1565c0" stroke-width="2"/>
+
+  <!-- LN2 -->
+  <rect class="ln box" x="260" y="430" width="200" height="40" rx="6"/>
+  <text x="360" y="455" class="lbl">LayerNorm (RMSNorm)</text>
+  <line class="arrow" x1="360" y1="470" x2="360" y2="500"/>
+
+  <!-- FFN -->
+  <rect class="ffn box" x="220" y="500" width="280" height="80" rx="6"/>
+  <text x="360" y="525" class="lbl">FFN  (d → 4d → d)</text>
+  <text x="360" y="545" class="small">Linear → SwiGLU/GeLU → Linear</text>
+  <text x="360" y="563" class="small">~2/3 of model parameters live here</text>
+
+  <line class="arrow" x1="360" y1="580" x2="360" y2="620"/>
+
+  <!-- add residual 2 -->
+  <circle cx="360" cy="635" r="14" fill="#fff" stroke="#222" stroke-width="2"/>
+  <text x="360" y="640" class="lbl">+</text>
+  <line x1="600" y1="635" x2="374" y2="635" stroke="#1565c0" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <line class="arrow" x1="360" y1="649" x2="360" y2="680"/>
+
+  <!-- repeat box -->
+  <rect class="box" x="200" y="680" width="320" height="30" rx="6" fill="#eee"/>
+  <text x="360" y="700" class="lbl">↑ repeat N times (Llama-70B: N=80) ↑</text>
+
+  <line class="arrow" x1="360" y1="710" x2="360" y2="740"/>
+
+  <!-- final LN + head -->
+  <rect class="ln box" x="260" y="740" width="200" height="40" rx="6"/>
+  <text x="360" y="765" class="lbl">Final LayerNorm</text>
+  <line class="arrow" x1="360" y1="780" x2="360" y2="810"/>
+
+  <rect class="head box" x="240" y="810" width="240" height="40" rx="6"/>
+  <text x="360" y="835" class="lbl">Linear → Softmax (vocab)</text>
+
+  <text x="360" y="880" class="small">Blue lines = residual connections (gradient highway)</text>
+</svg>

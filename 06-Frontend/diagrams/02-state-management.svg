@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 360" width="760" height="360">
+<style>
+  .title { font: bold 16px sans-serif; fill: #1a1a1a; }
+  .label { font: 12px sans-serif; fill: #333; }
+  .small { font: 10px sans-serif; fill: #555; }
+  .mono  { font: 13px 'Consolas','Courier New',monospace; fill: #111; }
+  .box   { fill: #f6f8fa; stroke: #444; stroke-width: 1.2; }
+  .box2  { fill: #e6f0ff; stroke: #1f6feb; stroke-width: 1.5; }
+  .box3  { fill: #fff3cd; stroke: #b58900; stroke-width: 1.5; }
+  .box4  { fill: #d4edda; stroke: #1a7f37; stroke-width: 1.5; }
+  .box5  { fill: #fce7f3; stroke: #be185d; stroke-width: 1.5; }
+  .arrow { stroke: #444; stroke-width: 1.6; fill: none; marker-end: url(#arr); }
+  .arrow2{ stroke: #1f6feb; stroke-width: 2; fill: none; marker-end: url(#arrB); }
+  .arrow3{ stroke: #d33; stroke-width: 2; fill: none; marker-end: url(#arrR); }
+</style>
+<defs>
+  <marker id="arr"  viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#444"/></marker>
+  <marker id="arrB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#1f6feb"/></marker>
+  <marker id="arrR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#d33"/></marker>
+</defs>
+<text x="380" y="22" text-anchor="middle" class="title">React State Management Choices</text><text x="40" y="60" class="label">State management options</text><rect x="20" y="84" width="160" height="52" class="box4"/><text x="100" y="108" text-anchor="middle" class="mono">useState</text><text x="100" y="125" text-anchor="middle" class="small">local, simple, primitive</text><rect x="220" y="84" width="160" height="52" class="box4"/><text x="300" y="108" text-anchor="middle" class="mono">useReducer</text><text x="300" y="125" text-anchor="middle" class="small">local, complex transitions</text><rect x="420" y="84" width="160" height="52" class="box3"/><text x="500" y="108" text-anchor="middle" class="mono">Context</text><text x="500" y="125" text-anchor="middle" class="small">shared in tree, low-freq</text><rect x="20" y="194" width="160" height="52" class="box2"/><text x="100" y="218" text-anchor="middle" class="mono">Redux/Zustand</text><text x="100" y="235" text-anchor="middle" class="small">global, devtools, async</text><rect x="220" y="194" width="160" height="52" class="box2"/><text x="300" y="218" text-anchor="middle" class="mono">React Query</text><text x="300" y="235" text-anchor="middle" class="small">server state cache</text><rect x="420" y="194" width="160" height="52" class="box5"/><text x="500" y="218" text-anchor="middle" class="mono">URL state</text><text x="500" y="235" text-anchor="middle" class="small">shareable, bookmarkable</text><text x="40" y="310" class="mono">Decision: local? → useState. Shared but stable? → Context. Server data? → React Query.</text><text x="40" y="332" class="mono">Frequent updates across tree → Zustand / Jotai (atoms) avoid context re-render storm.</text></svg>

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 660" width="820" height="660">
+<style>
+  .title { font: bold 16px sans-serif; fill: #1a1a1a; }
+  .label { font: 12px sans-serif; fill: #333; }
+  .small { font: 10px sans-serif; fill: #555; }
+  .mono  { font: 13px 'Consolas','Courier New',monospace; fill: #111; }
+  .box   { fill: #f6f8fa; stroke: #444; stroke-width: 1.2; }
+  .box2  { fill: #e6f0ff; stroke: #1f6feb; stroke-width: 1.5; }
+  .box3  { fill: #fff3cd; stroke: #b58900; stroke-width: 1.5; }
+  .box4  { fill: #d4edda; stroke: #1a7f37; stroke-width: 1.5; }
+  .box5  { fill: #fce7f3; stroke: #be185d; stroke-width: 1.5; }
+  .arrow { stroke: #444; stroke-width: 1.6; fill: none; marker-end: url(#arr); }
+  .arrow2{ stroke: #1f6feb; stroke-width: 2; fill: none; marker-end: url(#arrB); }
+</style>
+<defs>
+  <marker id="arr"  viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#444"/></marker>
+  <marker id="arrB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#1f6feb"/></marker>
+</defs>
+<text x="410" y="22" text-anchor="middle" class="title">Typical Interview Pipeline (5-6 rounds)</text><rect x="80" y="58" width="180" height="44" class="box2"/><text x="170" y="78" text-anchor="middle" class="mono">Phone screen</text><text x="170" y="95" text-anchor="middle" class="small">fit + intro + light tech</text><text x="290" y="85" class="small">→ prepare:  fit + intro + light tech</text><rect x="80" y="148" width="180" height="44" class="box3"/><text x="170" y="168" text-anchor="middle" class="mono">Tech screen 1</text><text x="170" y="185" text-anchor="middle" class="small">DSA / coding live</text><text x="290" y="175" class="small">→ prepare:  DSA / coding live</text><rect x="80" y="238" width="180" height="44" class="box3"/><text x="170" y="258" text-anchor="middle" class="mono">Tech screen 2</text><text x="170" y="275" text-anchor="middle" class="small">ML / system design</text><text x="290" y="265" class="small">→ prepare:  ML / system design</text><rect x="80" y="328" width="180" height="44" class="box4"/><text x="170" y="348" text-anchor="middle" class="mono">Project deep-dive</text><text x="170" y="365" text-anchor="middle" class="small">your work — AIAAS / NGU</text><text x="290" y="355" class="small">→ prepare:  your work — AIAAS / NGU</text><rect x="80" y="418" width="180" height="44" class="box5"/><text x="170" y="438" text-anchor="middle" class="mono">Behavioural / values</text><text x="170" y="455" text-anchor="middle" class="small">STAR stories</text><text x="290" y="445" class="small">→ prepare:  STAR stories</text><rect x="80" y="508" width="180" height="44" class="box"/><text x="170" y="528" text-anchor="middle" class="mono">Bar-raiser / hiring mgr</text><text x="170" y="545" text-anchor="middle" class="small">calibration</text><text x="290" y="535" class="small">→ prepare:  calibration</text><text x="40" y="600" class="mono">3-5 rounds typical; spread over 2-4 weeks. Recruiter usually previews format.</text><text x="40" y="624" class="small">Drop-off lowest at later rounds — push for clarity on next step before ending each call.</text></svg>

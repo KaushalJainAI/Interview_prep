@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950 540" font-family="Arial, sans-serif" font-size="13">
+  <style>
+    .box { fill:#fff; stroke:#222; stroke-width:2; }
+    .lbl { fill:#222; text-anchor:middle; }
+    .small { font-size:11px; fill:#444; text-anchor:middle; }
+    .title { font-size:18px; font-weight:bold; text-anchor:middle; }
+    .clean { fill:#d4edda; }
+    .noisy { fill:#fff5e6; }
+    .pure { fill:#f8d7da; }
+    .arrow-f { stroke:#d35400; stroke-width:2; fill:none; marker-end:url(#af); }
+    .arrow-r { stroke:#1565c0; stroke-width:2; fill:none; marker-end:url(#ar); }
+  </style>
+  <defs>
+    <marker id="af" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10z" fill="#d35400"/></marker>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10z" fill="#1565c0"/></marker>
+  </defs>
+
+  <text x="475" y="30" class="title">Diffusion Models — Forward (noising) vs Reverse (denoising)</text>
+
+  <!-- Forward chain -->
+  <text x="80" y="80" class="lbl" font-weight="bold" fill="#d35400">Forward (fixed, no learning):  q(x_t | x_{t-1}) = N(√(1-β_t)·x_{t-1}, β_t·I)</text>
+
+  <rect class="box clean" x="40" y="100" width="100" height="80" rx="6"/>
+  <text x="90" y="130" class="lbl">x₀</text>
+  <text x="90" y="150" class="small">clean image</text>
+  <text x="90" y="195" class="small">t = 0</text>
+
+  <line class="arrow-f" x1="140" y1="140" x2="200" y2="140"/>
+  <text x="170" y="130" class="small" fill="#d35400">+ε</text>
+
+  <rect class="box noisy" x="200" y="100" width="100" height="80" rx="6"/>
+  <text x="250" y="130" class="lbl">x₁</text>
+  <text x="250" y="150" class="small">slightly noisy</text>
+  <text x="250" y="195" class="small">t = 1</text>
+
+  <line class="arrow-f" x1="300" y1="140" x2="360" y2="140"/>
+  <text x="330" y="130" class="small" fill="#d35400">+ε</text>
+
+  <rect class="box noisy" x="360" y="100" width="100" height="80" rx="6"/>
+  <text x="410" y="130" class="lbl">x₂</text>
+  <text x="410" y="150" class="small">noisier</text>
+  <text x="410" y="195" class="small">t = 2</text>
+
+  <line class="arrow-f" x1="460" y1="140" x2="520" y2="140"/>
+  <text x="490" y="130" class="small">…</text>
+
+  <rect class="box noisy" x="520" y="100" width="100" height="80" rx="6"/>
+  <text x="570" y="130" class="lbl">x_t</text>
+  <text x="570" y="195" class="small">t (mid)</text>
+
+  <line class="arrow-f" x1="620" y1="140" x2="680" y2="140"/>
+  <text x="650" y="130" class="small">…</text>
+
+  <rect class="box pure" x="680" y="100" width="120" height="80" rx="6"/>
+  <text x="740" y="130" class="lbl">x_T</text>
+  <text x="740" y="150" class="small">pure Gaussian</text>
+  <text x="740" y="195" class="small">t = T (~1000)</text>
+
+  <!-- Reverse chain -->
+  <text x="80" y="280" class="lbl" font-weight="bold" fill="#1565c0">Reverse (learned):  p_θ(x_{t-1} | x_t) ≈ Gaussian whose mean is computed from ε_θ(x_t, t)</text>
+
+  <rect class="box pure" x="680" y="310" width="120" height="80" rx="6"/>
+  <text x="740" y="340" class="lbl">x_T</text>
+  <text x="740" y="360" class="small">sample from N(0,I)</text>
+
+  <line class="arrow-r" x1="680" y1="350" x2="620" y2="350"/>
+  <text x="650" y="340" class="small" fill="#1565c0">−ε̂</text>
+
+  <rect class="box noisy" x="520" y="310" width="100" height="80" rx="6"/>
+  <text x="570" y="340" class="lbl">x_{T-1}</text>
+
+  <line class="arrow-r" x1="520" y1="350" x2="460" y2="350"/>
+  <text x="490" y="340" class="small">…</text>
+
+  <rect class="box noisy" x="360" y="310" width="100" height="80" rx="6"/>
+  <text x="410" y="340" class="lbl">x_2</text>
+
+  <line class="arrow-r" x1="360" y1="350" x2="300" y2="350"/>
+  <text x="330" y="340" class="small" fill="#1565c0">−ε̂</text>
+
+  <rect class="box noisy" x="200" y="310" width="100" height="80" rx="6"/>
+  <text x="250" y="340" class="lbl">x_1</text>
+
+  <line class="arrow-r" x1="200" y1="350" x2="140" y2="350"/>
+  <text x="170" y="340" class="small" fill="#1565c0">−ε̂</text>
+
+  <rect class="box clean" x="40" y="310" width="100" height="80" rx="6"/>
+  <text x="90" y="340" class="lbl">x₀</text>
+  <text x="90" y="360" class="small">generated image</text>
+
+  <!-- training detail panel -->
+  <rect class="box" x="40" y="420" width="880" height="110" rx="8" fill="#f8f9fa"/>
+  <text x="475" y="443" class="lbl" font-weight="bold">Training objective (memorize)</text>
+  <text x="475" y="463" class="lbl" font-family="Consolas,monospace" font-size="13">L = E_{t, x₀, ε}  ‖ ε − ε_θ(  √ᾱ_t · x₀  +  √(1−ᾱ_t) · ε  , t )  ‖²</text>
+  <text x="60" y="488" font-size="12" fill="#333">• Sample timestep t uniformly, sample noise ε ~ N(0,I), make x_t in one shot, predict ε. Just MSE on noise.</text>
+  <text x="60" y="505" font-size="12" fill="#333">• Architecture: U-Net or DiT (transformer) with sinusoidal time embedding + cross-attention to text condition</text>
+  <text x="60" y="522" font-size="12" fill="#333">• Sampling: DDPM ~1000 steps · DDIM ~50 (deterministic) · Consistency / Distilled ~1-4 steps · Classifier-free guidance amplifies prompt</text>
+</svg>

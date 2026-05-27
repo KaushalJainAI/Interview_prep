@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" width="720" height="380">
+<style>
+  .title { font: bold 16px sans-serif; fill: #1a1a1a; }
+  .label { font: 12px sans-serif; fill: #333; }
+  .small { font: 10px sans-serif; fill: #555; }
+  .mono  { font: 13px 'Consolas','Courier New',monospace; fill: #111; }
+  .box   { fill: #f6f8fa; stroke: #444; stroke-width: 1.2; }
+  .box2  { fill: #e6f0ff; stroke: #1f6feb; stroke-width: 1.5; }
+  .box3  { fill: #fff3cd; stroke: #b58900; stroke-width: 1.5; }
+  .box4  { fill: #d4edda; stroke: #1a7f37; stroke-width: 1.5; }
+  .box5  { fill: #fce7f3; stroke: #be185d; stroke-width: 1.5; }
+  .arrow { stroke: #444; stroke-width: 1.6; fill: none; marker-end: url(#arr); }
+  .arrow2{ stroke: #1f6feb; stroke-width: 2; fill: none; marker-end: url(#arrB); }
+  .arrow3{ stroke: #d33; stroke-width: 2; fill: none; marker-end: url(#arrR); }
+</style>
+<defs>
+  <marker id="arr"  viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#444"/></marker>
+  <marker id="arrB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#1f6feb"/></marker>
+  <marker id="arrR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#d33"/></marker>
+</defs>
+<text x="360" y="22" text-anchor="middle" class="title">ReAct — Thought + Tool Loop</text><text x="40" y="55" class="label">ReAct loop: Thought → Action → Observation → Repeat</text><rect x="80" y="80" width="160" height="55" class="box2"/><text x="160" y="115" text-anchor="middle" class="mono">Thought</text><text x="160" y="100" text-anchor="middle" class="small">"I need to look up X"</text><path class="arrow2" d="M 240 108 L 280 108"/><rect x="280" y="80" width="160" height="55" class="box3"/><text x="360" y="115" text-anchor="middle" class="mono">Action</text><text x="360" y="100" text-anchor="middle" class="small">search("X")</text><path class="arrow2" d="M 440 108 L 480 108"/><rect x="480" y="80" width="160" height="55" class="box4"/><text x="560" y="115" text-anchor="middle" class="mono">Observation</text><text x="560" y="100" text-anchor="middle" class="small">tool returns "..."</text><path class="arrow2" d="M 560 140 C 560 180 160 180 160 140"/><text x="360" y="200" text-anchor="middle" class="small">repeat until Thought says "I have the answer"</text><rect x="280" y="240" width="160" height="50" class="box5"/><text x="360" y="270" text-anchor="middle" class="mono">Final answer</text><path class="arrow2" d="M 360 200 L 360 240"/><text x="40" y="330" class="mono">Prompt encodes the loop format with "Thought:" / "Action:" / "Observation:" tokens.</text><text x="40" y="352" class="small">Limits: token budget per step, max steps, optional ToolException → reflect.</text></svg>

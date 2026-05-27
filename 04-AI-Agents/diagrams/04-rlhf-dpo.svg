@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950 620" font-family="Arial, sans-serif" font-size="13">
+  <style>
+    .box { fill:#fff; stroke:#222; stroke-width:2; }
+    .lbl { fill:#222; text-anchor:middle; }
+    .small { font-size:11px; fill:#444; text-anchor:middle; }
+    .title { font-size:18px; font-weight:bold; text-anchor:middle; }
+    .base { fill:#fff3cd; }
+    .sft { fill:#cfe2ff; }
+    .rm { fill:#f8d7da; }
+    .rl { fill:#d4edda; }
+    .dpo { fill:#e2d9f3; }
+    .arrow { stroke:#222; stroke-width:1.8; fill:none; marker-end:url(#a); }
+    .alt { stroke:#1565c0; stroke-width:2; fill:none; marker-end:url(#b); stroke-dasharray:5,3; }
+  </style>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10z" fill="#222"/></marker>
+    <marker id="b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10z" fill="#1565c0"/></marker>
+  </defs>
+
+  <text x="475" y="28" class="title">RLHF vs DPO — Aligning LLMs to Human Preferences</text>
+
+  <!-- Stage 1: Base model -->
+  <rect class="box base" x="40" y="60" width="180" height="60" rx="6"/>
+  <text x="130" y="85" class="lbl" font-weight="bold">Base LLM</text>
+  <text x="130" y="103" class="small">pretrained on internet</text>
+
+  <line class="arrow" x1="220" y1="90" x2="280" y2="90"/>
+
+  <!-- Stage 2: SFT -->
+  <rect class="box sft" x="280" y="60" width="200" height="60" rx="6"/>
+  <text x="380" y="80" class="lbl" font-weight="bold">SFT (supervised)</text>
+  <text x="380" y="98" class="small">instruction → response</text>
+  <text x="380" y="113" class="small">demonstrations</text>
+
+  <line class="arrow" x1="480" y1="90" x2="540" y2="90"/>
+
+  <!-- SFT model output -->
+  <rect class="box sft" x="540" y="60" width="180" height="60" rx="6"/>
+  <text x="630" y="85" class="lbl" font-weight="bold">π_SFT</text>
+  <text x="630" y="103" class="small">helpful but unaligned</text>
+
+  <!-- Now branch: RLHF vs DPO -->
+  <text x="475" y="150" class="lbl" font-weight="bold" font-size="15">Two paths to alignment from π_SFT:</text>
+
+  <!-- RLHF path (top) -->
+  <line class="arrow" x1="630" y1="120" x2="200" y2="180"/>
+  <text x="380" y="155" class="small" fill="#d32f2f">RLHF (3 stages, complex)</text>
+
+  <rect class="box rm" x="40" y="180" width="320" height="100" rx="6"/>
+  <text x="200" y="205" class="lbl" font-weight="bold">Step 2a — Reward Model</text>
+  <text x="200" y="225" class="small">Humans label (prompt, A, B, prefer A)</text>
+  <text x="200" y="243" class="small">Train RM_φ to score (prompt, response) → ℝ</text>
+  <text x="200" y="261" class="small">Loss: -log σ(RM(prompt, A) - RM(prompt, B))</text>
+
+  <line class="arrow" x1="200" y1="280" x2="200" y2="320"/>
+
+  <rect class="box rl" x="40" y="320" width="320" height="120" rx="6"/>
+  <text x="200" y="345" class="lbl" font-weight="bold">Step 2b — PPO (RL)</text>
+  <text x="200" y="365" class="small">Sample completions from π_θ (init = π_SFT)</text>
+  <text x="200" y="383" class="small">Reward = RM_φ score − β · KL(π_θ ‖ π_SFT)</text>
+  <text x="200" y="401" class="small">PPO clipped objective updates π_θ</text>
+  <text x="200" y="419" class="small">FOUR models in memory: π_θ, π_SFT, RM, value</text>
+  <text x="200" y="434" class="small" fill="#d32f2f">unstable · expensive · reward hacking risk</text>
+
+  <!-- DPO path (right) -->
+  <line class="alt" x1="630" y1="120" x2="760" y2="180"/>
+  <text x="730" y="155" class="small" fill="#1565c0">DPO (1 stage, default in 2026)</text>
+
+  <rect class="box dpo" x="600" y="180" width="320" height="260" rx="6"/>
+  <text x="760" y="205" class="lbl" font-weight="bold">DPO — Direct Preference Optimization</text>
+  <text x="760" y="225" class="small">Skip reward model AND PPO.</text>
+  <text x="760" y="245" class="small">Use SAME preference data (A &gt; B)</text>
+  <text x="760" y="263" class="small">but optimize π_θ directly with a supervised loss:</text>
+  <text x="760" y="290" class="lbl" font-family="Consolas,monospace" font-size="11">L = -log σ( β · log π_θ(y_w|x)/π_ref(y_w|x)</text>
+  <text x="760" y="307" class="lbl" font-family="Consolas,monospace" font-size="11">             - β · log π_θ(y_l|x)/π_ref(y_l|x) )</text>
+  <text x="760" y="335" class="small">y_w = preferred · y_l = rejected · π_ref = π_SFT (frozen)</text>
+  <text x="760" y="357" class="small">β ≈ 0.1 controls how much to trust preferences</text>
+  <text x="760" y="380" class="small" fill="#1565c0">stable · simple · single training loop</text>
+  <text x="760" y="398" class="small" fill="#1565c0">→ default for open-weights post-training</text>
+  <text x="760" y="420" class="small">Variants: IPO, KTO, ORPO</text>
+
+  <!-- Both converge -->
+  <line class="arrow" x1="200" y1="440" x2="430" y2="500"/>
+  <line class="arrow" x1="760" y1="440" x2="525" y2="500"/>
+
+  <rect class="box sft" x="380" y="500" width="200" height="60" rx="6"/>
+  <text x="480" y="525" class="lbl" font-weight="bold">π_aligned</text>
+  <text x="480" y="543" class="small">helpful, harmless, honest</text>
+
+  <!-- Bottom info -->
+  <rect class="box" x="40" y="575" width="880" height="35" rx="8" fill="#f8f9fa"/>
+  <text x="60" y="598" font-size="12" fill="#333">RLHF: gold-standard, what ChatGPT used originally · DPO: stable + simpler, used by Llama-3 / Mistral / DeepSeek / most open-weight chat models</text>
+</svg>

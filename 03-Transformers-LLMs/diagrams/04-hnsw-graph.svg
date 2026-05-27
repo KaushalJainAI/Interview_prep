@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" font-family="Arial, sans-serif" font-size="13">
+  <style>
+    .lbl { fill:#222; text-anchor:middle; }
+    .small { font-size:11px; fill:#444; text-anchor:middle; }
+    .title { font-size:18px; font-weight:bold; text-anchor:middle; }
+    .layer-lbl { font-size:13px; fill:#1565c0; font-weight:bold; }
+    .edge { stroke:#888; stroke-width:1; fill:none; }
+    .qpath { stroke:#d32f2f; stroke-width:2.5; fill:none; stroke-dasharray:6,3; marker-end:url(#qa); }
+    .node { fill:#cfe2ff; stroke:#222; stroke-width:1.5; }
+    .entry { fill:#fff3cd; stroke:#222; stroke-width:2; }
+    .query { fill:#f8d7da; stroke:#d32f2f; stroke-width:2; }
+    .target { fill:#d4edda; stroke:#198754; stroke-width:2.5; }
+  </style>
+  <defs>
+    <marker id="qa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10z" fill="#d32f2f"/></marker>
+  </defs>
+
+  <text x="450" y="30" class="title">HNSW — Hierarchical Navigable Small World</text>
+  <text x="450" y="50" class="small">Greedy descent from top → beam search at bottom. Expected O(log N).</text>
+
+  <!-- Layer 2 (top, sparse) -->
+  <text x="40" y="100" class="layer-lbl">Layer 2</text>
+  <text x="40" y="115" class="small">(long edges,</text>
+  <text x="40" y="128" class="small">few nodes)</text>
+
+  <line class="edge" x1="250" y1="110" x2="600" y2="110"/>
+  <line class="edge" x1="600" y1="110" x2="780" y2="110"/>
+  <circle class="entry" cx="250" cy="110" r="14"/>
+  <text x="250" y="114" class="lbl" font-size="11">EP</text>
+  <circle class="node" cx="600" cy="110" r="12"/>
+  <circle class="node" cx="780" cy="110" r="12"/>
+
+  <!-- arrow to next layer (entry passes down) -->
+  <line stroke="#888" stroke-dasharray="3,3" x1="250" y1="125" x2="250" y2="200"/>
+
+  <!-- Layer 1 (middle) -->
+  <text x="40" y="240" class="layer-lbl">Layer 1</text>
+  <text x="40" y="255" class="small">(medium edges)</text>
+
+  <line class="edge" x1="250" y1="220" x2="400" y2="270"/>
+  <line class="edge" x1="250" y1="220" x2="180" y2="270"/>
+  <line class="edge" x1="400" y1="270" x2="550" y2="240"/>
+  <line class="edge" x1="550" y1="240" x2="700" y2="280"/>
+  <line class="edge" x1="700" y1="280" x2="780" y2="220"/>
+  <line class="edge" x1="400" y1="270" x2="500" y2="320"/>
+
+  <circle class="node" cx="250" cy="220" r="11"/>
+  <circle class="node" cx="180" cy="270" r="11"/>
+  <circle class="node" cx="400" cy="270" r="11"/>
+  <circle class="node" cx="550" cy="240" r="11"/>
+  <circle class="node" cx="700" cy="280" r="11"/>
+  <circle class="node" cx="780" cy="220" r="11"/>
+  <circle class="node" cx="500" cy="320" r="11"/>
+
+  <line stroke="#888" stroke-dasharray="3,3" x1="400" y1="285" x2="400" y2="380"/>
+
+  <!-- Layer 0 (bottom, dense) -->
+  <text x="40" y="430" class="layer-lbl">Layer 0</text>
+  <text x="40" y="445" class="small">(short edges,</text>
+  <text x="40" y="458" class="small">ALL nodes,</text>
+  <text x="40" y="471" class="small">beam search here)</text>
+
+  <!-- many edges -->
+  <line class="edge" x1="200" y1="400" x2="280" y2="430"/>
+  <line class="edge" x1="280" y1="430" x2="350" y2="400"/>
+  <line class="edge" x1="350" y1="400" x2="430" y2="430"/>
+  <line class="edge" x1="430" y1="430" x2="500" y2="400"/>
+  <line class="edge" x1="430" y1="430" x2="510" y2="470"/>
+  <line class="edge" x1="500" y1="400" x2="570" y2="430"/>
+  <line class="edge" x1="570" y1="430" x2="640" y2="400"/>
+  <line class="edge" x1="640" y1="400" x2="720" y2="430"/>
+  <line class="edge" x1="720" y1="430" x2="800" y2="400"/>
+  <line class="edge" x1="510" y1="470" x2="600" y2="490"/>
+  <line class="edge" x1="600" y1="490" x2="690" y2="470"/>
+  <line class="edge" x1="280" y1="430" x2="350" y2="470"/>
+  <line class="edge" x1="350" y1="470" x2="430" y2="490"/>
+  <line class="edge" x1="430" y1="490" x2="510" y2="470"/>
+
+  <!-- nodes -->
+  <circle class="node" cx="200" cy="400" r="10"/>
+  <circle class="node" cx="280" cy="430" r="10"/>
+  <circle class="node" cx="350" cy="400" r="10"/>
+  <circle class="node" cx="430" cy="430" r="10"/>
+  <circle class="node" cx="500" cy="400" r="10"/>
+  <circle class="node" cx="570" cy="430" r="10"/>
+  <circle class="node" cx="640" cy="400" r="10"/>
+  <circle class="node" cx="720" cy="430" r="10"/>
+  <circle class="node" cx="800" cy="400" r="10"/>
+  <circle class="node" cx="350" cy="470" r="10"/>
+  <circle class="node" cx="430" cy="490" r="10"/>
+  <circle class="node" cx="510" cy="470" r="10"/>
+  <circle class="target" cx="600" cy="490" r="13"/>
+  <text x="600" y="494" class="lbl" font-size="10">★</text>
+  <circle class="node" cx="690" cy="470" r="10"/>
+
+  <!-- Query path (red dashed) -->
+  <circle class="query" cx="60" cy="490" r="14"/>
+  <text x="60" y="494" class="lbl" font-size="11">Q</text>
+
+  <path class="qpath" d="M 70 480 Q 150 200 244 116"/>
+  <path class="qpath" d="M 260 130 Q 300 180 250 215"/>
+  <path class="qpath" d="M 260 230 Q 330 240 395 268"/>
+  <path class="qpath" d="M 405 282 Q 500 350 590 487"/>
+
+  <!-- Parameters box -->
+  <rect x="40" y="540" width="820" height="65" rx="8" fill="#f8f9fa" stroke="#222"/>
+  <text x="450" y="562" class="lbl" font-weight="bold">Key parameters (memorize for interview)</text>
+  <text x="60" y="582" font-size="12" fill="#333">• M = edges per node (16-64): higher recall, more memory · efConstruction = build beam (100-500) · efSearch = query beam (50-500)</text>
+  <text x="60" y="599" font-size="12" fill="#333">• To boost recall first: raise efSearch (no rebuild). Then raise M (requires rebuild).</text>
+</svg>

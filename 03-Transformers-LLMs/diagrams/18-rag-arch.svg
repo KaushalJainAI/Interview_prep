@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 410" width="720" height="410">
+<style>
+  .title { font: bold 16px sans-serif; fill: #1a1a1a; }
+  .label { font: 12px sans-serif; fill: #333; }
+  .small { font: 10px sans-serif; fill: #555; }
+  .mono  { font: 13px 'Consolas','Courier New',monospace; fill: #111; }
+  .box   { fill: #f6f8fa; stroke: #444; stroke-width: 1.2; }
+  .box2  { fill: #e6f0ff; stroke: #1f6feb; stroke-width: 1.5; }
+  .box3  { fill: #fff3cd; stroke: #b58900; stroke-width: 1.5; }
+  .box4  { fill: #d4edda; stroke: #1a7f37; stroke-width: 1.5; }
+  .box5  { fill: #fce7f3; stroke: #be185d; stroke-width: 1.5; }
+  .arrow { stroke: #444; stroke-width: 1.6; fill: none; marker-end: url(#arr); }
+  .arrow2{ stroke: #1f6feb; stroke-width: 2; fill: none; marker-end: url(#arrB); }
+  .arrow3{ stroke: #d33; stroke-width: 2; fill: none; marker-end: url(#arrR); }
+</style>
+<defs>
+  <marker id="arr"  viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#444"/></marker>
+  <marker id="arrB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#1f6feb"/></marker>
+  <marker id="arrR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#d33"/></marker>
+</defs>
+<text x="360" y="22" text-anchor="middle" class="title">RAG Pipeline — Online &amp; Offline</text><rect x="25" y="80" width="110" height="60" class="box"/><text x="80" y="105" text-anchor="middle" class="mono">user query</text><rect x="155" y="80" width="110" height="60" class="box2"/><text x="210" y="105" text-anchor="middle" class="mono">embed query</text><rect x="285" y="80" width="110" height="60" class="box4"/><text x="340" y="105" text-anchor="middle" class="mono">vector search</text><text x="340" y="121" text-anchor="middle" class="mono">(HNSW)</text><rect x="415" y="80" width="110" height="60" class="box3"/><text x="470" y="105" text-anchor="middle" class="mono">rerank</text><text x="470" y="121" text-anchor="middle" class="mono">(cross-enc)</text><rect x="545" y="80" width="110" height="60" class="box5"/><text x="600" y="105" text-anchor="middle" class="mono">LLM prompt</text><text x="600" y="121" text-anchor="middle" class="mono">+ retrieved</text><path class="arrow" d="M 135 110 L 155 110"/><path class="arrow" d="M 265 110 L 285 110"/><path class="arrow" d="M 395 110 L 415 110"/><path class="arrow" d="M 525 110 L 545 110"/><rect x="285" y="190" width="110" height="44" class="box"/><text x="340" y="217" text-anchor="middle" class="mono">vector index</text><text x="340" y="252" text-anchor="middle" class="small">millions of doc chunks</text><path class="arrow" d="M 340 145 L 340 188"/><rect x="60" y="290" width="120" height="44" class="box"/><text x="120" y="317" text-anchor="middle" class="mono">documents</text><rect x="200" y="290" width="120" height="44" class="box2"/><text x="260" y="317" text-anchor="middle" class="mono">chunk + embed</text><path class="arrow" d="M 180 312 L 198 312"/><path class="arrow" d="M 320 312 L 340 235"/><text x="60" y="280" class="small">offline indexing</text><text x="40" y="380" class="mono">Quality knobs: chunk size, overlap, retrieve k, rerank top-n, prompt template</text></svg>

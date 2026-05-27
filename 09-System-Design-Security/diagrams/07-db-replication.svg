@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 500" width="760" height="500">
+<style>
+  .title { font: bold 16px sans-serif; fill: #1a1a1a; }
+  .label { font: 12px sans-serif; fill: #333; }
+  .small { font: 10px sans-serif; fill: #555; }
+  .mono  { font: 13px 'Consolas','Courier New',monospace; fill: #111; }
+  .box   { fill: #f6f8fa; stroke: #444; stroke-width: 1.2; }
+  .box2  { fill: #e6f0ff; stroke: #1f6feb; stroke-width: 1.5; }
+  .box3  { fill: #fff3cd; stroke: #b58900; stroke-width: 1.5; }
+  .box4  { fill: #d4edda; stroke: #1a7f37; stroke-width: 1.5; }
+  .box5  { fill: #fce7f3; stroke: #be185d; stroke-width: 1.5; }
+  .arrow { stroke: #444; stroke-width: 1.6; fill: none; marker-end: url(#arr); }
+  .arrow2{ stroke: #1f6feb; stroke-width: 2; fill: none; marker-end: url(#arrB); }
+  .arrow3{ stroke: #d33; stroke-width: 2; fill: none; marker-end: url(#arrR); }
+</style>
+<defs>
+  <marker id="arr"  viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#444"/></marker>
+  <marker id="arrB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#1f6feb"/></marker>
+  <marker id="arrR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#d33"/></marker>
+</defs>
+<text x="380" y="22" text-anchor="middle" class="title">DB Replication &amp; Read Scaling</text><rect x="80" y="100" width="160" height="80" class="box2"/><text x="160" y="135" text-anchor="middle" class="mono">Primary</text><text x="160" y="155" text-anchor="middle" class="small">writes + reads</text><rect x="400" y="90" width="160" height="60" class="box4"/><text x="480" y="120" text-anchor="middle" class="mono">Replica 1</text><text x="480" y="140" text-anchor="middle" class="small">read-only</text><path class="arrow2" d="M 240 140 L 400 120"/><rect x="400" y="210" width="160" height="60" class="box4"/><text x="480" y="240" text-anchor="middle" class="mono">Replica 2</text><text x="480" y="260" text-anchor="middle" class="small">read-only</text><path class="arrow2" d="M 240 140 L 400 240"/><rect x="400" y="330" width="160" height="60" class="box4"/><text x="480" y="360" text-anchor="middle" class="mono">Replica 3</text><text x="480" y="380" text-anchor="middle" class="small">read-only</text><path class="arrow2" d="M 240 140 L 400 360"/><text x="40" y="420" class="mono">Replication: sync (slow, consistent) vs async (fast, lag → stale reads).</text><text x="40" y="442" class="mono">Failover: promote replica, redirect writes. Watch split-brain via fencing/quorum.</text><text x="40" y="470" class="small">Sharding (horizontal partitioning) when one primary can't hold the data.</text></svg>

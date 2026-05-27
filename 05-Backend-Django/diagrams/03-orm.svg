@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 350" width="760" height="350">
+<style>
+  .title { font: bold 16px sans-serif; fill: #1a1a1a; }
+  .label { font: 12px sans-serif; fill: #333; }
+  .small { font: 10px sans-serif; fill: #555; }
+  .mono  { font: 13px 'Consolas','Courier New',monospace; fill: #111; }
+  .box   { fill: #f6f8fa; stroke: #444; stroke-width: 1.2; }
+  .box2  { fill: #e6f0ff; stroke: #1f6feb; stroke-width: 1.5; }
+  .box3  { fill: #fff3cd; stroke: #b58900; stroke-width: 1.5; }
+  .box4  { fill: #d4edda; stroke: #1a7f37; stroke-width: 1.5; }
+  .box5  { fill: #fce7f3; stroke: #be185d; stroke-width: 1.5; }
+  .arrow { stroke: #444; stroke-width: 1.6; fill: none; marker-end: url(#arr); }
+  .arrow2{ stroke: #1f6feb; stroke-width: 2; fill: none; marker-end: url(#arrB); }
+  .arrow3{ stroke: #d33; stroke-width: 2; fill: none; marker-end: url(#arrR); }
+</style>
+<defs>
+  <marker id="arr"  viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#444"/></marker>
+  <marker id="arrB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#1f6feb"/></marker>
+  <marker id="arrR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#d33"/></marker>
+</defs>
+<text x="380" y="22" text-anchor="middle" class="title">Django ORM — Models &amp; QuerySets</text><rect x="60" y="60" width="160" height="200" class="box4"/><text x="140" y="85" text-anchor="middle" class="label">User (Model)</text><text x="80" y="115" class="mono">id PK</text><text x="80" y="137" class="mono">email</text><text x="80" y="159" class="mono">password</text><text x="80" y="181" class="mono">created_at</text><rect x="320" y="60" width="160" height="200" class="box2"/><text x="400" y="85" text-anchor="middle" class="label">Post (Model)</text><text x="340" y="115" class="mono">id PK</text><text x="340" y="137" class="mono">title</text><text x="340" y="159" class="mono">body</text><text x="340" y="181" class="mono">user_id FK</text><line x1="220" y1="170" x2="320" y2="170" stroke="#1f6feb" stroke-width="2"/><text x="270" y="160" text-anchor="middle" class="small">1 ─── *</text><rect x="540" y="60" width="180" height="200" class="box3"/><text x="630" y="85" text-anchor="middle" class="label">QuerySet (lazy)</text><text x="560" y="115" class="mono">Post.objects \</text><text x="580" y="135" class="mono">  .filter(user=u) \</text><text x="580" y="155" class="mono">  .select_related("user") \</text><text x="580" y="175" class="mono">  .order_by("-created_at")[:10]</text><text x="560" y="210" class="small">.select_related → JOIN</text><text x="560" y="230" class="small">.prefetch_related → 2 queries</text><text x="40" y="300" class="mono">N+1 problem: looping over qs and lazy-loading FK fields → 1+N queries.</text><text x="40" y="322" class="mono">Fix: select_related (single JOIN) or prefetch_related (separate query, in-Python join).</text></svg>

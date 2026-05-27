@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 390" width="720" height="390">
+<style>
+  .title { font: bold 16px sans-serif; fill: #1a1a1a; }
+  .label { font: 12px sans-serif; fill: #333; }
+  .small { font: 10px sans-serif; fill: #555; }
+  .mono  { font: 13px 'Consolas','Courier New',monospace; fill: #111; }
+  .box   { fill: #f6f8fa; stroke: #444; stroke-width: 1.2; }
+  .box2  { fill: #e6f0ff; stroke: #1f6feb; stroke-width: 1.5; }
+  .box3  { fill: #fff3cd; stroke: #b58900; stroke-width: 1.5; }
+  .box4  { fill: #d4edda; stroke: #1a7f37; stroke-width: 1.5; }
+  .box5  { fill: #fce7f3; stroke: #be185d; stroke-width: 1.5; }
+  .arrow { stroke: #444; stroke-width: 1.6; fill: none; marker-end: url(#arr); }
+  .arrow2{ stroke: #1f6feb; stroke-width: 2; fill: none; marker-end: url(#arrB); }
+  .arrow3{ stroke: #d33; stroke-width: 2; fill: none; marker-end: url(#arrR); }
+</style>
+<defs>
+  <marker id="arr"  viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#444"/></marker>
+  <marker id="arrB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#1f6feb"/></marker>
+  <marker id="arrR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#d33"/></marker>
+</defs>
+<text x="360" y="22" text-anchor="middle" class="title">Transformer Encoder Block</text><rect x="190.0" y="60" width="300" height="36" class="box"/><text x="340" y="83.0" text-anchor="middle" class="mono">Input embedding + positional</text><rect x="190.0" y="130" width="300" height="40" class="box2"/><text x="340" y="155.0" text-anchor="middle" class="mono">Multi-head self-attention</text><path class="arrow" d="M 340 128 L 340 118"/><rect x="190.0" y="180" width="300" height="28" class="box3"/><text x="340" y="199.0" text-anchor="middle" class="mono">Add & LayerNorm</text><path class="arrow" d="M 340 178 L 340 168"/><rect x="190.0" y="230" width="300" height="40" class="box2"/><text x="340" y="255.0" text-anchor="middle" class="mono">Feed-Forward (MLP)</text><path class="arrow" d="M 340 228 L 340 218"/><rect x="190.0" y="280" width="300" height="28" class="box3"/><text x="340" y="299.0" text-anchor="middle" class="mono">Add & LayerNorm</text><path class="arrow" d="M 340 278 L 340 268"/><path class="arrow2" d="M 200 145 C 160 145 160 205 200 205"/><text x="135" y="180" class="small" fill="#1f6feb">residual</text><path class="arrow2" d="M 200 245 C 160 245 160 305 200 305"/><text x="135" y="280" class="small" fill="#1f6feb">residual</text><text x="40" y="360" class="small">Repeated N× (12 in BERT-base, 96 in GPT-3). Decoder adds masked attention.</text></svg>

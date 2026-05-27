@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" width="720" height="360">
+<style>
+  .title { font: bold 16px sans-serif; fill: #1a1a1a; }
+  .label { font: 12px sans-serif; fill: #333; }
+  .small { font: 10px sans-serif; fill: #555; }
+  .mono  { font: 13px 'Consolas','Courier New',monospace; fill: #111; }
+  .box   { fill: #f6f8fa; stroke: #444; stroke-width: 1.2; }
+  .box2  { fill: #e6f0ff; stroke: #1f6feb; stroke-width: 1.5; }
+  .box3  { fill: #fff3cd; stroke: #b58900; stroke-width: 1.5; }
+  .box4  { fill: #d4edda; stroke: #1a7f37; stroke-width: 1.5; }
+  .box5  { fill: #fce7f3; stroke: #be185d; stroke-width: 1.5; }
+  .arrow { stroke: #444; stroke-width: 1.6; fill: none; marker-end: url(#arr); }
+  .arrow2{ stroke: #1f6feb; stroke-width: 2; fill: none; marker-end: url(#arrB); }
+  .arrow3{ stroke: #d33; stroke-width: 2; fill: none; marker-end: url(#arrR); }
+</style>
+<defs>
+  <marker id="arr"  viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#444"/></marker>
+  <marker id="arrB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#1f6feb"/></marker>
+  <marker id="arrR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#d33"/></marker>
+</defs>
+<text x="360" y="22" text-anchor="middle" class="title">LLM Evaluation Hierarchy</text><rect x="240.0" y="48" width="240" height="44" class="box5"/><text x="360" y="72" text-anchor="middle" class="mono">Human review (sampled)</text><text x="360" y="88" text-anchor="middle" class="small">ground truth, expensive</text><rect x="180.0" y="108" width="360" height="44" class="box3"/><text x="360" y="132" text-anchor="middle" class="mono">LLM-as-judge / pairwise</text><text x="360" y="148" text-anchor="middle" class="small">cheap proxy, biased</text><rect x="120.0" y="168" width="480" height="44" class="box2"/><text x="360" y="192" text-anchor="middle" class="mono">Programmatic checks</text><text x="360" y="208" text-anchor="middle" class="small">format, regex, schema</text><rect x="60.0" y="228" width="600" height="44" class="box4"/><text x="360" y="252" text-anchor="middle" class="mono">Unit tests (prompt I/O)</text><text x="360" y="268" text-anchor="middle" class="small">per-prompt assertion</text><path class="arrow" d="M 80 280 L 80 90"/><text x="60" y="190" text-anchor="end" class="small">cheaper</text><text x="60" y="180" text-anchor="end" class="small">layers</text><text x="60" y="200" text-anchor="end" class="small">catch most</text><text x="60" y="212" text-anchor="end" class="small">bugs</text><text x="40" y="330" class="small">Cheaper layers gate every PR; pricier layers run nightly or on release.</text></svg>

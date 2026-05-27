@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 360" width="620" height="360">
+<style>
+  .title { font: bold 16px sans-serif; fill: #1a1a1a; }
+  .label { font: 12px sans-serif; fill: #333; }
+  .small { font: 10px sans-serif; fill: #555; }
+  .mono  { font: 13px 'Consolas','Courier New',monospace; fill: #111; }
+  .box   { fill: #f6f8fa; stroke: #444; stroke-width: 1.2; }
+  .box2  { fill: #e6f0ff; stroke: #1f6feb; stroke-width: 1.5; }
+  .box3  { fill: #fff3cd; stroke: #b58900; stroke-width: 1.5; }
+  .box4  { fill: #d4edda; stroke: #1a7f37; stroke-width: 1.5; }
+  .arrow { stroke: #444; stroke-width: 1.6; fill: none; marker-end: url(#arr); }
+  .arrow2{ stroke: #1f6feb; stroke-width: 2; fill: none; marker-end: url(#arrB); }
+  .arrow3{ stroke: #d33; stroke-width: 2; fill: none; marker-end: url(#arrR); }
+  .dim   { stroke: #bbb; stroke-width: 1; fill: none; stroke-dasharray: 3 3; }
+</style>
+<defs>
+  <marker id="arr"  viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M0,0 L10,5 L0,10 Z" fill="#444"/></marker>
+  <marker id="arrB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M0,0 L10,5 L0,10 Z" fill="#1f6feb"/></marker>
+  <marker id="arrR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M0,0 L10,5 L0,10 Z" fill="#d33"/></marker>
+</defs>
+<text x="310" y="22" text-anchor="middle" class="title">Bit Manipulation — XOR Cancellation</text><text x="40" y="60" class="label">XOR trick: find the unique element in [2,3,2,4,4]</text><text x="50" y="100" class="mono">num   bits</text><text x="50" y="124" class="mono">  2   010</text><text x="50" y="148" class="mono">  3   011</text><text x="50" y="172" class="mono">  2   010</text><text x="50" y="196" class="mono">  4   100</text><text x="50" y="220" class="mono">  4   100</text><line x1="40" y1="236" x2="220" y2="236" stroke="#444"/><text x="50" y="254" class="mono">xor = 011  → 3</text><text x="280" y="120" class="label">Why it works:</text><text x="280" y="145" class="mono">x ⊕ x = 0</text><text x="280" y="165" class="mono">x ⊕ 0 = x</text><text x="280" y="185" class="mono">commutative + associative</text><text x="280" y="220" class="label">Useful tricks:</text><text x="280" y="245" class="mono">x &amp; (x-1)   → clear lowest set bit</text><text x="280" y="265" class="mono">x &amp; -x      → isolate lowest set bit</text><text x="280" y="285" class="mono">x &gt;&gt; i &amp; 1 → read bit i</text><text x="280" y="305" class="mono">x | (1&lt;&lt;i)  → set bit i</text><text x="40" y="335" class="small">Pairs cancel; the lone one survives. O(n) time, O(1) space.</text></svg>

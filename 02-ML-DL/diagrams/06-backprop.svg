@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" width="720" height="360">
+<style>
+  .title { font: bold 16px sans-serif; fill: #1a1a1a; }
+  .label { font: 12px sans-serif; fill: #333; }
+  .small { font: 10px sans-serif; fill: #555; }
+  .mono  { font: 13px 'Consolas','Courier New',monospace; fill: #111; }
+  .box   { fill: #f6f8fa; stroke: #444; stroke-width: 1.2; }
+  .box2  { fill: #e6f0ff; stroke: #1f6feb; stroke-width: 1.5; }
+  .box3  { fill: #fff3cd; stroke: #b58900; stroke-width: 1.5; }
+  .box4  { fill: #d4edda; stroke: #1a7f37; stroke-width: 1.5; }
+  .box5  { fill: #fce7f3; stroke: #be185d; stroke-width: 1.5; }
+  .arrow { stroke: #444; stroke-width: 1.6; fill: none; marker-end: url(#arr); }
+  .arrow2{ stroke: #1f6feb; stroke-width: 2; fill: none; marker-end: url(#arrB); }
+  .arrow3{ stroke: #d33; stroke-width: 2; fill: none; marker-end: url(#arrR); }
+</style>
+<defs>
+  <marker id="arr"  viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#444"/></marker>
+  <marker id="arrB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#1f6feb"/></marker>
+  <marker id="arrR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#d33"/></marker>
+</defs>
+<text x="360" y="22" text-anchor="middle" class="title">Backpropagation — Forward &amp; Reverse Pass</text><rect x="20" y="118" width="80" height="44" class="box2"/><text x="60" y="145" text-anchor="middle" class="mono">x</text><rect x="130" y="118" width="80" height="44" class="box2"/><text x="170" y="145" text-anchor="middle" class="mono">Wx+b</text><rect x="250" y="118" width="80" height="44" class="box2"/><text x="290" y="145" text-anchor="middle" class="mono">ReLU</text><rect x="370" y="118" width="80" height="44" class="box2"/><text x="410" y="145" text-anchor="middle" class="mono">Wh+b</text><rect x="490" y="118" width="80" height="44" class="box2"/><text x="530" y="145" text-anchor="middle" class="mono">softmax</text><rect x="610" y="118" width="80" height="44" class="box2"/><text x="650" y="145" text-anchor="middle" class="mono">L</text><path class="arrow2" d="M 100 140 L 130 140"/><path class="arrow2" d="M 210 140 L 250 140"/><path class="arrow2" d="M 330 140 L 370 140"/><path class="arrow2" d="M 450 140 L 490 140"/><path class="arrow2" d="M 570 140 L 610 140"/><text x="350" y="100" text-anchor="middle" class="label">forward pass (compute activations)</text><path class="arrow3" d="M 610 190 L 570 190"/><path class="arrow3" d="M 490 190 L 450 190"/><path class="arrow3" d="M 370 190 L 330 190"/><path class="arrow3" d="M 250 190 L 210 190"/><path class="arrow3" d="M 130 190 L 100 190"/><text x="350" y="240" text-anchor="middle" class="label">backward pass (chain rule: ∂L/∂param)</text><text x="40" y="290" class="mono">∂L/∂Wᵢ = ∂L/∂yᵢ · ∂yᵢ/∂Wᵢ        (chain rule)</text><text x="40" y="312" class="small">Each node stores its local jacobian; gradients flow right-to-left, multiplied along edges.</text><text x="40" y="332" class="small">Computational cost of backward ≈ 2× forward (one mat-vec per edge).</text></svg>

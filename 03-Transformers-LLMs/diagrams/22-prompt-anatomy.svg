@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 450" width="760" height="450">
+<style>
+  .title { font: bold 16px sans-serif; fill: #1a1a1a; }
+  .label { font: 12px sans-serif; fill: #333; }
+  .small { font: 10px sans-serif; fill: #555; }
+  .mono  { font: 13px 'Consolas','Courier New',monospace; fill: #111; }
+  .box   { fill: #f6f8fa; stroke: #444; stroke-width: 1.2; }
+  .box2  { fill: #e6f0ff; stroke: #1f6feb; stroke-width: 1.5; }
+  .box3  { fill: #fff3cd; stroke: #b58900; stroke-width: 1.5; }
+  .box4  { fill: #d4edda; stroke: #1a7f37; stroke-width: 1.5; }
+  .box5  { fill: #fce7f3; stroke: #be185d; stroke-width: 1.5; }
+  .arrow { stroke: #444; stroke-width: 1.6; fill: none; marker-end: url(#arr); }
+  .arrow2{ stroke: #1f6feb; stroke-width: 2; fill: none; marker-end: url(#arrB); }
+  .arrow3{ stroke: #d33; stroke-width: 2; fill: none; marker-end: url(#arrR); }
+</style>
+<defs>
+  <marker id="arr"  viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#444"/></marker>
+  <marker id="arrB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#1f6feb"/></marker>
+  <marker id="arrR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#d33"/></marker>
+</defs>
+<text x="380" y="22" text-anchor="middle" class="title">Anatomy of a Good Prompt</text><rect x="60" y="58" width="100" height="44" class="box2"/><text x="110" y="85" text-anchor="middle" class="mono">[ROLE]</text><text x="170" y="85" class="mono">You are a JSON-emitting assistant for ...</text><rect x="60" y="108" width="100" height="44" class="box3"/><text x="110" y="135" text-anchor="middle" class="mono">[TASK]</text><text x="170" y="135" class="mono">Given X, produce Y satisfying constraints C1,C2.</text><rect x="60" y="158" width="100" height="44" class="box4"/><text x="110" y="185" text-anchor="middle" class="mono">[CONTEXT]</text><text x="170" y="185" class="mono">Background facts, retrieved docs, schema.</text><rect x="60" y="208" width="100" height="44" class="box3"/><text x="110" y="235" text-anchor="middle" class="mono">[EXAMPLES]</text><text x="170" y="235" class="mono">Few-shot input -> output (covering failure modes).</text><rect x="60" y="258" width="100" height="44" class="box5"/><text x="110" y="285" text-anchor="middle" class="mono">[RULES]</text><text x="170" y="285" class="mono">Refuse if Z; never include W.</text><rect x="60" y="308" width="100" height="44" class="box4"/><text x="110" y="335" text-anchor="middle" class="mono">[FORMAT]</text><text x="170" y="335" class="mono">Return JSON matching this schema {...}.</text><rect x="60" y="358" width="100" height="44" class="box"/><text x="110" y="385" text-anchor="middle" class="mono">[INPUT]</text><text x="170" y="385" class="mono"><user data here, in delimited block></text><text x="40" y="430" class="small">If a section is missing the model fills it in unpredictably. Make every section explicit.</text></svg>

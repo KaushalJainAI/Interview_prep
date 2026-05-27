@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" width="720" height="380">
+<style>
+  .title { font: bold 16px sans-serif; fill: #1a1a1a; }
+  .label { font: 12px sans-serif; fill: #333; }
+  .small { font: 10px sans-serif; fill: #555; }
+  .mono  { font: 13px 'Consolas','Courier New',monospace; fill: #111; }
+  .box   { fill: #f6f8fa; stroke: #444; stroke-width: 1.2; }
+  .box2  { fill: #e6f0ff; stroke: #1f6feb; stroke-width: 1.5; }
+  .box3  { fill: #fff3cd; stroke: #b58900; stroke-width: 1.5; }
+  .box4  { fill: #d4edda; stroke: #1a7f37; stroke-width: 1.5; }
+  .box5  { fill: #fce7f3; stroke: #be185d; stroke-width: 1.5; }
+  .arrow { stroke: #444; stroke-width: 1.6; fill: none; marker-end: url(#arr); }
+  .arrow2{ stroke: #1f6feb; stroke-width: 2; fill: none; marker-end: url(#arrB); }
+  .arrow3{ stroke: #d33; stroke-width: 2; fill: none; marker-end: url(#arrR); }
+</style>
+<defs>
+  <marker id="arr"  viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#444"/></marker>
+  <marker id="arrB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#1f6feb"/></marker>
+  <marker id="arrR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#d33"/></marker>
+</defs>
+<text x="360" y="22" text-anchor="middle" class="title">Regularization Techniques</text><text x="180" y="55" text-anchor="middle" class="label">Dropout (training)</text><circle cx="80" cy="130" r="9" class="box2" opacity="1"/><circle cx="110" cy="130" r="9" class="box" opacity="0.25"/><circle cx="140" cy="130" r="9" class="box2" opacity="1"/><circle cx="170" cy="130" r="9" class="box" opacity="0.25"/><circle cx="200" cy="130" r="9" class="box2" opacity="1"/><circle cx="230" cy="130" r="9" class="box2" opacity="1"/><circle cx="260" cy="130" r="9" class="box" opacity="0.25"/><circle cx="290" cy="130" r="9" class="box2" opacity="1"/><text x="180" y="170" text-anchor="middle" class="small">randomly zero ~p of activations</text><text x="510" y="55" text-anchor="middle" class="label">L1 vs L2 regularization</text><circle cx="510" cy="160" r="55" fill="none" stroke="#1f6feb" stroke-width="2"/><polygon points="510,100 565,160 510,220 455,160" fill="none" stroke="#d33" stroke-width="2"/><ellipse cx="555" cy="120" rx="40" ry="25" fill="none" stroke="#888"/><ellipse cx="555" cy="120" rx="60" ry="38" fill="none" stroke="#888"/><circle cx="510" cy="105" r="3" fill="#d33"/><text x="515" y="105" class="small" fill="#d33">L1 hits axis → sparsity</text><text x="40" y="280" class="mono">Dropout: drop nodes with prob p during training, scale by 1/(1-p) at test.</text><text x="40" y="302" class="mono">L2:  loss += λ·||w||²    smooth shrinkage of all weights</text><text x="40" y="322" class="mono">L1:  loss += λ·||w||₁    induces SPARSE solutions (many w=0)</text><text x="40" y="350" class="small">Other: early stopping, data augmentation, batch norm (mild reg.), label smoothing.</text></svg>

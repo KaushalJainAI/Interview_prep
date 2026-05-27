@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950 580" font-family="Arial, sans-serif" font-size="13">
+  <style>
+    .box { fill:#fff; stroke:#222; stroke-width:2; }
+    .lbl { fill:#222; text-anchor:middle; }
+    .small { font-size:11px; fill:#444; text-anchor:middle; }
+    .title { font-size:18px; font-weight:bold; text-anchor:middle; }
+    .client { fill:#fff5e6; stroke:#d35400; }
+    .server { fill:#cfe2ff; }
+    .step { stroke:#222; stroke-width:1.8; fill:none; marker-end:url(#a); }
+    .enc { stroke:#198754; stroke-width:2.5; fill:none; marker-end:url(#g); stroke-dasharray:6,3; }
+    .header { font-family:Consolas,monospace; font-size:11px; fill:#444; }
+  </style>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10z" fill="#222"/></marker>
+    <marker id="g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10z" fill="#198754"/></marker>
+  </defs>
+
+  <text x="475" y="28" class="title">TLS 1.3 Handshake — 1-RTT to Encrypted Connection</text>
+
+  <rect class="box client" x="40" y="60" width="200" height="40" rx="6"/>
+  <text x="140" y="85" class="lbl">Client (browser)</text>
+  <rect class="box server" x="710" y="60" width="200" height="40" rx="6"/>
+  <text x="810" y="85" class="lbl">Server (api.com)</text>
+
+  <line x1="140" y1="100" x2="140" y2="540" stroke="#888" stroke-dasharray="3,3"/>
+  <line x1="810" y1="100" x2="810" y2="540" stroke="#888" stroke-dasharray="3,3"/>
+
+  <!-- 1. ClientHello -->
+  <text x="475" y="125" class="lbl" font-weight="bold">1. ClientHello (1 RTT begins)</text>
+  <line class="step" x1="140" y1="145" x2="810" y2="145"/>
+  <text x="475" y="165" class="header" text-anchor="middle">supported cipher suites · client random · key_share (ECDHE pubkey)</text>
+  <text x="475" y="180" class="header" text-anchor="middle">supported groups · signature algorithms · SNI: api.com</text>
+
+  <!-- 2. ServerHello + cert -->
+  <text x="475" y="210" class="lbl" font-weight="bold">2. ServerHello + Certificate + Finished</text>
+  <line class="step" x1="810" y1="230" x2="140" y2="230"/>
+  <text x="475" y="250" class="header" text-anchor="middle">chosen cipher · server random · key_share (server ECDHE pubkey)</text>
+  <text x="475" y="265" class="header" text-anchor="middle">Certificate (chain to root CA) · CertificateVerify (signed handshake)</text>
+  <text x="475" y="280" class="header" text-anchor="middle">Finished (encrypted with handshake key)</text>
+
+  <!-- 3. Derive session key -->
+  <rect class="box" x="40" y="295" width="200" height="60" rx="6" fill="#f8f9fa"/>
+  <text x="140" y="316" class="lbl small">verify cert chain</text>
+  <text x="140" y="332" class="lbl small">verify CertificateVerify sig</text>
+  <text x="140" y="348" class="lbl small">derive session key (ECDHE)</text>
+
+  <rect class="box" x="710" y="295" width="200" height="60" rx="6" fill="#f8f9fa"/>
+  <text x="810" y="316" class="lbl small">already derived</text>
+  <text x="810" y="332" class="lbl small">session key (ECDHE)</text>
+  <text x="810" y="348" class="lbl small">from client key_share</text>
+
+  <!-- 4. Client Finished + first app data -->
+  <text x="475" y="385" class="lbl" font-weight="bold">3. Client Finished + Application Data (RTT ends)</text>
+  <line class="enc" x1="140" y1="405" x2="810" y2="405"/>
+  <text x="475" y="425" class="header" text-anchor="middle">Finished + HTTP request — encrypted with session key (AES-GCM)</text>
+
+  <!-- 5. Encrypted traffic both ways -->
+  <line class="enc" x1="810" y1="455" x2="140" y2="455"/>
+  <text x="475" y="448" class="header" text-anchor="middle">HTTP response (encrypted)</text>
+  <line class="enc" x1="140" y1="485" x2="810" y2="485"/>
+  <text x="475" y="478" class="header" text-anchor="middle">subsequent traffic… (encrypted)</text>
+
+  <!-- comparison note -->
+  <rect class="box" x="40" y="510" width="870" height="55" rx="8" fill="#e6f4ea"/>
+  <text x="60" y="530" font-size="12" fill="#333">• TLS 1.3 = 1 RTT (vs 2 in TLS 1.2). 0-RTT resumption with session tickets (replay risk, must be idempotent).</text>
+  <text x="60" y="548" font-size="12" fill="#333">• Asymmetric (ECDHE + cert sig) used ONLY for key exchange + auth · Symmetric (AES-GCM) used for all bulk traffic — hybrid pattern.</text>
+</svg>

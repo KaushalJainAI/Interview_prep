@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" width="720" height="420">
+<style>
+  .title { font: bold 16px sans-serif; fill: #1a1a1a; }
+  .label { font: 12px sans-serif; fill: #333; }
+  .small { font: 10px sans-serif; fill: #555; }
+  .mono  { font: 13px 'Consolas','Courier New',monospace; fill: #111; }
+  .box   { fill: #f6f8fa; stroke: #444; stroke-width: 1.2; }
+  .box2  { fill: #e6f0ff; stroke: #1f6feb; stroke-width: 1.5; }
+  .box3  { fill: #fff3cd; stroke: #b58900; stroke-width: 1.5; }
+  .box4  { fill: #d4edda; stroke: #1a7f37; stroke-width: 1.5; }
+  .box5  { fill: #fce7f3; stroke: #be185d; stroke-width: 1.5; }
+  .arrow { stroke: #444; stroke-width: 1.6; fill: none; marker-end: url(#arr); }
+  .arrow2{ stroke: #1f6feb; stroke-width: 2; fill: none; marker-end: url(#arrB); }
+  .arrow3{ stroke: #d33; stroke-width: 2; fill: none; marker-end: url(#arrR); }
+</style>
+<defs>
+  <marker id="arr"  viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#444"/></marker>
+  <marker id="arrB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#1f6feb"/></marker>
+  <marker id="arrR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#d33"/></marker>
+</defs>
+<text x="360" y="22" text-anchor="middle" class="title">LLM Sampling — Temperature, Top-k, Top-p</text><text x="20" y="55" class="label">P(next token):</text><rect x="40" y="92" width="44" height="168" class="box4"/><text x="62" y="278" text-anchor="middle" class="mono">cat</text><text x="62" y="295" text-anchor="middle" class="small">0.42</text><rect x="100" y="176" width="44" height="84" class="box4"/><text x="122" y="278" text-anchor="middle" class="mono">dog</text><text x="122" y="295" text-anchor="middle" class="small">0.21</text><rect x="160" y="212" width="44" height="48" class="box4"/><text x="182" y="278" text-anchor="middle" class="mono">bird</text><text x="182" y="295" text-anchor="middle" class="small">0.12</text><rect x="220" y="224" width="44" height="36" class="box"/><text x="242" y="278" text-anchor="middle" class="mono">car</text><text x="242" y="295" text-anchor="middle" class="small">0.09</text><rect x="280" y="240" width="44" height="20" class="box"/><text x="302" y="278" text-anchor="middle" class="mono">tree</text><text x="302" y="295" text-anchor="middle" class="small">0.05</text><rect x="340" y="244" width="44" height="16" class="box"/><text x="362" y="278" text-anchor="middle" class="mono">sun</text><text x="362" y="295" text-anchor="middle" class="small">0.04</text><rect x="400" y="248" width="44" height="12" class="box"/><text x="422" y="278" text-anchor="middle" class="mono">run</text><text x="422" y="295" text-anchor="middle" class="small">0.03</text><rect x="460" y="252" width="44" height="8" class="box"/><text x="482" y="278" text-anchor="middle" class="mono">blue</text><text x="482" y="295" text-anchor="middle" class="small">0.02</text><rect x="520" y="254" width="44" height="6" class="box"/><text x="542" y="278" text-anchor="middle" class="mono">jump</text><text x="542" y="295" text-anchor="middle" class="small">0.015</text><rect x="580" y="258" width="44" height="2" class="box"/><text x="602" y="278" text-anchor="middle" class="mono">leaf</text><text x="602" y="295" text-anchor="middle" class="small">0.005</text><line x1="220" y1="60" x2="220" y2="260" stroke="#1a7f37" stroke-dasharray="4 3"/><text x="225" y="80" class="small" fill="#1a7f37">top-k=3 cutoff</text><text x="40" y="330" class="mono">Temperature T:  P'(x) ∝ P(x)^(1/T)         T→0 = greedy, T=1 = unchanged, T&gt;1 = flatter</text><text x="40" y="352" class="mono">Top-k: keep k highest then renormalise</text><text x="40" y="372" class="mono">Top-p (nucleus): keep smallest set with cumulative prob ≥ p</text><text x="40" y="395" class="small">Defaults for chat: T=0.7, top-p=0.9. Code-gen: T=0.2 (more deterministic).</text></svg>

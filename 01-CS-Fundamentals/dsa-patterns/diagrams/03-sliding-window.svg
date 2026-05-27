@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 345" width="560" height="345">
+<style>
+  .title { font: bold 16px sans-serif; fill: #1a1a1a; }
+  .label { font: 12px sans-serif; fill: #333; }
+  .small { font: 10px sans-serif; fill: #555; }
+  .mono  { font: 13px 'Consolas','Courier New',monospace; fill: #111; }
+  .box   { fill: #f6f8fa; stroke: #444; stroke-width: 1.2; }
+  .box2  { fill: #e6f0ff; stroke: #1f6feb; stroke-width: 1.5; }
+  .box3  { fill: #fff3cd; stroke: #b58900; stroke-width: 1.5; }
+  .box4  { fill: #d4edda; stroke: #1a7f37; stroke-width: 1.5; }
+  .arrow { stroke: #444; stroke-width: 1.6; fill: none; marker-end: url(#arr); }
+  .arrow2{ stroke: #1f6feb; stroke-width: 2; fill: none; marker-end: url(#arrB); }
+  .arrow3{ stroke: #d33; stroke-width: 2; fill: none; marker-end: url(#arrR); }
+  .dim   { stroke: #bbb; stroke-width: 1; fill: none; stroke-dasharray: 3 3; }
+</style>
+<defs>
+  <marker id="arr"  viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M0,0 L10,5 L0,10 Z" fill="#444"/></marker>
+  <marker id="arrB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M0,0 L10,5 L0,10 Z" fill="#1f6feb"/></marker>
+  <marker id="arrR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M0,0 L10,5 L0,10 Z" fill="#d33"/></marker>
+</defs>
+<text x="280" y="22" text-anchor="middle" class="title">Sliding Window — Expand / Shrink</text><text x="40" y="60" class="label">String:  a b c a b c b b   (longest substring w/o repeat)</text><rect x="40" y="80" width="46" height="46" class="box"/><text x="63.0" y="108.0" text-anchor="middle" class="mono">a</text><rect x="86" y="80" width="46" height="46" class="box"/><text x="109.0" y="108.0" text-anchor="middle" class="mono">b</text><rect x="132" y="80" width="46" height="46" class="box"/><text x="155.0" y="108.0" text-anchor="middle" class="mono">c</text><rect x="178" y="80" width="46" height="46" class="box4"/><text x="201.0" y="108.0" text-anchor="middle" class="mono">a</text><rect x="224" y="80" width="46" height="46" class="box4"/><text x="247.0" y="108.0" text-anchor="middle" class="mono">b</text><rect x="270" y="80" width="46" height="46" class="box4"/><text x="293.0" y="108.0" text-anchor="middle" class="mono">c</text><rect x="316" y="80" width="46" height="46" class="box"/><text x="339.0" y="108.0" text-anchor="middle" class="mono">b</text><rect x="362" y="80" width="46" height="46" class="box"/><text x="385.0" y="108.0" text-anchor="middle" class="mono">b</text><rect x="175" y="76" width="142" height="54" fill="none" stroke="#1a7f37" stroke-width="2.4" stroke-dasharray="4 3"/><text x="246" y="148" text-anchor="middle" class="small">window [L..R]</text><text x="40" y="180" class="label">Expand R; while invalid, shrink L. Best = max window seen.</text><text x="40" y="215" class="mono">for r in range(n):</text><text x="60" y="235" class="mono">count[s[r]] += 1</text><text x="60" y="255" class="mono">while violates(count):</text><text x="80" y="275" class="mono">count[s[l]] -= 1; l += 1</text><text x="60" y="295" class="mono">best = max(best, r - l + 1)</text><text x="40" y="325" class="small">Each index enters/leaves window once → O(n).</text></svg>

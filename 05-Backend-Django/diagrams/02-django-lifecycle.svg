@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 340" width="780" height="340">
+<style>
+  .title { font: bold 16px sans-serif; fill: #1a1a1a; }
+  .label { font: 12px sans-serif; fill: #333; }
+  .small { font: 10px sans-serif; fill: #555; }
+  .mono  { font: 13px 'Consolas','Courier New',monospace; fill: #111; }
+  .box   { fill: #f6f8fa; stroke: #444; stroke-width: 1.2; }
+  .box2  { fill: #e6f0ff; stroke: #1f6feb; stroke-width: 1.5; }
+  .box3  { fill: #fff3cd; stroke: #b58900; stroke-width: 1.5; }
+  .box4  { fill: #d4edda; stroke: #1a7f37; stroke-width: 1.5; }
+  .box5  { fill: #fce7f3; stroke: #be185d; stroke-width: 1.5; }
+  .arrow { stroke: #444; stroke-width: 1.6; fill: none; marker-end: url(#arr); }
+  .arrow2{ stroke: #1f6feb; stroke-width: 2; fill: none; marker-end: url(#arrB); }
+  .arrow3{ stroke: #d33; stroke-width: 2; fill: none; marker-end: url(#arrR); }
+</style>
+<defs>
+  <marker id="arr"  viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#444"/></marker>
+  <marker id="arrB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#1f6feb"/></marker>
+  <marker id="arrR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#d33"/></marker>
+</defs>
+<text x="390" y="22" text-anchor="middle" class="title">Django Request Lifecycle</text><rect x="60" y="80" width="100" height="60" class="box2"/><text x="110" y="115" text-anchor="middle" class="mono">WSGI/ASGI</text><path class="arrow" d="M 160 110 L 170 110"/><rect x="170" y="80" width="100" height="60" class="box3"/><text x="220" y="115" text-anchor="middle" class="mono">Middleware</text><path class="arrow" d="M 270 110 L 280 110"/><rect x="280" y="80" width="100" height="60" class="box4"/><text x="330" y="115" text-anchor="middle" class="mono">URL resolver</text><path class="arrow" d="M 380 110 L 390 110"/><rect x="390" y="80" width="100" height="60" class="box5"/><text x="440" y="115" text-anchor="middle" class="mono">View</text><path class="arrow" d="M 490 110 L 500 110"/><rect x="500" y="80" width="100" height="60" class="box3"/><text x="550" y="115" text-anchor="middle" class="mono">Model / ORM</text><path class="arrow" d="M 600 110 L 610 110"/><rect x="610" y="80" width="100" height="60" class="box"/><text x="660" y="115" text-anchor="middle" class="mono">Database</text><text x="40" y="65" class="label">Request lifecycle:</text><path class="arrow3" d="M 660 170 C 660 200 60 200 60 170"/><text x="360" y="210" text-anchor="middle" class="small">response (template / JSON)</text><text x="40" y="260" class="mono">Key files:  settings.py · urls.py · views.py · models.py · serializers.py</text><text x="40" y="282" class="mono">DRF adds: serializers, viewsets, routers, permissions, throttling</text><text x="40" y="305" class="small">ASGI for async / websockets (Django channels). WSGI for sync (gunicorn).</text></svg>
