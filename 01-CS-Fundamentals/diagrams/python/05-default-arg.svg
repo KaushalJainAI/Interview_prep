@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 265" width="560" height="265">
+<style>
+  .title { font: bold 17px sans-serif; fill: #1a1a1a; }
+  .label { font: 13px sans-serif; fill: #333; }
+  .small { font: 11px sans-serif; fill: #555; }
+  .tiny  { font: 10px sans-serif; fill: #777; }
+  .mono  { font: 13px 'Consolas','Courier New',monospace; fill: #111; }
+  .monos { font: 11px 'Consolas','Courier New',monospace; fill: #111; }
+  .box   { fill: #f6f8fa; stroke: #444; stroke-width: 1.2; }
+  .box2  { fill: #e6f0ff; stroke: #1f6feb; stroke-width: 1.5; }
+  .box3  { fill: #fff3cd; stroke: #b58900; stroke-width: 1.5; }
+  .box4  { fill: #d4edda; stroke: #1a7f37; stroke-width: 1.5; }
+  .boxR  { fill: #fde2e1; stroke: #d33; stroke-width: 1.5; }
+  .name  { fill: #fff; stroke: #444; stroke-width: 1.2; }
+  .arrow { stroke: #444; stroke-width: 1.6; fill: none; marker-end: url(#arr); }
+  .arrow2{ stroke: #1f6feb; stroke-width: 2; fill: none; marker-end: url(#arrB); }
+  .arrow3{ stroke: #d33; stroke-width: 2; fill: none; marker-end: url(#arrR); }
+  .arrG  { stroke: #1a7f37; stroke-width: 2; fill: none; marker-end: url(#arrG); }
+  .dim   { stroke: #bbb; stroke-width: 1; fill: none; stroke-dasharray: 3 3; }
+  .ok    { fill: #1a7f37; font: bold 13px sans-serif; }
+  .bad   { fill: #d33; font: bold 13px sans-serif; }
+</style>
+<defs>
+  <marker id="arr"  viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M0,0 L10,5 L0,10 Z" fill="#444"/></marker>
+  <marker id="arrB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M0,0 L10,5 L0,10 Z" fill="#1f6feb"/></marker>
+  <marker id="arrR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M0,0 L10,5 L0,10 Z" fill="#d33"/></marker>
+  <marker id="arrG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M0,0 L10,5 L0,10 Z" fill="#1a7f37"/></marker>
+</defs>
+<rect width="560" height="265" fill="#ffffff"/><text x="280" y="24" text-anchor="middle" class="title">Mutable default argument trap</text><text x="30" y="50" text-anchor="start" class="monos">def add(x, bucket=[]):   # default built ONCE at def-time</text><rect x="60" y="70" width="160" height="40" rx="4" class="boxR"/><text x="140.0" y="95.0" text-anchor="middle" class="monos">bucket  (one list)</text><text x="60" y="130" text-anchor="start" class="small">Each call with no bucket reuses this same list:</text><rect x="60" y="150" width="130" height="56" rx="4" class="box"/><text x="125.0" y="183.0" text-anchor="middle" class="mono"></text><text x="72" y="172" text-anchor="start" class="mono">add(1)</text><text x="72" y="194" text-anchor="start" class="monos">→ [1]</text><path class="arrow3" d="M 140 112 C 140 130 125 130 125 148"/><rect x="220" y="150" width="130" height="56" rx="4" class="box"/><text x="285.0" y="183.0" text-anchor="middle" class="mono"></text><text x="232" y="172" text-anchor="start" class="mono">add(2)</text><text x="232" y="194" text-anchor="start" class="monos">→ [1, 2]</text><path class="arrow3" d="M 140 112 C 140 130 285 130 285 148"/><rect x="380" y="150" width="130" height="56" rx="4" class="box"/><text x="445.0" y="183.0" text-anchor="middle" class="mono"></text><text x="392" y="172" text-anchor="start" class="mono">add(3)</text><text x="392" y="194" text-anchor="start" class="monos">→ [1, 2, 3]</text><path class="arrow3" d="M 140 112 C 140 130 445 130 445 148"/><text x="30" y="245" text-anchor="start" class="small">Fix: bucket=None; if bucket is None: bucket = []  (fresh each call)</text></svg>

@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 330" width="560" height="330">
+<style>
+  .title { font: bold 17px sans-serif; fill: #1a1a1a; }
+  .label { font: 13px sans-serif; fill: #333; }
+  .small { font: 11px sans-serif; fill: #555; }
+  .tiny  { font: 10px sans-serif; fill: #777; }
+  .mono  { font: 13px 'Consolas','Courier New',monospace; fill: #111; }
+  .monos { font: 11px 'Consolas','Courier New',monospace; fill: #111; }
+  .box   { fill: #f6f8fa; stroke: #444; stroke-width: 1.2; }
+  .box2  { fill: #e6f0ff; stroke: #1f6feb; stroke-width: 1.5; }
+  .box3  { fill: #fff3cd; stroke: #b58900; stroke-width: 1.5; }
+  .box4  { fill: #d4edda; stroke: #1a7f37; stroke-width: 1.5; }
+  .boxR  { fill: #fde2e1; stroke: #d33; stroke-width: 1.5; }
+  .name  { fill: #fff; stroke: #444; stroke-width: 1.2; }
+  .arrow { stroke: #444; stroke-width: 1.6; fill: none; marker-end: url(#arr); }
+  .arrow2{ stroke: #1f6feb; stroke-width: 2; fill: none; marker-end: url(#arrB); }
+  .arrow3{ stroke: #d33; stroke-width: 2; fill: none; marker-end: url(#arrR); }
+  .arrG  { stroke: #1a7f37; stroke-width: 2; fill: none; marker-end: url(#arrG); }
+  .dim   { stroke: #bbb; stroke-width: 1; fill: none; stroke-dasharray: 3 3; }
+  .ok    { fill: #1a7f37; font: bold 13px sans-serif; }
+  .bad   { fill: #d33; font: bold 13px sans-serif; }
+</style>
+<defs>
+  <marker id="arr"  viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M0,0 L10,5 L0,10 Z" fill="#444"/></marker>
+  <marker id="arrB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M0,0 L10,5 L0,10 Z" fill="#1f6feb"/></marker>
+  <marker id="arrR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M0,0 L10,5 L0,10 Z" fill="#d33"/></marker>
+  <marker id="arrG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M0,0 L10,5 L0,10 Z" fill="#1a7f37"/></marker>
+</defs>
+<rect width="560" height="330" fill="#ffffff"/><text x="280" y="24" text-anchor="middle" class="title">Shallow vs deep copy</text><text x="30" y="50" text-anchor="start" class="mono">original = [[1, 2], 3]</text><rect x="40" y="70" width="60" height="30" rx="6" class="name"/><text x="70.0" y="90.0" text-anchor="middle" class="mono">orig</text><rect x="140" y="68" width="90" height="34" rx="4" class="box"/><text x="185.0" y="90.0" text-anchor="middle" class="monos">[ * , 3 ]</text><rect x="280" y="60" width="90" height="30" rx="4" class="box2"/><text x="325.0" y="80.0" text-anchor="middle" class="monos">[1, 2]</text><path class="arrow" d="M 104 85 L 138 85"/><path class="arrow2" d="M 232 78 L 278 75"/><text x="30" y="140" text-anchor="start" class="mono">shallow = copy.copy(orig)</text><rect x="40" y="158" width="60" height="30" rx="6" class="name"/><text x="70.0" y="178.0" text-anchor="middle" class="mono">shal</text><rect x="140" y="156" width="90" height="34" rx="4" class="box3"/><text x="185.0" y="178.0" text-anchor="middle" class="monos">[ * , 3 ]</text><path class="arrow" d="M 104 173 L 138 173"/><path class="arrow3" d="M 232 173 C 260 173 260 90 278 84"/><text x="245" y="205" text-anchor="start" class="bad">inner list SHARED → mutating it hits both!</text><text x="30" y="250" text-anchor="start" class="mono">deep = copy.deepcopy(orig)</text><rect x="40" y="268" width="60" height="30" rx="6" class="name"/><text x="70.0" y="288.0" text-anchor="middle" class="mono">deep</text><rect x="140" y="266" width="90" height="34" rx="4" class="box4"/><text x="185.0" y="288.0" text-anchor="middle" class="monos">[ * , 3 ]</text><rect x="280" y="268" width="90" height="30" rx="4" class="box4"/><text x="325.0" y="288.0" text-anchor="middle" class="monos">[1, 2]</text><path class="arrow" d="M 104 283 L 138 283"/><path class="arrG" d="M 232 283 L 278 283"/><text x="245" y="315" text-anchor="start" class="ok">fully independent copy</text></svg>

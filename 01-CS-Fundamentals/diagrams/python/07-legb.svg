@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 340" width="600" height="340">
+<style>
+  .title { font: bold 17px sans-serif; fill: #1a1a1a; }
+  .label { font: 13px sans-serif; fill: #333; }
+  .small { font: 11px sans-serif; fill: #555; }
+  .tiny  { font: 10px sans-serif; fill: #777; }
+  .mono  { font: 13px 'Consolas','Courier New',monospace; fill: #111; }
+  .monos { font: 11px 'Consolas','Courier New',monospace; fill: #111; }
+  .box   { fill: #f6f8fa; stroke: #444; stroke-width: 1.2; }
+  .box2  { fill: #e6f0ff; stroke: #1f6feb; stroke-width: 1.5; }
+  .box3  { fill: #fff3cd; stroke: #b58900; stroke-width: 1.5; }
+  .box4  { fill: #d4edda; stroke: #1a7f37; stroke-width: 1.5; }
+  .boxR  { fill: #fde2e1; stroke: #d33; stroke-width: 1.5; }
+  .name  { fill: #fff; stroke: #444; stroke-width: 1.2; }
+  .arrow { stroke: #444; stroke-width: 1.6; fill: none; marker-end: url(#arr); }
+  .arrow2{ stroke: #1f6feb; stroke-width: 2; fill: none; marker-end: url(#arrB); }
+  .arrow3{ stroke: #d33; stroke-width: 2; fill: none; marker-end: url(#arrR); }
+  .arrG  { stroke: #1a7f37; stroke-width: 2; fill: none; marker-end: url(#arrG); }
+  .dim   { stroke: #bbb; stroke-width: 1; fill: none; stroke-dasharray: 3 3; }
+  .ok    { fill: #1a7f37; font: bold 13px sans-serif; }
+  .bad   { fill: #d33; font: bold 13px sans-serif; }
+</style>
+<defs>
+  <marker id="arr"  viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M0,0 L10,5 L0,10 Z" fill="#444"/></marker>
+  <marker id="arrB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M0,0 L10,5 L0,10 Z" fill="#1f6feb"/></marker>
+  <marker id="arrR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M0,0 L10,5 L0,10 Z" fill="#d33"/></marker>
+  <marker id="arrG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M0,0 L10,5 L0,10 Z" fill="#1a7f37"/></marker>
+</defs>
+<rect width="600" height="340" fill="#ffffff"/><text x="300" y="24" text-anchor="middle" class="title">LEGB name resolution order</text><rect x="40" y="40" width="480" height="280" rx="10" fill="#f6f8fa" stroke="#888"/><text x="50" y="58" text-anchor="start" class="small">Built-in</text><rect x="90" y="70" width="380" height="220" rx="10" fill="#e6f0ff" stroke="#888"/><text x="100" y="88" text-anchor="start" class="small">Global (module)</text><rect x="150" y="105" width="260" height="150" rx="10" fill="#fff3cd" stroke="#888"/><text x="160" y="123" text-anchor="start" class="small">Enclosing (outer fn)</text><rect x="210" y="140" width="140" height="80" rx="10" fill="#d4edda" stroke="#888"/><text x="220" y="158" text-anchor="start" class="small">Local (current fn)</text><text x="280" y="188" text-anchor="middle" class="mono">name</text><path class="arrow2" d="M 280 195 L 280 250"/><text x="530" y="165" text-anchor="start" class="small">lookup</text><text x="530" y="182" text-anchor="start" class="small">order ↓</text><path class="arrow" d="M 555 130 L 555 250"/></svg>

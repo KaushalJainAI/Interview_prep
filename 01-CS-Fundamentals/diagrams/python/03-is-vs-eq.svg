@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 315" width="560" height="315">
+<style>
+  .title { font: bold 17px sans-serif; fill: #1a1a1a; }
+  .label { font: 13px sans-serif; fill: #333; }
+  .small { font: 11px sans-serif; fill: #555; }
+  .tiny  { font: 10px sans-serif; fill: #777; }
+  .mono  { font: 13px 'Consolas','Courier New',monospace; fill: #111; }
+  .monos { font: 11px 'Consolas','Courier New',monospace; fill: #111; }
+  .box   { fill: #f6f8fa; stroke: #444; stroke-width: 1.2; }
+  .box2  { fill: #e6f0ff; stroke: #1f6feb; stroke-width: 1.5; }
+  .box3  { fill: #fff3cd; stroke: #b58900; stroke-width: 1.5; }
+  .box4  { fill: #d4edda; stroke: #1a7f37; stroke-width: 1.5; }
+  .boxR  { fill: #fde2e1; stroke: #d33; stroke-width: 1.5; }
+  .name  { fill: #fff; stroke: #444; stroke-width: 1.2; }
+  .arrow { stroke: #444; stroke-width: 1.6; fill: none; marker-end: url(#arr); }
+  .arrow2{ stroke: #1f6feb; stroke-width: 2; fill: none; marker-end: url(#arrB); }
+  .arrow3{ stroke: #d33; stroke-width: 2; fill: none; marker-end: url(#arrR); }
+  .arrG  { stroke: #1a7f37; stroke-width: 2; fill: none; marker-end: url(#arrG); }
+  .dim   { stroke: #bbb; stroke-width: 1; fill: none; stroke-dasharray: 3 3; }
+  .ok    { fill: #1a7f37; font: bold 13px sans-serif; }
+  .bad   { fill: #d33; font: bold 13px sans-serif; }
+</style>
+<defs>
+  <marker id="arr"  viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M0,0 L10,5 L0,10 Z" fill="#444"/></marker>
+  <marker id="arrB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M0,0 L10,5 L0,10 Z" fill="#1f6feb"/></marker>
+  <marker id="arrR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M0,0 L10,5 L0,10 Z" fill="#d33"/></marker>
+  <marker id="arrG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M0,0 L10,5 L0,10 Z" fill="#1a7f37"/></marker>
+</defs>
+<rect width="560" height="315" fill="#ffffff"/><text x="280" y="24" text-anchor="middle" class="title">is vs == and the small-int cache</text><text x="30" y="52" text-anchor="start" class="label">Small ints (−5..256) are cached singletons</text><rect x="40" y="78" width="54" height="30" rx="6" class="name"/><text x="67.0" y="98.0" text-anchor="middle" class="mono">a</text><rect x="40" y="122" width="54" height="30" rx="6" class="name"/><text x="67.0" y="142.0" text-anchor="middle" class="mono">b</text><rect x="200" y="88" width="120" height="40" rx="4" class="box4"/><text x="260.0" y="113.0" text-anchor="middle" class="mono">256</text><text x="200" y="150" text-anchor="start" class="tiny">shared cached object</text><path class="arrow2" d="M 94 93 C 150 93 150 105 198 105"/><path class="arrow2" d="M 94 137 C 150 137 150 116 198 113"/><text x="335" y="100" text-anchor="start" class="ok">a is b → True</text><text x="335" y="120" text-anchor="start" class="small">a == b → True</text><rect x="40" y="200" width="54" height="30" rx="6" class="name"/><text x="67.0" y="220.0" text-anchor="middle" class="mono">c</text><rect x="40" y="244" width="54" height="30" rx="6" class="name"/><text x="67.0" y="264.0" text-anchor="middle" class="mono">d</text><rect x="200" y="192" width="120" height="36" rx="4" class="box"/><text x="260.0" y="215.0" text-anchor="middle" class="mono">257</text><rect x="200" y="236" width="120" height="36" rx="4" class="box"/><text x="260.0" y="259.0" text-anchor="middle" class="mono">257</text><path class="arrow d3" stroke="#444" stroke-width="1.6" fill="none" marker-end="url(#arr)" d="M 94 215 L 198 210"/><path stroke="#444" stroke-width="1.6" fill="none" marker-end="url(#arr)" d="M 94 259 L 198 254"/><text x="335" y="212" text-anchor="start" class="bad">c is d → False</text><text x="335" y="232" text-anchor="start" class="small">c == d → True</text><text x="30" y="295" text-anchor="start" class="small">Rule: use == for value; reserve is for None / singletons.</text></svg>

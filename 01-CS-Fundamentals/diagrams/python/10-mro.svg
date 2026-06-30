@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 270" width="660" height="270">
+<style>
+  .title { font: bold 17px sans-serif; fill: #1a1a1a; }
+  .label { font: 13px sans-serif; fill: #333; }
+  .small { font: 11px sans-serif; fill: #555; }
+  .tiny  { font: 10px sans-serif; fill: #777; }
+  .mono  { font: 13px 'Consolas','Courier New',monospace; fill: #111; }
+  .monos { font: 11px 'Consolas','Courier New',monospace; fill: #111; }
+  .box   { fill: #f6f8fa; stroke: #444; stroke-width: 1.2; }
+  .box2  { fill: #e6f0ff; stroke: #1f6feb; stroke-width: 1.5; }
+  .box3  { fill: #fff3cd; stroke: #b58900; stroke-width: 1.5; }
+  .box4  { fill: #d4edda; stroke: #1a7f37; stroke-width: 1.5; }
+  .boxR  { fill: #fde2e1; stroke: #d33; stroke-width: 1.5; }
+  .name  { fill: #fff; stroke: #444; stroke-width: 1.2; }
+  .arrow { stroke: #444; stroke-width: 1.6; fill: none; marker-end: url(#arr); }
+  .arrow2{ stroke: #1f6feb; stroke-width: 2; fill: none; marker-end: url(#arrB); }
+  .arrow3{ stroke: #d33; stroke-width: 2; fill: none; marker-end: url(#arrR); }
+  .arrG  { stroke: #1a7f37; stroke-width: 2; fill: none; marker-end: url(#arrG); }
+  .dim   { stroke: #bbb; stroke-width: 1; fill: none; stroke-dasharray: 3 3; }
+  .ok    { fill: #1a7f37; font: bold 13px sans-serif; }
+  .bad   { fill: #d33; font: bold 13px sans-serif; }
+</style>
+<defs>
+  <marker id="arr"  viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M0,0 L10,5 L0,10 Z" fill="#444"/></marker>
+  <marker id="arrB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M0,0 L10,5 L0,10 Z" fill="#1f6feb"/></marker>
+  <marker id="arrR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M0,0 L10,5 L0,10 Z" fill="#d33"/></marker>
+  <marker id="arrG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M0,0 L10,5 L0,10 Z" fill="#1a7f37"/></marker>
+</defs>
+<rect width="660" height="270" fill="#ffffff"/><text x="330" y="24" text-anchor="middle" class="title">MRO / C3 in diamond inheritance</text><rect x="240" y="50" width="80" height="38" rx="4" class="box4"/><text x="280.0" y="74.0" text-anchor="middle" class="mono">A</text><rect x="140" y="130" width="80" height="38" rx="4" class="box2"/><text x="180.0" y="154.0" text-anchor="middle" class="mono">B</text><rect x="340" y="130" width="80" height="38" rx="4" class="box2"/><text x="380.0" y="154.0" text-anchor="middle" class="mono">C</text><rect x="240" y="210" width="80" height="38" rx="4" class="box3"/><text x="280.0" y="234.0" text-anchor="middle" class="mono">D</text><path class="arrow" d="M 180 130 L 260 88"/><path class="arrow" d="M 380 130 L 300 88"/><path class="arrow" d="M 260 210 L 200 168"/><path class="arrow" d="M 300 210 L 360 168"/><text x="460" y="120" text-anchor="start" class="small">C3 linearization:</text><text x="460" y="142" text-anchor="start" class="monos">D → B → C → A → object</text><text x="460" y="175" text-anchor="start" class="small">super() follows MRO,</text><text x="460" y="193" text-anchor="start" class="small">not the literal parent.</text></svg>

@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 245" width="560" height="245">
+<style>
+  .title { font: bold 17px sans-serif; fill: #1a1a1a; }
+  .label { font: 13px sans-serif; fill: #333; }
+  .small { font: 11px sans-serif; fill: #555; }
+  .tiny  { font: 10px sans-serif; fill: #777; }
+  .mono  { font: 13px 'Consolas','Courier New',monospace; fill: #111; }
+  .monos { font: 11px 'Consolas','Courier New',monospace; fill: #111; }
+  .box   { fill: #f6f8fa; stroke: #444; stroke-width: 1.2; }
+  .box2  { fill: #e6f0ff; stroke: #1f6feb; stroke-width: 1.5; }
+  .box3  { fill: #fff3cd; stroke: #b58900; stroke-width: 1.5; }
+  .box4  { fill: #d4edda; stroke: #1a7f37; stroke-width: 1.5; }
+  .boxR  { fill: #fde2e1; stroke: #d33; stroke-width: 1.5; }
+  .name  { fill: #fff; stroke: #444; stroke-width: 1.2; }
+  .arrow { stroke: #444; stroke-width: 1.6; fill: none; marker-end: url(#arr); }
+  .arrow2{ stroke: #1f6feb; stroke-width: 2; fill: none; marker-end: url(#arrB); }
+  .arrow3{ stroke: #d33; stroke-width: 2; fill: none; marker-end: url(#arrR); }
+  .arrG  { stroke: #1a7f37; stroke-width: 2; fill: none; marker-end: url(#arrG); }
+  .dim   { stroke: #bbb; stroke-width: 1; fill: none; stroke-dasharray: 3 3; }
+  .ok    { fill: #1a7f37; font: bold 13px sans-serif; }
+  .bad   { fill: #d33; font: bold 13px sans-serif; }
+</style>
+<defs>
+  <marker id="arr"  viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M0,0 L10,5 L0,10 Z" fill="#444"/></marker>
+  <marker id="arrB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M0,0 L10,5 L0,10 Z" fill="#1f6feb"/></marker>
+  <marker id="arrR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M0,0 L10,5 L0,10 Z" fill="#d33"/></marker>
+  <marker id="arrG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M0,0 L10,5 L0,10 Z" fill="#1a7f37"/></marker>
+</defs>
+<rect width="560" height="245" fill="#ffffff"/><text x="280" y="24" text-anchor="middle" class="title">Names are labels, not boxes (aliasing)</text><text x="30" y="55" text-anchor="start" class="label">b = a  copies the reference, not the list</text><rect x="40" y="80" width="54" height="30" rx="6" class="name"/><text x="67.0" y="100.0" text-anchor="middle" class="mono">a</text><rect x="40" y="130" width="54" height="30" rx="6" class="name"/><text x="67.0" y="150.0" text-anchor="middle" class="mono">b</text><rect x="230" y="92" width="210" height="56" rx="4" class="box2"/><text x="335.0" y="125.0" text-anchor="middle" class="mono"></text><text x="245" y="112" text-anchor="start" class="monos">list object  id=0x7f..</text><text x="245" y="134" text-anchor="start" class="mono">[1, 2, 3, 4]</text><path class="arrow2" d="M 94 95 C 160 95 160 110 228 112"/><path class="arrow2" d="M 94 145 C 160 145 160 130 228 126"/><text x="30" y="200" text-anchor="start" class="small">b.append(4)  mutates the shared object → visible through a too.</text><text x="30" y="220" text-anchor="start" class="small">Rebinding b = [9] would instead point b at a NEW object (a unchanged).</text></svg>

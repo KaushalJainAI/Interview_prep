@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 290" width="600" height="290">
+<style>
+  .title { font: bold 17px sans-serif; fill: #1a1a1a; }
+  .label { font: 13px sans-serif; fill: #333; }
+  .small { font: 11px sans-serif; fill: #555; }
+  .tiny  { font: 10px sans-serif; fill: #777; }
+  .mono  { font: 13px 'Consolas','Courier New',monospace; fill: #111; }
+  .monos { font: 11px 'Consolas','Courier New',monospace; fill: #111; }
+  .box   { fill: #f6f8fa; stroke: #444; stroke-width: 1.2; }
+  .box2  { fill: #e6f0ff; stroke: #1f6feb; stroke-width: 1.5; }
+  .box3  { fill: #fff3cd; stroke: #b58900; stroke-width: 1.5; }
+  .box4  { fill: #d4edda; stroke: #1a7f37; stroke-width: 1.5; }
+  .boxR  { fill: #fde2e1; stroke: #d33; stroke-width: 1.5; }
+  .name  { fill: #fff; stroke: #444; stroke-width: 1.2; }
+  .arrow { stroke: #444; stroke-width: 1.6; fill: none; marker-end: url(#arr); }
+  .arrow2{ stroke: #1f6feb; stroke-width: 2; fill: none; marker-end: url(#arrB); }
+  .arrow3{ stroke: #d33; stroke-width: 2; fill: none; marker-end: url(#arrR); }
+  .arrG  { stroke: #1a7f37; stroke-width: 2; fill: none; marker-end: url(#arrG); }
+  .dim   { stroke: #bbb; stroke-width: 1; fill: none; stroke-dasharray: 3 3; }
+  .ok    { fill: #1a7f37; font: bold 13px sans-serif; }
+  .bad   { fill: #d33; font: bold 13px sans-serif; }
+</style>
+<defs>
+  <marker id="arr"  viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M0,0 L10,5 L0,10 Z" fill="#444"/></marker>
+  <marker id="arrB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M0,0 L10,5 L0,10 Z" fill="#1f6feb"/></marker>
+  <marker id="arrR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M0,0 L10,5 L0,10 Z" fill="#d33"/></marker>
+  <marker id="arrG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M0,0 L10,5 L0,10 Z" fill="#1a7f37"/></marker>
+</defs>
+<rect width="600" height="290" fill="#ffffff"/><text x="300" y="24" text-anchor="middle" class="title">The GIL serializes Python bytecode</text><text x="30" y="55" text-anchor="start" class="label">3 threads, 1 process — only one holds the GIL at a time</text><rect x="40" y="80" width="110" height="38" rx="4" class="box2"/><text x="95.0" y="104.0" text-anchor="middle" class="mono">Thread 1</text><rect x="40" y="128" width="110" height="38" rx="4" class="box2"/><text x="95.0" y="152.0" text-anchor="middle" class="mono">Thread 2</text><rect x="40" y="176" width="110" height="38" rx="4" class="box2"/><text x="95.0" y="200.0" text-anchor="middle" class="mono">Thread 3</text><rect x="230" y="128" width="80" height="44" rx="4" class="boxR"/><text x="270.0" y="155.0" text-anchor="middle" class="mono">GIL</text><path class="dim" d="M 150 99 L 228 150"/><path class="dim" d="M 150 147 L 228 150"/><path class="dim" d="M 150 195 L 228 150"/><rect x="390" y="128" width="120" height="44" rx="4" class="box4"/><text x="450.0" y="155.0" text-anchor="middle" class="mono">bytecode</text><path class="arrow3" d="M 310 150 L 388 150"/><text x="40" y="245" text-anchor="start" class="small">CPU-bound → threads take turns (no speedup).</text><text x="40" y="267" text-anchor="start" class="small">I/O-bound → GIL released while waiting (threads help).</text></svg>

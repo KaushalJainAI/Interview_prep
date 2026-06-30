@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 235" width="560" height="235">
+<style>
+  .title { font: bold 17px sans-serif; fill: #1a1a1a; }
+  .label { font: 13px sans-serif; fill: #333; }
+  .small { font: 11px sans-serif; fill: #555; }
+  .tiny  { font: 10px sans-serif; fill: #777; }
+  .mono  { font: 13px 'Consolas','Courier New',monospace; fill: #111; }
+  .monos { font: 11px 'Consolas','Courier New',monospace; fill: #111; }
+  .box   { fill: #f6f8fa; stroke: #444; stroke-width: 1.2; }
+  .box2  { fill: #e6f0ff; stroke: #1f6feb; stroke-width: 1.5; }
+  .box3  { fill: #fff3cd; stroke: #b58900; stroke-width: 1.5; }
+  .box4  { fill: #d4edda; stroke: #1a7f37; stroke-width: 1.5; }
+  .boxR  { fill: #fde2e1; stroke: #d33; stroke-width: 1.5; }
+  .name  { fill: #fff; stroke: #444; stroke-width: 1.2; }
+  .arrow { stroke: #444; stroke-width: 1.6; fill: none; marker-end: url(#arr); }
+  .arrow2{ stroke: #1f6feb; stroke-width: 2; fill: none; marker-end: url(#arrB); }
+  .arrow3{ stroke: #d33; stroke-width: 2; fill: none; marker-end: url(#arrR); }
+  .arrG  { stroke: #1a7f37; stroke-width: 2; fill: none; marker-end: url(#arrG); }
+  .dim   { stroke: #bbb; stroke-width: 1; fill: none; stroke-dasharray: 3 3; }
+  .ok    { fill: #1a7f37; font: bold 13px sans-serif; }
+  .bad   { fill: #d33; font: bold 13px sans-serif; }
+</style>
+<defs>
+  <marker id="arr"  viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M0,0 L10,5 L0,10 Z" fill="#444"/></marker>
+  <marker id="arrB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M0,0 L10,5 L0,10 Z" fill="#1f6feb"/></marker>
+  <marker id="arrR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M0,0 L10,5 L0,10 Z" fill="#d33"/></marker>
+  <marker id="arrG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M0,0 L10,5 L0,10 Z" fill="#1a7f37"/></marker>
+</defs>
+<rect width="560" height="235" fill="#ffffff"/><text x="280" y="24" text-anchor="middle" class="title">Generators: lazy, single-pass evaluation</text><text x="30" y="50" text-anchor="start" class="monos">gen = (x*x for x in range(4))   # nothing computed yet</text><rect x="60" y="75" width="90" height="40" rx="4" class="box4"/><text x="105.0" y="100.0" text-anchor="middle" class="mono">0</text><text x="105" y="135" text-anchor="middle" class="tiny">next() #1</text><rect x="170" y="75" width="90" height="40" rx="4" class="box2"/><text x="215.0" y="100.0" text-anchor="middle" class="mono">1</text><text x="215" y="135" text-anchor="middle" class="tiny">next() #2</text><rect x="280" y="75" width="90" height="40" rx="4" class="box"/><text x="325.0" y="100.0" text-anchor="middle" class="mono">4</text><text x="325" y="135" text-anchor="middle" class="tiny">next() #3</text><rect x="390" y="75" width="90" height="40" rx="4" class="box"/><text x="435.0" y="100.0" text-anchor="middle" class="mono">9</text><text x="435" y="135" text-anchor="middle" class="tiny">next() #4</text><path class="arrow2" d="M 60 160 L 480 160"/><text x="250" y="185" text-anchor="middle" class="small">values produced on demand, one at a time →</text><text x="30" y="215" text-anchor="start" class="small">Single-pass: once exhausted it yields nothing; O(1) memory.</text></svg>

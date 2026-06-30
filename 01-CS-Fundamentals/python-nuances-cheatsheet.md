@@ -146,6 +146,37 @@ asyncio.run(main())
 - **Shallow vs deep copy**: `copy.copy` vs `copy.deepcopy`
 - **`__init__` vs `__new__`**: `__new__` creates the instance, `__init__` initializes it. Override `__new__` for singletons / immutable inheritance.
 
+## Bit tricks & shift-operator gotchas
+Two bugs that bite in bit-manipulation problems (e.g. "concatenate the binary of `i`"):
+
+**1. `len(bin(i))` is *not* the bit length.** `bin()` always prepends a `'0b'` prefix (2 chars), then the binary digits.
+
+| `i` | `bin(i)` | `len(bin(i))` | true bit length |
+|-----|----------|---------------|-----------------|
+| 2 | `'0b10'` | 4 | 2 |
+| 3 | `'0b11'` | 4 | 2 |
+| 5 | `'0b101'` | 5 | 3 |
+
+- True bit count = `len(bin(i)) - 2`, which is exactly `i.bit_length()`.
+- Subtracting `1` instead of `2` gives a value **one too large** -- classic off-by-one. Just use `i.bit_length()`.
+
+**2. `+`/`-` bind tighter than `<<`/`>>`.** Precedence, high -> low:
+```
+*  /  //  %
++  -            (binary)
+<<  >>
+&
+^
+|
+```
+So `ans + ans << bit_length` parses as `(ans + ans) << bit_length` == `(2 * ans) << bit_length`, **not** `ans + (ans << bit_length)`. Always parenthesize shifts mixed with arithmetic.
+
+**3. The deeper question.** Even correctly parenthesized, `ans + (ans << bit)` doubles `ans` -- it doesn't append anything new. To *concatenate the binary of `i`* onto the running result you shift `ans` left by `i`'s bit-width to make room, then OR/add the value `i` itself:
+```python
+ans = (ans << i.bit_length()) | i      # append binary of i
+```
+Appending `ans` to itself answers the wrong question -- the value being concatenated must be `i`, not `ans`.
+
 ## Interview one-liners
 - *What's the GIL?* Lock that serializes Python bytecode in CPython -> no true parallelism in pure-Python threads. Multiprocessing or async work around it.
 - *List vs tuple?* List = mutable, tuple = immutable + hashable (usable as dict keys / set elements).

@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 300" width="560" height="300">
+<style>
+  .title { font: bold 17px sans-serif; fill: #1a1a1a; }
+  .label { font: 13px sans-serif; fill: #333; }
+  .small { font: 11px sans-serif; fill: #555; }
+  .tiny  { font: 10px sans-serif; fill: #777; }
+  .mono  { font: 13px 'Consolas','Courier New',monospace; fill: #111; }
+  .monos { font: 11px 'Consolas','Courier New',monospace; fill: #111; }
+  .box   { fill: #f6f8fa; stroke: #444; stroke-width: 1.2; }
+  .box2  { fill: #e6f0ff; stroke: #1f6feb; stroke-width: 1.5; }
+  .box3  { fill: #fff3cd; stroke: #b58900; stroke-width: 1.5; }
+  .box4  { fill: #d4edda; stroke: #1a7f37; stroke-width: 1.5; }
+  .boxR  { fill: #fde2e1; stroke: #d33; stroke-width: 1.5; }
+  .name  { fill: #fff; stroke: #444; stroke-width: 1.2; }
+  .arrow { stroke: #444; stroke-width: 1.6; fill: none; marker-end: url(#arr); }
+  .arrow2{ stroke: #1f6feb; stroke-width: 2; fill: none; marker-end: url(#arrB); }
+  .arrow3{ stroke: #d33; stroke-width: 2; fill: none; marker-end: url(#arrR); }
+  .arrG  { stroke: #1a7f37; stroke-width: 2; fill: none; marker-end: url(#arrG); }
+  .dim   { stroke: #bbb; stroke-width: 1; fill: none; stroke-dasharray: 3 3; }
+  .ok    { fill: #1a7f37; font: bold 13px sans-serif; }
+  .bad   { fill: #d33; font: bold 13px sans-serif; }
+</style>
+<defs>
+  <marker id="arr"  viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M0,0 L10,5 L0,10 Z" fill="#444"/></marker>
+  <marker id="arrB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M0,0 L10,5 L0,10 Z" fill="#1f6feb"/></marker>
+  <marker id="arrR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M0,0 L10,5 L0,10 Z" fill="#d33"/></marker>
+  <marker id="arrG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M0,0 L10,5 L0,10 Z" fill="#1a7f37"/></marker>
+</defs>
+<rect width="560" height="300" fill="#ffffff"/><text x="280" y="24" text-anchor="middle" class="title">Rebind (immutable) vs mutate (mutable)</text><text x="30" y="55" text-anchor="start" class="label">Immutable (int): += rebinds to a NEW object</text><rect x="40" y="75" width="54" height="30" rx="6" class="name"/><text x="67.0" y="95.0" text-anchor="middle" class="mono">x</text><rect x="150" y="72" width="50" height="34" rx="4" class="box"/><text x="175.0" y="94.0" text-anchor="middle" class="mono">10</text><rect x="250" y="72" width="50" height="34" rx="4" class="box4"/><text x="275.0" y="94.0" text-anchor="middle" class="mono">11</text><path class="dim" d="M 94 89 L 148 89"/><path class="arrow3" d="M 94 95 C 120 130 230 130 275 108"/><text x="120" y="150" text-anchor="start" class="small">x += 1  → x now points to 11; old 10 untouched</text><text x="30" y="200" text-anchor="start" class="label">Mutable (list): append mutates the SAME object in place</text><rect x="40" y="220" width="54" height="30" rx="6" class="name"/><text x="67.0" y="240.0" text-anchor="middle" class="mono">y</text><rect x="150" y="217" width="150" height="34" rx="4" class="box2"/><text x="225.0" y="239.0" text-anchor="middle" class="monos">[1, 2]  →  [1, 2, 3]</text><path class="arrow2" d="M 94 234 L 148 234"/><text x="120" y="280" text-anchor="start" class="small">y.append(3)  → same id(y), content changed</text></svg>

@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 580 235" width="580" height="235">
+<style>
+  .title { font: bold 17px sans-serif; fill: #1a1a1a; }
+  .label { font: 13px sans-serif; fill: #333; }
+  .small { font: 11px sans-serif; fill: #555; }
+  .tiny  { font: 10px sans-serif; fill: #777; }
+  .mono  { font: 13px 'Consolas','Courier New',monospace; fill: #111; }
+  .monos { font: 11px 'Consolas','Courier New',monospace; fill: #111; }
+  .box   { fill: #f6f8fa; stroke: #444; stroke-width: 1.2; }
+  .box2  { fill: #e6f0ff; stroke: #1f6feb; stroke-width: 1.5; }
+  .box3  { fill: #fff3cd; stroke: #b58900; stroke-width: 1.5; }
+  .box4  { fill: #d4edda; stroke: #1a7f37; stroke-width: 1.5; }
+  .boxR  { fill: #fde2e1; stroke: #d33; stroke-width: 1.5; }
+  .name  { fill: #fff; stroke: #444; stroke-width: 1.2; }
+  .arrow { stroke: #444; stroke-width: 1.6; fill: none; marker-end: url(#arr); }
+  .arrow2{ stroke: #1f6feb; stroke-width: 2; fill: none; marker-end: url(#arrB); }
+  .arrow3{ stroke: #d33; stroke-width: 2; fill: none; marker-end: url(#arrR); }
+  .arrG  { stroke: #1a7f37; stroke-width: 2; fill: none; marker-end: url(#arrG); }
+  .dim   { stroke: #bbb; stroke-width: 1; fill: none; stroke-dasharray: 3 3; }
+  .ok    { fill: #1a7f37; font: bold 13px sans-serif; }
+  .bad   { fill: #d33; font: bold 13px sans-serif; }
+</style>
+<defs>
+  <marker id="arr"  viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M0,0 L10,5 L0,10 Z" fill="#444"/></marker>
+  <marker id="arrB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M0,0 L10,5 L0,10 Z" fill="#1f6feb"/></marker>
+  <marker id="arrR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M0,0 L10,5 L0,10 Z" fill="#d33"/></marker>
+  <marker id="arrG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M0,0 L10,5 L0,10 Z" fill="#1a7f37"/></marker>
+</defs>
+<rect width="580" height="235" fill="#ffffff"/><text x="290" y="24" text-anchor="middle" class="title">__slots__ removes the per-instance __dict__</text><text x="40" y="55" text-anchor="start" class="label">Default: per-instance __dict__</text><rect x="40" y="70" width="200" height="44" rx="4" class="box"/><text x="140.0" y="97.0" text-anchor="middle" class="mono">instance</text><rect x="40" y="120" width="200" height="60" rx="4" class="box3"/><text x="140.0" y="155.0" text-anchor="middle" class="monos">__dict__ {'x':1,'y':2}</text><path class="arrow" d="M 140 114 L 140 118"/><text x="40" y="210" text-anchor="start" class="small">flexible but bigger + slower</text><text x="330" y="55" text-anchor="start" class="label">__slots__ = ('x','y')</text><rect x="330" y="70" width="200" height="44" rx="4" class="box4"/><text x="430.0" y="97.0" text-anchor="middle" class="mono">instance</text><rect x="330" y="120" width="95" height="60" rx="4" class="box4"/><text x="377.5" y="155.0" text-anchor="middle" class="monos">x slot</text><rect x="435" y="120" width="95" height="60" rx="4" class="box4"/><text x="482.5" y="155.0" text-anchor="middle" class="monos">y slot</text><path class="arrG" d="M 430 114 L 430 118"/><text x="330" y="210" text-anchor="start" class="small">compact + faster; no new attrs</text></svg>
